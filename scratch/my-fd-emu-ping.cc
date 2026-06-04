@@ -93,10 +93,10 @@ main(int argc, char* argv[])
 {
     NS_LOG_INFO("Ping Emulation Example");
 
-    std::string deviceName("enp0s3");
+    std::string deviceName("enx080027341e61");
     std::string remote("192.168.0.199");
     std::string localAddress("192.168.0.114");
-    std::string localGateway("10.0.2.2");
+    std::string localGateway("192.168.0.1");
 #ifdef HAVE_PACKET_H
     std::string emuMode("raw");
 #elif HAVE_NETMAP_USER_H
@@ -110,17 +110,17 @@ main(int argc, char* argv[])
     // command-line arguments
     CommandLine cmd(__FILE__);
     cmd.AddValue("deviceName",
-                 "enp0s3",
+                 "enx080027341e61",
                  deviceName);
     cmd.AddValue("remote", "192.168.0.199", remote);
     cmd.AddValue("localIp", "192.168.0.114", localAddress);
-    cmd.AddValue("gateway", "10.0.2.2", localGateway);
-    cmd.AddValue("emuMode", "dpkg", emuMode);
+    cmd.AddValue("gateway", "192.168.0.1", localGateway);
+    cmd.AddValue("emuMode", "dpdk", emuMode);
     cmd.Parse(argc, argv);
 
     Ipv4Address remoteIp(remote.c_str());
     Ipv4Address localIp(localAddress.c_str());
-    NS_ABORT_MSG_IF(localIp == "192.168.0.199",
+    NS_ABORT_MSG_IF(localIp == "1.2.3.4",
                     "You must change the local IP address before running this example");
 
     Ipv4Mask localMask("255.255.255.0");
@@ -207,7 +207,7 @@ main(int argc, char* argv[])
 
     NetDeviceContainer devices = helper->Install(node);
     Ptr<NetDevice> device = devices.Get(0);
-    device->SetAttribute("Address", Mac48AddressValue(Mac48Address::Allocate()));
+    device->SetAttribute("Address", Mac48AddressValue(Mac48Address("08:00:27:34:1e:61")));
 
     // Ptr<Queue> queue = CreateObject<DropTailQueue> ();
     // device->SetQueue (queue);
@@ -243,7 +243,7 @@ main(int argc, char* argv[])
     // "1.2.3.4" string.
     //
     Ipv4Address gateway(localGateway.c_str());
-    NS_ABORT_MSG_IF(gateway == "0.0.0.0",
+    NS_ABORT_MSG_IF(gateway == "1.2.3.4",
                     "You must change the gateway IP address before running this example");
 
     Ipv4StaticRoutingHelper ipv4RoutingHelper;
