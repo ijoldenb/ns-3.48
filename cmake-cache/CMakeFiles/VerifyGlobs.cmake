@@ -4,6 +4,7 @@
 # scratch_subdirectories at scratch/CMakeLists.txt:73 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/**")
 set(OLD_GLOB
+  "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/2sat-emu.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/CMakeLists.txt"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/nested-subdir"
@@ -34,6 +35,7 @@ endif()
 # single_source_file_scratches at scratch/CMakeLists.txt:67 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/[^.]*.cc")
 set(OLD_GLOB
+  "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/2sat-emu.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/scratch-simulator.cc"
   )

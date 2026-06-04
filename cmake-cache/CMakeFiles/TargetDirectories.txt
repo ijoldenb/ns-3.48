@@ -997,6 +997,7 @@
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/examples/wireless/CMakeFiles/install.dir
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/examples/wireless/CMakeFiles/install/local.dir
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/examples/wireless/CMakeFiles/install/strip.dir
+/home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-emu.dir
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-ping.dir
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_scratch-simulator.dir
 /home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir

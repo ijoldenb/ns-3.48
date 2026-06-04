@@ -102,7 +102,7 @@ main(int argc, char* argv[])
 #elif HAVE_NETMAP_USER_H
     std::string emuMode("netmap");
 #else // HAVE_DPDK_USER_H is true (otherwise this example is not compiled)
-    std::string emuMode("dpdk");
+    std::string emuMode("netmap");
 #endif
 
     //
@@ -115,7 +115,7 @@ main(int argc, char* argv[])
     cmd.AddValue("remote", "192.168.0.199", remote);
     cmd.AddValue("localIp", "192.168.0.114", localAddress);
     cmd.AddValue("gateway", "192.168.0.1", localGateway);
-    cmd.AddValue("emuMode", "dpdk", emuMode);
+    cmd.AddValue("emuMode", "netmap", emuMode);
     cmd.Parse(argc, argv);
 
     Ipv4Address remoteIp(remote.c_str());
