@@ -7,6 +7,7 @@ set(OLD_GLOB
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/2sat-emu.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/CMakeLists.txt"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-ping.cc"
+  "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-send.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/nested-subdir"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/scratch-simulator.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/subdir"
@@ -37,6 +38,7 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/researchvm/Documents/DrGeordonRe
 set(OLD_GLOB
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/2sat-emu.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-ping.cc"
+  "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/my-fd-emu-send.cc"
   "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/scratch/scratch-simulator.cc"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

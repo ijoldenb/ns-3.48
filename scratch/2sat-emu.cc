@@ -1,61 +1,59 @@
 #include "ns3/core-module.h"
 #include "ns3/network-module.h"
-#include "ns3/point-to-point-module.h"
+#include "ns3/bridge-module.h"
 #include "ns3/fd-net-device-module.h"
 
 using namespace ns3;
 
-void KeepAliveDummyEvent ()
-{
-    // This function intentionally left blank. It serves as a "keep-alive" event to ensure the simulation runs until the specified stop time.
-}
+void KeepAliveDummyEvent () {}
 
 int main (int argc, char *argv[])
 {
   CommandLine cmd;
   cmd.Parse (argc, argv);
 
+  // 1. Enforce real-time clock synchronization for Hardware-in-the-Loop execution
   GlobalValue::Bind ("SimulatorImplementationType", StringValue ("ns3::RealtimeSimulatorImpl"));
-  
-  // CHANGE THIS STRING to match your exact VirtualBox interface (e.g., "eth0", "enp0s3", "enp0s8")
-  std::string physicalInterface = "enp0s8"; 
 
-  // 1. Create the internal emulation topology nodes
+  // 2. Create ONE single router/satellite proxy node
   NodeContainer nodes;
-  nodes.Create (2);
+  nodes.Create (1);
+  Ptr<Node> proxyNode = nodes.Get(0);
 
-  // 2. Define the Satellite Physical Channel constraints
-  PointToPointHelper p2p;
-  p2p.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));     // Bandwidth Cap
-  p2p.SetChannelAttribute ("Delay", StringValue ("120ms"));       // One-way Satellite Latency
-
-  // 3. Connect the nodes internally
-  NetDeviceContainer internalDevs = p2p.Install (nodes);
-
-  // 4. Bind the File Descriptor engine to the physical network card
+  // 3. Build the Raw Emulated NetDevices to latch onto your VM sub-interfaces
   EmuFdNetDeviceHelper emuHelper;
-  emuHelper.SetDeviceName (physicalInterface); 
-  
-  // Connect Simulation Node 0 to the physical network (Handles Pi 1)
-  NetDeviceContainer emuDevs1 = emuHelper.Install (nodes.Get (0));
-  Ptr<FdNetDevice> emuDev1 = emuDevs1.Get (0)->GetObject<FdNetDevice> ();
-  
-  // Connect Simulation Node 1 to the physical network (Handles Pi 2)
-  NetDeviceContainer emuDevs2 = emuHelper.Install (nodes.Get (1));
-  Ptr<FdNetDevice> emuDev2 = emuDevs2.Get (0)->GetObject<FdNetDevice> ();
 
-  // 6. Data Capture telemetry loop
-  p2p.EnablePcapAll ("satellite-emu-flight");
+  // Real-world Ingress: VLAN 101 (Pi 1 Side)
+  emuHelper.SetDeviceName ("enp0s8.101");
+  NetDeviceContainer devSideA = emuHelper.Install (proxyNode);
+  Ptr<NetDevice> netDevA = devSideA.Get(0);
 
+  // Real-world Egress: VLAN 102 (Pi 2 Side)
+  emuHelper.SetDeviceName ("enp0s8.102");
+  NetDeviceContainer devSideB = emuHelper.Install (proxyNode);
+  Ptr<NetDevice> netDevB = devSideB.Get(0);
+
+  // 4. Create the Internal Bridge Device to stitch the two worlds together
+  BridgeHelper bridgeHelper;
+  NetDeviceContainer bridgeDevices;
+  bridgeDevices.Add (netDevA);
+  bridgeDevices.Add (netDevB);
+  
+  // Install the software bridge onto our single node, making it a live wire
+  NetDeviceContainer mainBridge = bridgeHelper.Install (proxyNode, bridgeDevices);
+
+  // 5. Configure your Satellite Link metrics directly on the raw forwarding pipes
+  // We can apply channel error, delay, or data rate directly to the FdNetDevices if needed.
+  // For standard transparent L2 pass-through, the bridge handles immediate wire-speed delivery.
+
+  // 6. Execution Windows and Keep-Alives
   Time stopTime = Seconds (6000.0); 
   Simulator::Stop (stopTime);
-
-
-  // Correct syntax: Schedule our empty function right before the simulation ends
   Simulator::Schedule (stopTime - Seconds(1.0), &KeepAliveDummyEvent);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("Simulation Engine Active. Bound strictly to device: " << physicalInterface);
+  NS_LOG_UNCOND ("ns-3 Layer 2 Transparent Bridge Engine is LIVE!");
+  NS_LOG_UNCOND ("Bridging enp0s8.101 <---> enp0s8.102 across the simulation loop.");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();
