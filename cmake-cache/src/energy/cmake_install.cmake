@@ -1,4 +1,4 @@
-# Install script for directory: /home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy
+# Install script for directory: /home/ijoldenb/ns-3.48/src/energy
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "default")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -37,32 +37,32 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set path to fallback-tool for dependency-resolution.
+# Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/src/energy/examples/cmake_install.cmake")
+  include("/home/ijoldenb/ns-3.48/cmake-cache/src/energy/examples/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so"
          RPATH "/usr/local/lib:\$ORIGIN/:\$ORIGIN/../lib:/usr/local/lib64:\$ORIGIN/:\$ORIGIN/../lib64")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/lib/libns3.48-energy-debug.so")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/ijoldenb/ns-3.48/build/lib/libns3.48-energy-default.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so"
-         OLD_RPATH "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/lib:::::::::"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so"
+         OLD_RPATH "/home/ijoldenb/ns-3.48/build/lib:::::::::::::::::::::::::::::::::::::::::::::::::"
          NEW_RPATH "/usr/local/lib:\$ORIGIN/:\$ORIGIN/../lib:/usr/local/lib64:\$ORIGIN/:\$ORIGIN/../lib64")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-debug.so")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-energy-default.so")
     endif()
   endif()
 endif()
@@ -72,31 +72,25 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ns3" TYPE FILE FILES
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/basic-energy-harvester-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/basic-energy-source-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/energy-harvester-container.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/energy-harvester-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/energy-model-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/energy-source-container.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/generic-battery-model-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/li-ion-energy-source-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/helper/rv-battery-model-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/basic-energy-harvester.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/basic-energy-source.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/device-energy-model-container.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/device-energy-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/energy-harvester.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/energy-source.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/generic-battery-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/rv-battery-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/energy/model/simple-device-energy-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/include/ns3/energy-module.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/basic-energy-harvester-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/basic-energy-source-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/energy-harvester-container.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/energy-harvester-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/energy-model-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/energy-source-container.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/generic-battery-model-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/li-ion-energy-source-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/helper/rv-battery-model-helper.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/basic-energy-harvester.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/basic-energy-source.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/device-energy-model-container.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/device-energy-model.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/energy-harvester.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/energy-source.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/generic-battery-model.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/rv-battery-model.h"
+    "/home/ijoldenb/ns-3.48/src/energy/model/simple-device-energy-model.h"
+    "/home/ijoldenb/ns-3.48/build/include/ns3/energy-module.h"
     )
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/src/energy/install_local_manifest.txt"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
-endif()

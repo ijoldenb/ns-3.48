@@ -1,4 +1,4 @@
-# Install script for directory: /home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility
+# Install script for directory: /home/ijoldenb/ns-3.48/src/mobility
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "debug")
+    set(CMAKE_INSTALL_CONFIG_NAME "default")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -37,32 +37,32 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set path to fallback-tool for dependency-resolution.
+# Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/src/mobility/examples/cmake_install.cmake")
+  include("/home/ijoldenb/ns-3.48/cmake-cache/src/mobility/examples/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so"
          RPATH "/usr/local/lib:\$ORIGIN/:\$ORIGIN/../lib:/usr/local/lib64:\$ORIGIN/:\$ORIGIN/../lib64")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/lib/libns3.48-mobility-debug.so")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/ijoldenb/ns-3.48/build/lib/libns3.48-mobility-default.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so"
-         OLD_RPATH "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/lib:::::::::"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so"
+         OLD_RPATH "/home/ijoldenb/ns-3.48/build/lib:::::::::::::::::::::::::::::::::::::::::::::::::"
          NEW_RPATH "/usr/local/lib:\$ORIGIN/:\$ORIGIN/../lib:/usr/local/lib64:\$ORIGIN/:\$ORIGIN/../lib64")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-debug.so")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libns3.48-mobility-default.so")
     endif()
   endif()
 endif()
@@ -72,40 +72,34 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ns3" TYPE FILE FILES
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/helper/leo-orbit-node-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/helper/group-mobility-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/helper/mobility-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/helper/ns2-mobility-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/box.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/constant-acceleration-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/constant-position-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/constant-velocity-helper.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/constant-velocity-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/gauss-markov-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/geocentric-constant-position-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/geocentric-ecef-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/geographic-positions.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/hierarchical-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/leo-circular-orbit-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/leo-circular-orbit-position-allocator.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/leo-orbital-shell.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/position-allocator.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/random-direction-2d-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/random-walk-2d-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/random-waypoint-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/rectangle.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/steady-state-random-waypoint-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/waypoint-mobility-model.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/src/mobility/model/waypoint.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/include/ns3/mobility-module.h"
-    "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized/include/ns3/mobility-export.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/helper/leo-orbit-node-helper.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/helper/group-mobility-helper.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/helper/mobility-helper.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/helper/ns2-mobility-helper.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/box.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/constant-acceleration-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/constant-position-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/constant-velocity-helper.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/constant-velocity-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/gauss-markov-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/geocentric-constant-position-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/geocentric-ecef-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/geographic-positions.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/hierarchical-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/leo-circular-orbit-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/leo-circular-orbit-position-allocator.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/leo-orbital-shell.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/position-allocator.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/random-direction-2d-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/random-walk-2d-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/random-waypoint-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/rectangle.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/steady-state-random-waypoint-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/waypoint-mobility-model.h"
+    "/home/ijoldenb/ns-3.48/src/mobility/model/waypoint.h"
+    "/home/ijoldenb/ns-3.48/build/include/ns3/mobility-module.h"
+    "/home/ijoldenb/ns-3.48/build/include/ns3/mobility-export.h"
     )
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/researchvm/Documents/DrGeordonResearch/ns-3.48/cmake-cache/src/mobility/install_local_manifest.txt"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
-endif()

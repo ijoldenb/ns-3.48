@@ -8,6 +8,6 @@ URL:
 Version: 3.48
 Requires:  ns3-mesh ns3-internet-apps
 Requires.private: 
-Cflags: -I"${includedir}"  -I/usr/include -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gtk-3.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/libxml2
-Libs: -L"${libdir}" -lns3.48-dsdv-debug  -lns3.48-mesh-debug -lns3.48-internet-apps-debug -lstdc++exp
+Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include
+Libs: -L"${libdir}" -lns3.48-dsdv-default  -lns3.48-mesh-default -lns3.48-internet-apps-default -lstdc++_libbacktrace
 Libs.private: -L"${libdir}" 

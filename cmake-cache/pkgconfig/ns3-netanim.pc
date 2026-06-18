@@ -8,6 +8,6 @@ URL:
 Version: 3.48
 Requires:  ns3-wifi ns3-lte ns3-uan ns3-lr-wpan
 Requires.private: 
-Cflags: -I"${includedir}"  -I/usr/include -I/usr/include/freetype2 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gtk-3.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/libxml2
-Libs: -L"${libdir}" -lns3.48-netanim-debug  -lns3.48-wifi-debug -lns3.48-lte-debug -lns3.48-uan-debug -lns3.48-lr-wpan-debug -lstdc++exp
+Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include
+Libs: -L"${libdir}" -lns3.48-netanim-default  -lns3.48-wifi-default -lns3.48-lte-default -lns3.48-uan-default -lns3.48-lr-wpan-default -lstdc++_libbacktrace
 Libs.private: -L"${libdir}" 

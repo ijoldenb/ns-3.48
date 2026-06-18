@@ -1,6 +1,6 @@
 ---- Summary of ns-3 settings:
-Build profile                 : debug
-Build directory               : /home/researchvm/Documents/DrGeordonResearch/ns-3.48/build/optimized
+Build profile                 : default
+Build directory               : /home/ijoldenb/ns-3.48/build
 Build with runtime asserts    : [32mON[0m
 Build with runtime logging    : [32mON[0m
 Build version embedding       : OFF (not requested)
@@ -10,8 +10,8 @@ DPDK NetDevice                : OFF (not requested)
 Emulation FdNetDevice         : [32mON[0m
 Examples                      : [32mON[0m
 File descriptor NetDevice     : [32mON[0m
-GNU Scientific Library (GSL)  : [32mON[0m
-GtkConfigStore                : [32mON[0m
+GNU Scientific Library (GSL)  : [31mOFF (GSL was not found)[0m
+GtkConfigStore                : [31mOFF (Harfbuzz is required by GTK3 and was not found)[0m
 LibXml2 support               : [32mON[0m
 MPI Support                   : OFF (not requested)
 ns-3 Click Integration        : [31mOFF (Missing headers: "simclick.h" and missing libraries: "nsclick;click")[0m
@@ -19,7 +19,7 @@ ns-3 OpenFlow Integration     : [31mOFF (Missing headers: "openflow.h" and miss
 Netmap emulation FdNetDevice  : [31mOFF (missing dependency)[0m
 PyViz visualizer              : [31mOFF (Python Bindings are disabled)[0m
 Python Bindings               : OFF (not requested)
-SQLite support                : [32mON[0m
+SQLite support                : [31mOFF (missing dependency)[0m
 Eigen3 support                : [31mOFF (Eigen was not found)[0m
 Tap Bridge                    : [32mON[0m
 Tap FdNetDevice               : [32mON[0m
