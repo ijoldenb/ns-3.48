@@ -61,8 +61,8 @@ int main (int argc, char *argv[])
   Ptr<Node> nodeB = nodes.Get(1);
 
   CsmaHelper csma;
-  csma.SetChannelAttribute ("DataRate", StringValue ("1Mbps"));
-  csma.SetChannelAttribute ("Delay", StringValue ("10ms"));
+  csma.SetChannelAttribute ("DataRate", StringValue ("75Mbps"));
+  //csma.SetChannelAttribute ("Delay", StringValue ("1ms"));
   NetDeviceContainer p2pDevices = csma.Install (nodes);
 
   g_p2pDevA = p2pDevices.Get (0);
@@ -94,6 +94,9 @@ int main (int argc, char *argv[])
   // Node B Pipeline Hooks
   g_fdDevB->SetPromiscReceiveCallback (MakeCallback (&Forward_FdB_to_P2PB));
   g_p2pDevB->SetPromiscReceiveCallback (MakeCallback (&Forward_P2PB_to_FdB));
+
+  csma.EnablePcapAll("satellite-emulation", true);
+  emuHelper.EnablePcapAll("satellite-link-emulation", true);
 
   // 7. Run parameters (1 Hour 40 Mins window)
   Time stopTime = Seconds (6000.0); 
