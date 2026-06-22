@@ -3,6 +3,7 @@
 #include "ns3/point-to-point-module.h"
 #include "ns3/fd-net-device-module.h"
 #include "ns3/csma-module.h"
+#include "ns3/error-model.h"
 
 using namespace ns3;
 
@@ -61,9 +62,15 @@ int main (int argc, char *argv[])
   Ptr<Node> nodeB = nodes.Get(1);
 
   CsmaHelper csma;
-  csma.SetChannelAttribute ("DataRate", StringValue ("75Mbps"));
+  csma.SetChannelAttribute ("DataRate", StringValue ("100Mbps"));
   //csma.SetChannelAttribute ("Delay", StringValue ("1ms"));
   NetDeviceContainer p2pDevices = csma.Install (nodes);
+
+  Ptr<RateErrorModel> errorModel = CreateObject<RateErrorModel> ();
+  errorModel->SetAttribute ("ErrorRate", DoubleValue (0.1));
+  errorModel->SetAttribute ("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
+  p2pDevices.Get(0)->SetAttribute ("ReceiveErrorModel", PointerValue (errorModel)); // Only applys to nodeB's P2P device to simulate downlink errors
+  p2pDevices.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (errorModel));
 
   g_p2pDevA = p2pDevices.Get (0);
   g_p2pDevB = p2pDevices.Get (1);
@@ -104,8 +111,7 @@ int main (int argc, char *argv[])
   Simulator::Schedule (stopTime - Seconds(1.0), &KeepAliveDummyEvent);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("ns-3 Hardware-In-The-Loop Satellite Simulator Live!");
-  NS_LOG_UNCOND ("Bandwidth Throttled: 100 Mbps | Target Latency Added: 120ms");
+  NS_LOG_UNCOND ("ns-3 Hardware-In-The-Loop Satellite Simulator");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();
