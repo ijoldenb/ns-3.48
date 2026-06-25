@@ -67,7 +67,7 @@ int main (int argc, char *argv[])
   NetDeviceContainer p2pDevices = csma.Install (nodes);
 
   Ptr<RateErrorModel> errorModel = CreateObject<RateErrorModel> ();
-  errorModel->SetAttribute ("ErrorRate", DoubleValue (0.1));
+  errorModel->SetAttribute ("ErrorRate", DoubleValue (0.0));
   errorModel->SetAttribute ("ErrorUnit", StringValue ("ERROR_UNIT_PACKET"));
   p2pDevices.Get(0)->SetAttribute ("ReceiveErrorModel", PointerValue (errorModel)); // Only applys to nodeB's P2P device to simulate downlink errors
   p2pDevices.Get(1)->SetAttribute ("ReceiveErrorModel", PointerValue (errorModel));
