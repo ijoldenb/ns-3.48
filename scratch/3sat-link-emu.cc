@@ -11,9 +11,11 @@
 
 using namespace ns3;
 
+constexpr int numNodes = 4; // Total number of nodes in the simulation
+
 // 20x20 Global tracking matrices for the unique links
-Ptr<CsmaChannel> channelMatrix[20][20];
-Ptr<CsmaNetDevice> rxDeviceMatrix[20][20];
+Ptr<CsmaChannel> channelMatrix[numNodes][numNodes];
+Ptr<CsmaNetDevice> rxDeviceMatrix[numNodes][numNodes];
 
 // --- The NetworkX Edge-List Parser Engine ---
 void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
@@ -56,7 +58,7 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
       ss >> src >> dst >> bwMbps >> dropRate;
 
       // 3. Apply the unique NetworkX properties to this specific link pair
-      if (src < 20 && dst < 20 && channelMatrix[src][dst] != nullptr)
+      if (src < numNodes && dst < numNodes && channelMatrix[src][dst] != nullptr)
         {
           // Update unique channel bandwidth
           channelMatrix[src][dst]->SetAttribute ("DataRate", DataRateValue (DataRate (bwMbps * 1000000)));
@@ -100,22 +102,22 @@ int main (int argc, char *argv[])
   GlobalValue::Bind ("SimulatorImplementationType", StringValue ("ns3::RealtimeSimulatorImpl"));
 
   NodeContainer nodes;
-  nodes.Create (20);
+  nodes.Create (numNodes);
 
-  std::vector<NetDeviceContainer> nodeBridgePorts (20);
+  std::vector<NetDeviceContainer> nodeBridgePorts (numNodes);
 
   // Initialize tracking matrices to null
-  for (int i = 0; i < 20; ++i) {
-      for (int j = 0; j < 20; ++j) {
+  for (int i = 0; i < numNodes; ++i) {
+      for (int j = 0; j < numNodes; ++j) {
           channelMatrix[i][j] = nullptr;
           rxDeviceMatrix[i][j] = nullptr;
       }
   }
 
   // 1. Construct the internal point-to-point isolated mesh topology
-  for (uint32_t i = 0; i < 20; ++i)
+  for (uint32_t i = 0; i < numNodes; ++i)
     {
-      for (uint32_t j = i + 1; j < 20; ++j)
+      for (uint32_t j = i + 1; j < numNodes; ++j)
         {
           // Creating a brand new helper instance inside the loop forces ns-3 
           // to allocate a completely independent channel object for this pair.
@@ -145,7 +147,7 @@ int main (int argc, char *argv[])
   EmuFdNetDeviceHelper emuHelper;
   emuHelper.SetAttribute ("EncapsulationMode", StringValue ("Dix"));
 
-  for (uint32_t i = 0; i < 20; ++i)
+  for (uint32_t i = 0; i < numNodes; ++i)
     {
       std::string interfaceName = "vlan" + std::to_string (101 + i);
       emuHelper.SetDeviceName (interfaceName);
@@ -159,13 +161,13 @@ int main (int argc, char *argv[])
 
   // 3. Install pure Layer-2 Learning Bridges
   BridgeHelper bridge;
-  for (uint32_t i = 0; i < 20; ++i)
+  for (uint32_t i = 0; i < numNodes; ++i)
     {
       bridge.Install (nodes.Get (i), nodeBridgePorts[i]);
     }
 
   // 4. Open your NetworkX trace file and kick off the scheduling engine
-  auto traceFile = std::make_shared<std::ifstream> ("topology_trace.txt");
+  auto traceFile = std::make_shared<std::ifstream> ("/home/ijoldenb/ns-3.48/scratch/topology_trace.txt");
   if (!traceFile->is_open ())
     {
       NS_FATAL_ERROR ("Could not open topology_trace.txt! Ensure it matches your Python output directory.");
@@ -174,11 +176,11 @@ int main (int argc, char *argv[])
   // Schedule the very first file read at 0.0 seconds
   Simulator::Schedule (Seconds (0.0), &ParseNextNetworkXSnapshot, traceFile);
 
-  Time stopTime = Seconds (6000.0); 
+  Time stopTime = Seconds (3600.0); 
   Simulator::Stop (stopTime);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("ns-3 20-Node Independent Link HIL Satellite Emulation Engine");
+  NS_LOG_UNCOND ("ns-3 " + std::to_string (numNodes) + "-Node Independent Link HIL Satellite Emulation Engine");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();

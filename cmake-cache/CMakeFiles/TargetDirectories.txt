@@ -997,6 +997,7 @@
 /home/ijoldenb/ns-3.48/cmake-cache/examples/wireless/CMakeFiles/install/strip.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-emu-router.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-link-emu.dir
+/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_3sat-link-emu.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-ping.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-send.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_scratch-simulator.dir

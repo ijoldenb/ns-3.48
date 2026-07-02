@@ -7,12 +7,14 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/ijoldenb/ns-3.48/scratch/**")
 set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/2sat-emu-router.cc"
   "/home/ijoldenb/ns-3.48/scratch/2sat-link-emu.cc"
+  "/home/ijoldenb/ns-3.48/scratch/3sat-link-emu.cc"
   "/home/ijoldenb/ns-3.48/scratch/CMakeLists.txt"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-send.cc"
   "/home/ijoldenb/ns-3.48/scratch/nested-subdir"
   "/home/ijoldenb/ns-3.48/scratch/scratch-simulator.cc"
   "/home/ijoldenb/ns-3.48/scratch/subdir"
+  "/home/ijoldenb/ns-3.48/scratch/topology_trace.txt"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -24,6 +26,7 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/ijoldenb/ns-3.48/scratch/[^.]*.c
 set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/2sat-emu-router.cc"
   "/home/ijoldenb/ns-3.48/scratch/2sat-link-emu.cc"
+  "/home/ijoldenb/ns-3.48/scratch/3sat-link-emu.cc"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-send.cc"
   "/home/ijoldenb/ns-3.48/scratch/scratch-simulator.cc"
