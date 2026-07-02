@@ -11,7 +11,7 @@
 
 using namespace ns3;
 
-constexpr int numNodes = 3; // Total number of nodes in the simulation
+constexpr int numNodes = 4; // Total number of nodes in the simulation
 
 // 20x20 Global tracking matrices for the unique links
 Ptr<CsmaChannel> channelMatrix[numNodes][numNodes];
@@ -167,7 +167,7 @@ int main (int argc, char *argv[])
     }
 
   // 4. Open your NetworkX trace file and kick off the scheduling engine
-  auto traceFile = std::make_shared<std::ifstream> ("topology_trace.txt");
+  auto traceFile = std::make_shared<std::ifstream> ("/home/ijoldenb/ns-3.48/scratch/topology_trace.txt");
   if (!traceFile->is_open ())
     {
       NS_FATAL_ERROR ("Could not open topology_trace.txt! Ensure it matches your Python output directory.");
