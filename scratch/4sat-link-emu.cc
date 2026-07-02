@@ -122,8 +122,7 @@ int main (int argc, char *argv[])
           // Creating a brand new helper instance inside the loop forces ns-3 
           // to allocate a completely independent channel object for this pair.
           CsmaHelper csma;
-          csma.SetChannelAttribute ("DataRate", StringValue ("1Mbps")); // low dummy baseline
-          csma.SetChannelAttribute ("Delay", StringValue ("1ms"));
+          csma.SetChannelAttribute ("DataRate", StringValue ("0Mbps")); // low dummy baseline
 
           NodeContainer linkNodes (nodes.Get (i), nodes.Get (j));
           NetDeviceContainer devs = csma.Install (linkNodes);
