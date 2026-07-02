@@ -13,7 +13,7 @@ using namespace ns3;
 
 constexpr int numNodes = 4; // Total number of nodes in the simulation
 
-// 20x20 Global tracking matrices for the unique links
+// Global tracking matrices
 Ptr<CsmaChannel> channelMatrix[numNodes][numNodes];
 Ptr<CsmaNetDevice> rxDeviceMatrix[numNodes][numNodes];
 
@@ -57,19 +57,19 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
       double bwMbps, dropRate;
       ss >> src >> dst >> bwMbps >> dropRate;
 
-      // 3. Apply the unique NetworkX properties to this specific link pair
+      // 3. Apply the dynamic NetworkX metrics to the active full mesh
       if (src < numNodes && dst < numNodes && channelMatrix[src][dst] != nullptr)
         {
-          // Update unique channel bandwidth
+          // Update channel bandwidth dynamically
           channelMatrix[src][dst]->SetAttribute ("DataRate", DataRateValue (DataRate (bwMbps * 1000000)));
 
-          // Apply unique loss model to Source -> Destination interface
+          // Apply loss model to Source -> Destination interface
           Ptr<RateErrorModel> emSD = CreateObject<RateErrorModel> ();
           emSD->SetAttribute ("ErrorRate", DoubleValue (dropRate));
           emSD->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
           rxDeviceMatrix[src][dst]->SetAttribute ("ReceiveErrorModel", PointerValue (emSD));
 
-          // Apply unique loss model to Destination -> Source interface (Symmetric)
+          // Apply loss model to Destination -> Source interface (Symmetric)
           Ptr<RateErrorModel> emDS = CreateObject<RateErrorModel> ();
           emDS->SetAttribute ("ErrorRate", DoubleValue (dropRate));
           emDS->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
@@ -79,7 +79,7 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
 
   NS_LOG_UNCOND ("Loaded unique NetworkX metrics for Sim Time: " << Simulator::Now ().GetSeconds () << "s");
 
-  // 4. Schedule the next file-read step execution dynamically
+  // 4. Schedule next step execution
   double currentTime = Simulator::Now ().GetSeconds ();
   double timeDelta = nextTimestamp - currentTime;
   
@@ -93,7 +93,6 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
     }
 }
 
-// --- Main Simulation ---
 int main (int argc, char *argv[])
 {
   CommandLine cmd;
@@ -114,15 +113,14 @@ int main (int argc, char *argv[])
       }
   }
 
-  // 1. Construct the internal point-to-point isolated mesh topology
+  // 1. Construct topology skeleton with zero propagation delay
   for (uint32_t i = 0; i < numNodes; ++i)
     {
       for (uint32_t j = i + 1; j < numNodes; ++j)
         {
-          // Creating a brand new helper instance inside the loop forces ns-3 
-          // to allocate a completely independent channel object for this pair.
           CsmaHelper csma;
-          csma.SetChannelAttribute ("DataRate", StringValue ("0Mbps")); // low dummy baseline
+          csma.SetChannelAttribute ("DataRate", StringValue ("10Mbps")); // Safe baseline initialization speed
+          csma.SetChannelAttribute ("Delay", StringValue ("0ns"));       // Explicitly zero delay
 
           NodeContainer linkNodes (nodes.Get (i), nodes.Get (j));
           NetDeviceContainer devs = csma.Install (linkNodes);
@@ -131,18 +129,17 @@ int main (int argc, char *argv[])
           Ptr<CsmaNetDevice> devJ = DynamicCast<CsmaNetDevice> (devs.Get (1));
           Ptr<CsmaChannel> ch = DynamicCast<CsmaChannel> (devI->GetChannel ());
 
-          // Map the unique channel and device pointers to our matrix
           channelMatrix[i][j] = ch;
           channelMatrix[j][i] = ch;
-          rxDeviceMatrix[i][j] = devJ; // Device on J receiving from I
-          rxDeviceMatrix[j][i] = devI; // Device on I receiving from J
+          rxDeviceMatrix[i][j] = devJ; 
+          rxDeviceMatrix[j][i] = devI; 
 
           nodeBridgePorts[i].Add (devI);
           nodeBridgePorts[j].Add (devJ);
-        }
+        } 
     }
 
-  // 2. Map Hardware-in-the-Loop VLAN Portals
+  // 2. Map VLAN Portals
   EmuFdNetDeviceHelper emuHelper;
   emuHelper.SetAttribute ("EncapsulationMode", StringValue ("Dix"));
 
@@ -158,28 +155,28 @@ int main (int argc, char *argv[])
       nodeBridgePorts[i].Add (fdDev);
     }
 
-  // 3. Install pure Layer-2 Learning Bridges
+  // 3. Install Layer-2 Learning Bridges (Learning ENABLED)
+  // Since all paths remain physically alive, learning handles routing seamlessly without looping
   BridgeHelper bridge;
   for (uint32_t i = 0; i < numNodes; ++i)
     {
       bridge.Install (nodes.Get (i), nodeBridgePorts[i]);
     }
 
-  // 4. Open your NetworkX trace file and kick off the scheduling engine
+  // 4. Open trace file and launch scheduling loop
   auto traceFile = std::make_shared<std::ifstream> ("/home/ijoldenb/ns-3.48/scratch/topology_trace.txt");
   if (!traceFile->is_open ())
     {
-      NS_FATAL_ERROR ("Could not open topology_trace.txt! Ensure it matches your Python output directory.");
+      NS_FATAL_ERROR ("Could not open topology_trace.txt!");
     }
   
-  // Schedule the very first file read at 0.0 seconds
   Simulator::Schedule (Seconds (0.0), &ParseNextNetworkXSnapshot, traceFile);
 
   Time stopTime = Seconds (3600.0); 
   Simulator::Stop (stopTime);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("ns-3 " + std::to_string (numNodes) + "-Node Independent Link HIL Satellite Emulation Engine");
+  NS_LOG_UNCOND ("ns-3 " + std::to_string (numNodes) + "-Node Full-Mesh Satellite Emulation Active");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();
