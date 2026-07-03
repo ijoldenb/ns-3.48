@@ -1,3 +1,4 @@
+
 #include "ns3/core-module.h"
 #include "ns3/network-module.h"
 #include "ns3/csma-module.h"
@@ -5,6 +6,8 @@
 #include "ns3/error-model.h"
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include <map>
 
 using namespace ns3;
@@ -150,14 +153,89 @@ bool Ingress_At_Hub (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t
   return true;
 }
 
-// --- 3. Main Network Execution ---
-// --- 3. Main Network Execution ---
+// --- 3. Dynamic NetworkX Trace Parser ---
+void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
+{
+  if (fileStream->eof())
+    {
+      NS_LOG_UNCOND ("End of topology trace file reached.");
+      return;
+    }
+
+  std::string line, token;
+  double nextTimestamp = 0.0;
+
+  // Find the next TIMESTAMP block marker
+  while (std::getline (*fileStream, line))
+    {
+      std::stringstream ss (line);
+      ss >> token;
+      if (token == "TIMESTAMP")
+        {
+          ss >> nextTimestamp;
+          break;
+        }
+    }
+
+  // Process metrics line by line until END marker
+  while (std::getline (*fileStream, line))
+    {
+      if (line.empty() || line[0] == '#') continue; 
+      
+      std::stringstream ss (line);
+      ss >> token;
+      if (token == "END") break; 
+
+      ss.clear();
+      ss.str (line);
+      
+      uint32_t src, dst;
+      double bwMbps, dropRate;
+      ss >> src >> dst >> bwMbps >> dropRate;
+
+      // In a star network, the characteristics of a communication between 'src' and the network 
+      // map directly onto the spoke belonging to that peripheral node ID.
+      if (src < numNodes && channelToHub[src] != nullptr)
+        {
+          // Update spoke bandwidth dynamically (0 Mbps cuts off the link entirely)
+          channelToHub[src]->SetAttribute ("DataRate", DataRateValue (DataRate (bwMbps * 1000000)));
+          
+          // Update spoke propagation latency dynamically
+          channelToHub[src]->SetAttribute ("Delay", TimeValue (MilliSeconds (0)));
+
+          // Dynamically adjust packet loss rules for this spoke interface
+          Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
+          em->SetAttribute ("ErrorRate", DoubleValue (dropRate));
+          em->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
+          
+          // Attach loss models symmetrically to both sides of the hub connection
+          txDeviceToHub[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+          hubRxDevice[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+        }
+    }
+
+  NS_LOG_UNCOND ("Loaded NetworkX Trace Metrics for Sim Time: " << Simulator::Now ().GetSeconds () << "s");
+
+  // Schedule the next parser cycle execution
+  double currentTime = Simulator::Now ().GetSeconds ();
+  double timeDelta = nextTimestamp - currentTime;
+  
+  if (timeDelta > 0)
+    {
+      Simulator::Schedule (Seconds (timeDelta), &ParseNextNetworkXSnapshot, fileStream);
+    }
+  else
+    {
+      Simulator::Schedule (MilliSeconds (1), &ParseNextNetworkXSnapshot, fileStream);
+    }
+}
+
+// --- 4. Main Network Setup ---
 int main (int argc, char *argv[])
 {
   CommandLine cmd;
   cmd.Parse (argc, argv);
 
-  // Fixed the broken string literal here:
   GlobalValue::Bind ("SimulatorImplementationType", StringValue ("ns3::RealtimeSimulatorImpl"));
 
   NodeContainer peripheralNodes;
@@ -169,14 +247,7 @@ int main (int argc, char *argv[])
   for (uint32_t i = 0; i < numNodes; ++i)
     {
       CsmaHelper csma;
-      
-      // Static experimental delays
-      if (i == 0)      csma.SetChannelAttribute ("Delay", StringValue ("20ms"));
-      else if (i == 1) csma.SetChannelAttribute ("Delay", StringValue ("40ms"));
-      else if (i == 2) csma.SetChannelAttribute ("Delay", StringValue ("60ms"));
-      else             csma.SetChannelAttribute ("Delay", StringValue ("100ms"));
-
-      csma.SetChannelAttribute ("DataRate", StringValue ("100Mbps")); 
+      csma.SetChannelAttribute ("DataRate", StringValue ("100Mbps")); // Initial speed
 
       NodeContainer linkNodes (peripheralNodes.Get (i), hubNode);
       NetDeviceContainer devs = csma.Install (linkNodes);
@@ -211,12 +282,21 @@ int main (int argc, char *argv[])
       g_fdDev[i]->SetPromiscReceiveCallback (MakeCallback (&Ingress_From_Vlan));
     }
 
-  Time stopTime = Seconds (6000.0); 
+  // --- Start the Topology Trace File Reader ---
+  auto traceFile = std::make_shared<std::ifstream> ("/home/ijoldenb/ns-3.48/scratch/topology_trace.txt");
+  if (!traceFile->is_open ())
+    {
+      NS_FATAL_ERROR ("Could not open topology_trace.txt!");
+    }
+  
+  Simulator::Schedule (Seconds (0.0), &ParseNextNetworkXSnapshot, traceFile);
+
+  Time stopTime = Seconds (3600.0); 
   Simulator::Stop (stopTime);
   Simulator::Schedule (stopTime - Seconds(1.0), &KeepAliveDummyEvent);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("ns-3 Centralized Star Topology Active - Inter-Pi Switching Ready");
+  NS_LOG_UNCOND ("ns-3 Dynamic Star-Topology Trace Emulation Active");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();
