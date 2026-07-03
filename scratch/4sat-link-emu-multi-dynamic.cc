@@ -193,22 +193,28 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
       double bwMbps, dropRate;
       ss >> src >> dst >> bwMbps >> dropRate;
 
-      // In a star network, the characteristics of a communication between 'src' and the network 
-      // map directly onto the spoke belonging to that peripheral node ID.
       if (src < numNodes && channelToHub[src] != nullptr)
         {
-          // Update spoke bandwidth dynamically (0 Mbps cuts off the link entirely)
-          channelToHub[src]->SetAttribute ("DataRate", DataRateValue (DataRate (bwMbps * 1000000)));
+          // --- CONNECTION DISRUPTION ENGINE ---
+          // If the trace file gives 0 Mbps bandwidth, we completely disrupt the link by forcing 100% loss.
+          if (bwMbps <= 0.0)
+            {
+              dropRate = 1.0; 
+            }
+          // If the bandwidth is low (throttled), artificially scale up the packet drop rate 
+          // to simulate link degradation since standard CSMA attributes are static at runtime.
+          else if (bwMbps < 5.0 && dropRate < 0.5)
+            {
+              dropRate += 0.3; 
+            }
           
-          // Update spoke propagation latency dynamically
-          channelToHub[src]->SetAttribute ("Delay", TimeValue (MilliSeconds (0)));
+          channelToHub[src]->SetAttribute ("DataRate", DataRateValue (bwMbps * 1e6)); // Convert Mbps to bps
 
-          // Dynamically adjust packet loss rules for this spoke interface
+          // 2. Enforce the disruption/drop-rate directly on both ends of the spoke link
           Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
           em->SetAttribute ("ErrorRate", DoubleValue (dropRate));
           em->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
           
-          // Attach loss models symmetrically to both sides of the hub connection
           txDeviceToHub[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
           hubRxDevice[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
         }
@@ -216,7 +222,7 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
 
   NS_LOG_UNCOND ("Loaded NetworkX Trace Metrics for Sim Time: " << Simulator::Now ().GetSeconds () << "s");
 
-  // Schedule the next parser cycle execution
+  // Schedule next execution cycle
   double currentTime = Simulator::Now ().GetSeconds ();
   double timeDelta = nextTimestamp - currentTime;
   
