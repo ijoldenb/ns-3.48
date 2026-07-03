@@ -9751,9 +9751,21 @@
 },
 {
   "directory": "/home/ijoldenb/ns-3.48/cmake-cache",
-  "command": "/usr/bin/c++ -DHAVE_BOOST -DHAVE_BOOST_UNITS -DHAVE_LIBXML2 -DHAVE_PACKET_H -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/home/ijoldenb/ns-3.48\\\" -DRAW_SOCK_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-raw-sock-creator-default\\\" -DSTACKTRACE_LIBRARY_IS_LINKED=1 -DTAP_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/tap-bridge/ns3.48-tap-creator-default\\\" -DTAP_DEV_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-tap-device-creator-default\\\" -D__LINUX__ -I/home/ijoldenb/ns-3.48/build/include -isystem /usr/include/libxml2 -Os -g -DNDEBUG -std=c++23 -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Wpedantic -o scratch/CMakeFiles/scratch_4sat-link-emu.dir/4sat-link-emu.cc.o -c /home/ijoldenb/ns-3.48/scratch/4sat-link-emu.cc",
-  "file": "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu.cc",
-  "output": "scratch/CMakeFiles/scratch_4sat-link-emu.dir/4sat-link-emu.cc.o"
+  "command": "/usr/bin/c++ -DHAVE_BOOST -DHAVE_BOOST_UNITS -DHAVE_LIBXML2 -DHAVE_PACKET_H -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/home/ijoldenb/ns-3.48\\\" -DRAW_SOCK_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-raw-sock-creator-default\\\" -DSTACKTRACE_LIBRARY_IS_LINKED=1 -DTAP_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/tap-bridge/ns3.48-tap-creator-default\\\" -DTAP_DEV_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-tap-device-creator-default\\\" -D__LINUX__ -I/home/ijoldenb/ns-3.48/build/include -isystem /usr/include/libxml2 -Os -g -DNDEBUG -std=c++23 -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Wpedantic -o scratch/CMakeFiles/scratch_4sat-link-emu-FAILED.dir/4sat-link-emu-FAILED.cc.o -c /home/ijoldenb/ns-3.48/scratch/4sat-link-emu-FAILED.cc",
+  "file": "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-FAILED.cc",
+  "output": "scratch/CMakeFiles/scratch_4sat-link-emu-FAILED.dir/4sat-link-emu-FAILED.cc.o"
+},
+{
+  "directory": "/home/ijoldenb/ns-3.48/cmake-cache",
+  "command": "/usr/bin/c++ -DHAVE_BOOST -DHAVE_BOOST_UNITS -DHAVE_LIBXML2 -DHAVE_PACKET_H -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/home/ijoldenb/ns-3.48\\\" -DRAW_SOCK_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-raw-sock-creator-default\\\" -DSTACKTRACE_LIBRARY_IS_LINKED=1 -DTAP_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/tap-bridge/ns3.48-tap-creator-default\\\" -DTAP_DEV_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-tap-device-creator-default\\\" -D__LINUX__ -I/home/ijoldenb/ns-3.48/build/include -isystem /usr/include/libxml2 -Os -g -DNDEBUG -std=c++23 -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Wpedantic -o scratch/CMakeFiles/scratch_4sat-link-emu-multi-channel.dir/4sat-link-emu-multi-channel.cc.o -c /home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-channel.cc",
+  "file": "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-channel.cc",
+  "output": "scratch/CMakeFiles/scratch_4sat-link-emu-multi-channel.dir/4sat-link-emu-multi-channel.cc.o"
+},
+{
+  "directory": "/home/ijoldenb/ns-3.48/cmake-cache",
+  "command": "/usr/bin/c++ -DHAVE_BOOST -DHAVE_BOOST_UNITS -DHAVE_LIBXML2 -DHAVE_PACKET_H -DNS3_ASSERT_ENABLE -DNS3_BUILD_PROFILE_DEBUG -DNS3_LOG_ENABLE -DPROJECT_SOURCE_PATH=\\\"/home/ijoldenb/ns-3.48\\\" -DRAW_SOCK_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-raw-sock-creator-default\\\" -DSTACKTRACE_LIBRARY_IS_LINKED=1 -DTAP_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/tap-bridge/ns3.48-tap-creator-default\\\" -DTAP_DEV_CREATOR=\\\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-tap-device-creator-default\\\" -D__LINUX__ -I/home/ijoldenb/ns-3.48/build/include -isystem /usr/include/libxml2 -Os -g -DNDEBUG -std=c++23 -fPIE   -fno-semantic-interposition -fdiagnostics-color=always -Wall -Wpedantic -o scratch/CMakeFiles/scratch_4sat-link-emu-single-channel.dir/4sat-link-emu-single-channel.cc.o -c /home/ijoldenb/ns-3.48/scratch/4sat-link-emu-single-channel.cc",
+  "file": "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-single-channel.cc",
+  "output": "scratch/CMakeFiles/scratch_4sat-link-emu-single-channel.dir/4sat-link-emu-single-channel.cc.o"
 },
 {
   "directory": "/home/ijoldenb/ns-3.48/cmake-cache",

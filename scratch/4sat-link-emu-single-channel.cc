@@ -48,7 +48,6 @@ int main (int argc, char *argv[])
   // 3. CRITICAL: Install a SINGLE CSMA channel across ALL nodes to create a shared bus
   CsmaHelper csma;
   csma.SetChannelAttribute ("DataRate", StringValue ("100Mbps"));
-  csma.SetChannelAttribute ("Delay", StringValue ("0ns"));
 
   // This single line binds all 4 nodes to the exact same virtual wire backend
   NetDeviceContainer spaceDevices = csma.Install (nodes);
@@ -83,7 +82,7 @@ int main (int argc, char *argv[])
       g_spaceDev[i]->SetPromiscReceiveCallback (MakeCallback (&Forward_Space_to_Fd));
     }
 
-  emuHelper.EnablePcapAll("satellite-link-emulation-any2any", true);
+  //emuHelper.EnablePcapAll("satellite-link-emulation-any2any", true);
 
   // Run parameters
   Time stopTime = Seconds (6000.0); 
