@@ -63,7 +63,6 @@ int main (int argc, char *argv[])
 
   CsmaHelper csma;
   csma.SetChannelAttribute ("DataRate", StringValue ("100Mbps"));
-  //csma.SetChannelAttribute ("Delay", StringValue ("1ms"));
   NetDeviceContainer p2pDevices = csma.Install (nodes);
 
   Ptr<RateErrorModel> errorModel = CreateObject<RateErrorModel> ();
