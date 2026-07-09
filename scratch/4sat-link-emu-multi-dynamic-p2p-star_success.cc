@@ -214,8 +214,6 @@ void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
           DataRate newRate(bwMbps * 1000000);
           txDeviceToHub[src]->SetAttribute ("DataRate", DataRateValue (newRate));
           hubRxDevice[src]->SetAttribute ("DataRate", DataRateValue (newRate));
-          
-          channelToHub[src]->SetAttribute ("Delay", TimeValue (MilliSeconds (0)));
 
           Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
           em->SetAttribute ("ErrorRate", DoubleValue (dropRate));
@@ -260,7 +258,7 @@ int main (int argc, char *argv[])
       PointToPointHelper p2p;
       p2p.SetDeviceAttribute ("DataRate", StringValue ("100Mbps")); 
       p2p.SetChannelAttribute ("Delay", StringValue ("0ms"));
-      p2p.SetQueue ("ns3::DropTailQueue<Packet>", "MaxSize", QueueSizeValue (QueueSize ("50p")));
+      p2p.SetQueue ("ns3::DropTailQueue<Packet>", "MaxSize", QueueSizeValue (QueueSize ("5000p")));
 
       NodeContainer linkNodes (peripheralNodes.Get (i), hubNode);
       NetDeviceContainer devs = p2p.Install (linkNodes);

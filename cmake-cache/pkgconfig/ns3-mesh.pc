@@ -8,6 +8,6 @@ URL:
 Version: 3.48
 Requires:  ns3-wifi ns3-applications
 Requires.private: 
-Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include
+Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include/python3.12 -I/usr/include
 Libs: -L"${libdir}" -lns3.48-mesh-default  -lns3.48-wifi-default -lns3.48-applications-default -lstdc++_libbacktrace
 Libs.private: -L"${libdir}" 

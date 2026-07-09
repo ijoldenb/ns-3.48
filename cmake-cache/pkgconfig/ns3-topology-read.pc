@@ -8,6 +8,6 @@ URL:
 Version: 3.48
 Requires:  ns3-network
 Requires.private: 
-Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include
+Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include/python3.12 -I/usr/include
 Libs: -L"${libdir}" -lns3.48-topology-read-default  -lns3.48-network-default -lstdc++_libbacktrace
 Libs.private: -L"${libdir}" 

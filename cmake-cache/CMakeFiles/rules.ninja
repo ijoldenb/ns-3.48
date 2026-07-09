@@ -22,6 +22,25 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling CXX files.
 
+rule CXX_COMPILER__visualizer_unscanned_default
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ${LAUNCHER}${CODE_CHECK}/usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX shared library.
+
+rule CXX_SHARED_LIBRARY_LINKER__visualizer_default
+  command = $PRE_LINK && /usr/bin/c++ -fPIC $LANGUAGE_COMPILE_FLAGS $ARCH_FLAGS $LINK_FLAGS -shared $SONAME_FLAG$SONAME -o $TARGET_FILE $in $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  description = Linking CXX shared library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling CXX files.
+
 rule CXX_COMPILER__antenna_unscanned_default
   depfile = $DEP_FILE
   deps = gcc
@@ -7005,7 +7024,7 @@ rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-csma_default
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-star_unscanned_default
+rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-p2p_success_unscanned_default
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}/usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -7015,7 +7034,7 @@ rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-star_unscanned_default
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-star_default
+rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-p2p_success_default
   command = $PRE_LINK && /usr/bin/c++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
