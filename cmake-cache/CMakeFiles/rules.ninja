@@ -7005,7 +7005,7 @@ rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-channel_default
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-csma_unscanned_default
+rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-csma-failed_unscanned_default
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}/usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -7015,7 +7015,7 @@ rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-csma_unscanned_default
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-csma_default
+rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-csma-failed_default
   command = $PRE_LINK && /usr/bin/c++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -7024,7 +7024,7 @@ rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-csma_default
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-p2p_success_unscanned_default
+rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-p2p-star_success_unscanned_default
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}/usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -7034,7 +7034,7 @@ rule CXX_COMPILER__scratch_4sat-link-emu-multi-dynamic-p2p_success_unscanned_def
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-p2p_success_default
+rule CXX_EXECUTABLE_LINKER__scratch_4sat-link-emu-multi-dynamic-p2p-star_success_default
   command = $PRE_LINK && /usr/bin/c++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT

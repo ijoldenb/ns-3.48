@@ -1,24 +1,6 @@
 import sys
 import os
-
-# 1. Force Python to look into your ns-3 build directories
-ns3_build_lib = "/home/ijoldenb/ns-3.48/build/lib"
-ns3_bindings = "/home/ijoldenb/ns-3.48/build/bindings/python"
-
-if ns3_build_lib not in sys.path:
-    sys.path.insert(0, ns3_build_lib)
-if ns3_bindings not in sys.path:
-    sys.path.insert(0, ns3_bindings)
-
-# 2. Ensure the system link-loader can see the raw C++ .so shared objects under sudo
-os.environ["LD_LIBRARY_PATH"] = ns3_build_lib + (f":{os.environ.get('LD_LIBRARY_PATH', '')}" if os.environ.get('LD_LIBRARY_PATH') else "")
-
-# 3. Now perform the sub-module imports safely
-import ns.core
-import ns.network
-import ns.internet
-import ns.point_to_point
-import ns.fd_net_device
+from ns import ns
 
 def parse_trace(filename):
     """Parses topology_trace.txt file structure into a timeline dictionary"""
@@ -46,95 +28,130 @@ def parse_trace(filename):
     return trace_data
 
 # Global tracking map for mesh links
+# Key: (min(src,dst), max(src,dst)) -> Value: (dev_src, dev_dst, qd_src, qd_dst)
 link_devices = {}
 
 def change_link_properties(src, dst, bw_mbps, loss_rate):
-    """Callback function that dynamically scales specific PointToPoint link attributes"""
+    """Dynamically scales CSMA link attributes using Traffic Control and Error Models"""
     key = (min(src, dst), max(src, dst))
     if key in link_devices:
-        dev_src, dev_dst = link_devices[key]
+        dev_src, dev_dst, qd_src, qd_dst = link_devices[key]
         
-        # Update link speed symmetrically
-        new_bw = ns.core.DataRate(f"{bw_mbps}Mbps")
-        dev_src.SetAttribute("DataRate", ns.core.DataRateValue(new_bw))
-        dev_dst.SetAttribute("DataRate", ns.core.DataRateValue(new_bw))
+        # 1. Update Bandwidth dynamically via the TBF Queue Disc
+        new_bw = ns.DataRate(f"{bw_mbps}Mbps")
+        qd_src.SetAttribute("Rate", ns.DataRateValue(new_bw))
+        qd_dst.SetAttribute("Rate", ns.DataRateValue(new_bw))
         
-        # Instantiate a packet loss model based on drop percentage
-        error_model = ns.core.CreateObject("RateErrorModel")
-        error_model.SetAttribute("ErrorUnit", ns.core.EnumValue(ns.network.RateErrorModel.ERROR_UNIT_PACKET))
-        error_model.SetAttribute("ErrorRate", ns.core.DoubleValue(loss_rate))
+        # 2. Update Loss Rate dynamically by swapping the error model
+        error_model = ns.CreateObject("RateErrorModel")
+        error_model.SetAttribute("ErrorUnit", ns.EnumValue(ns.RateErrorModel.ERROR_UNIT_PACKET))
+        error_model.SetAttribute("ErrorRate", ns.DoubleValue(loss_rate))
         
-        # Attach the drops to the receive paths of both endpoints
+        # Attach the random packet drops to the receive paths
         dev_src.SetReceiveErrorModel(error_model)
         dev_dst.SetReceiveErrorModel(error_model)
         
-        print(f"[Time {ns.core.Simulator.Now().GetSeconds()}s] Applied properties to mesh ({src}<->{dst}): BW={bw_mbps}Mbps, Drop Rate={loss_rate}")
+        print(f"[Time {ns.Simulator.Now().GetSeconds():.2f}s] Updated link ({src}<->{dst}): BW={bw_mbps}Mbps, Drop Rate={loss_rate}")
 
 def main():
-    # Provide the absolute path to ensure sudo finds it regardless of current working directory
-    trace_file = "/home/ijoldenb/ns-3.48/topology_trace.txt"
+    # Use absolute path to ensure sudo finds it
+    trace_file = "/home/ijoldenb/ns-3.48/scratch/topology_trace.txt"
     try:
         topology_schedule = parse_trace(trace_file)
     except FileNotFoundError:
         print(f"Error: {trace_file} not found.")
         return
 
-    num_pi = 4  
+    num_pi = 4  # Start with 4, scale to 20 later
     
-    nodes = ns.network.NodeContainer()
+    nodes = ns.NodeContainer()
     nodes.Create(num_pi)
     
-    stack = ns.internet.InternetStackHelper()
+    # Disable IPv6 inside ns-3 to prevent internal broadcast storms from Pi's
+    stack = ns.InternetStackHelper()
+    stack.SetIpv6StackInstall(False)
     stack.Install(nodes)
     
-    # 1. Setup Static Point-to-Point Mesh Topology
-    p2p = ns.point_to_point.PointToPointHelper()
-    ip_helper = ns.internet.Ipv4AddressHelper()
+    # 1. Setup Static CSMA Topology with TBF Traffic Control
+    csma = ns.CsmaHelper()
+    tc = ns.TrafficControlHelper()
+    ip_helper = ns.Ipv4AddressHelper()
+    
+    # --- FIX: Move SetRootQueueDisc OUTSIDE the loop ---
+    # Configure the Token Bucket Filter (TBF) blueprint once
+    tc.SetRootQueueDisc("ns3::TbfQueueDisc",
+                        "Rate", ns.StringValue("10Mbps"), 
+                        "Burst", ns.UintegerValue(65535), 
+                        "Mtu", ns.UintegerValue(1500))
     
     subnet_idx = 1
     for i in range(num_pi):
         for j in range(i + 1, num_pi):
-            p2p.SetDeviceAttribute("DataRate", ns.core.StringValue("10Mbps"))
-            p2p.SetChannelAttribute("Delay", ns.core.StringValue("1ms"))
+            # Physical wire is super fast (1 Gbps); we will bottleneck it in software
+            csma.SetChannelAttribute("DataRate", ns.StringValue("1Gbps"))
+            csma.SetChannelAttribute("Delay", ns.StringValue("0ms"))
             
-            link_devs = p2p.Install(nodes.Get(i), nodes.Get(j))
+            # Put the two target nodes into a temporary NodeContainer
+            link_nodes = ns.NodeContainer()
+            link_nodes.Add(nodes.Get(i))
+            link_nodes.Add(nodes.Get(j))
             
-            dev_i = ns.point_to_point.PointToPointNetDevice.ConvertFrom(link_devs.Get(0))
-            dev_j = ns.point_to_point.PointToPointNetDevice.ConvertFrom(link_devs.Get(1))
-            link_devices[(i, j)] = (dev_i, dev_j)
+            # Install CSMA over the 2-node container
+            link_devs = csma.Install(link_nodes)
             
-            ip_helper.SetBase(ns.network.Ipv4Address(f"172.16.{subnet_idx}.0"), ns.network.Ipv4Mask("255.255.255.0"))
+            dev_i = link_devs.Get(0)
+            dev_j = link_devs.Get(1)
+            
+            # --- FIX: Now just call Install() inside the loop ---
+            # It will safely use the blueprint we defined above
+            tc_devs_i = tc.Install(dev_i)
+            tc_devs_j = tc.Install(dev_j)
+            
+            qd_i = tc_devs_i.Get(0)
+            qd_j = tc_devs_j.Get(0)
+            
+            # Store the devices AND the queue discs in our tracker mapping
+            link_devices[(i, j)] = (dev_i, dev_j, qd_i, qd_j)
+            
+            # Subnetting for internal routing between nodes
+            ip_helper.SetBase(ns.Ipv4Address(f"172.16.{subnet_idx}.0"), ns.Ipv4Mask("255.255.255.0"))
             ip_helper.Assign(link_devs)
             subnet_idx += 1
 
-    # 2. Attach EmuFdNetDevices to connect external physical Pi's
-    emu_helper = ns.fd_net_device.FdNetDeviceHelper()
-    emu_helper.SetType("ns3::EmuFdNetDevice")
+    # 2. Attach EmuFdNetDevices to hook external physical Pi's to ns-3 nodes
+    emu_helper = ns.EmuFdNetDeviceHelper()
     
     for i in range(num_pi):
-        vlan_interface = f"eth0.{10 * (i + 1)}"
-        emu_helper.SetAttribute("DeviceName", ns.core.StringValue(vlan_interface))
+        # --- FIX: Match your live Linux naming scheme ---
+        # i=0 -> vlan101, i=1 -> vlan102, i=2 -> vlan103, i=3 -> vlan104
+        vlan_interface = f"vlan{101 + i}"
+        
+        # Set the matching device name
+        emu_helper.SetDeviceName(vlan_interface)
         
         emu_devices = emu_helper.Install(nodes.Get(i))
-        emu_dev = emu_devices.Get(0)
         
-        emu_dev.SetAttribute("Promiscuous", ns.core.BooleanValue(True))
-        
-        ip_helper.SetBase(ns.network.Ipv4Address(f"10.0.{10 * (i + 1)}.0"), ns.network.Ipv4Mask("255.255.255.0"))
+        # Keep the subnets aligned with your custom VLAN IDs
+        ip_helper.SetBase(ns.Ipv4Address(f"10.0.{101 + i}.0"), ns.Ipv4Mask("255.255.255.0"))
         ip_helper.Assign(emu_devices)
 
-    ns.internet.Ipv4GlobalRoutingHelper.PopulateRoutingTables()
+    # Populate global routing tables so ns-3 knows how to route across the internal links
+    ns.Ipv4GlobalRoutingHelper.PopulateRoutingTables()
 
     # 3. Schedule Dynamic Attribute Modifications based on Timeline Map
     for timestamp, alterations in topology_schedule.items():
         for alteration in alterations:
             src, dst, bw, loss = alteration
-            ns.core.Simulator.Schedule(ns.core.Seconds(timestamp), change_link_properties, src, dst, bw, loss)
-
-    print("--- Booting Python-bound ns-3 Engine with EmuFdNetDevice Mesh ---")
-    ns.core.Simulator.Stop(ns.core.Seconds(3500))  
-    ns.core.Simulator.Run()
-    ns.core.Simulator.Destroy()
+            
+            # --- FIX: Wrap the function and its arguments in a lambda ---
+            ns.Simulator.Schedule(
+                ns.Seconds(timestamp), 
+                lambda s=src, d=dst, b=bw, l=loss: change_link_properties(s, d, b, l)
+            )
+    print("--- Booting Python ns-3 Engine (CSMA Emulation + Traffic Control) ---")
+    ns.Simulator.Stop(ns.Seconds(3500))  
+    ns.Simulator.Run()
+    ns.Simulator.Destroy()
     print("Simulation stopped cleanly.")
 
 if __name__ == '__main__':
