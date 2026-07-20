@@ -19,7 +19,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS ns3::antenna ns3::aodv ns3::applications ns3::bridge ns3::buildings ns3::config-store ns3::core ns3::csma ns3::csma-layout ns3::dsdv ns3::dsr ns3::energy ns3::raw-sock-creator ns3::tap-device-creator ns3::fd-net-device ns3::flow-monitor ns3::internet ns3::internet-apps ns3::lr-wpan ns3::lte ns3::mesh ns3::mobility ns3::netanim ns3::network ns3::nix-vector-routing ns3::olsr ns3::point-to-point ns3::point-to-point-layout ns3::propagation ns3::sixlowpan ns3::spectrum ns3::stats ns3::tap-bridge ns3::tap-creator ns3::topology-read ns3::traffic-control ns3::uan ns3::virtual-net-device ns3::wifi ns3::zigbee)
+foreach(_cmake_expected_target IN ITEMS ns3::visualizer ns3::antenna ns3::aodv ns3::applications ns3::bridge ns3::buildings ns3::config-store ns3::core ns3::csma ns3::csma-layout ns3::dsdv ns3::dsr ns3::energy ns3::raw-sock-creator ns3::tap-device-creator ns3::fd-net-device ns3::flow-monitor ns3::internet ns3::internet-apps ns3::lr-wpan ns3::lte ns3::mesh ns3::mobility ns3::netanim ns3::network ns3::nix-vector-routing ns3::olsr ns3::point-to-point ns3::point-to-point-layout ns3::propagation ns3::sixlowpan ns3::spectrum ns3::stats ns3::tap-bridge ns3::tap-creator ns3::topology-read ns3::traffic-control ns3::uan ns3::virtual-net-device ns3::wifi ns3::zigbee)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -55,12 +55,21 @@ if(_IMPORT_PREFIX STREQUAL "/")
   set(_IMPORT_PREFIX "")
 endif()
 
+# Create imported target ns3::visualizer
+add_library(ns3::visualizer SHARED IMPORTED)
+
+set_target_properties(ns3::visualizer PROPERTIES
+  INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
+  INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;ns3::wifi;ns3::lr-wpan;ns3::point-to-point;/usr/lib/x86_64-linux-gnu/libpython3.12.so;-lstdc++_libbacktrace;-Wl,--as-needed"
+)
+
 # Create imported target ns3::antenna
 add_library(ns3::antenna SHARED IMPORTED)
 
 set_target_properties(ns3::antenna PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::core;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -69,7 +78,7 @@ add_library(ns3::aodv SHARED IMPORTED)
 
 set_target_properties(ns3::aodv PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::applications;ns3::internet-apps;ns3::wifi;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -78,7 +87,7 @@ add_library(ns3::applications SHARED IMPORTED)
 
 set_target_properties(ns3::applications PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -87,7 +96,7 @@ add_library(ns3::bridge SHARED IMPORTED)
 
 set_target_properties(ns3::bridge PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -96,7 +105,7 @@ add_library(ns3::buildings SHARED IMPORTED)
 
 set_target_properties(ns3::buildings PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::propagation;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -105,7 +114,7 @@ add_library(ns3::config-store SHARED IMPORTED)
 
 set_target_properties(ns3::config-store PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::core;/usr/lib/x86_64-linux-gnu/libxml2.so;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -114,7 +123,7 @@ add_library(ns3::core SHARED IMPORTED)
 
 set_target_properties(ns3::core PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE;HAVE_BOOST;HAVE_BOOST_UNITS"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -123,7 +132,7 @@ add_library(ns3::csma SHARED IMPORTED)
 
 set_target_properties(ns3::csma PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -132,7 +141,7 @@ add_library(ns3::csma-layout SHARED IMPORTED)
 
 set_target_properties(ns3::csma-layout PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;ns3::csma;ns3::point-to-point;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -141,7 +150,7 @@ add_library(ns3::dsdv SHARED IMPORTED)
 
 set_target_properties(ns3::dsdv PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::mesh;ns3::internet-apps;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -150,7 +159,7 @@ add_library(ns3::dsr SHARED IMPORTED)
 
 set_target_properties(ns3::dsr PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::mesh;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -159,7 +168,7 @@ add_library(ns3::energy SHARED IMPORTED)
 
 set_target_properties(ns3::energy PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -174,7 +183,7 @@ add_library(ns3::fd-net-device SHARED IMPORTED)
 
 set_target_properties(ns3::fd-net-device PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE;HAVE_PACKET_H;RAW_SOCK_CREATOR=\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-raw-sock-creator-default\";TAP_DEV_CREATOR=\"/home/ijoldenb/ns-3.48/build/src/fd-net-device/ns3.48-tap-device-creator-default\""
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -183,7 +192,7 @@ add_library(ns3::flow-monitor SHARED IMPORTED)
 
 set_target_properties(ns3::flow-monitor PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -192,7 +201,7 @@ add_library(ns3::internet SHARED IMPORTED)
 
 set_target_properties(ns3::internet PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::bridge;ns3::traffic-control;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -201,7 +210,7 @@ add_library(ns3::internet-apps SHARED IMPORTED)
 
 set_target_properties(ns3::internet-apps PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -210,7 +219,7 @@ add_library(ns3::lr-wpan SHARED IMPORTED)
 
 set_target_properties(ns3::lr-wpan PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::spectrum;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -219,7 +228,7 @@ add_library(ns3::lte SHARED IMPORTED)
 
 set_target_properties(ns3::lte PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::fd-net-device;ns3::spectrum;ns3::buildings;ns3::virtual-net-device;ns3::point-to-point;ns3::applications;ns3::csma;ns3::config-store;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -228,7 +237,7 @@ add_library(ns3::mesh SHARED IMPORTED)
 
 set_target_properties(ns3::mesh PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::wifi;ns3::applications;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -237,7 +246,7 @@ add_library(ns3::mobility SHARED IMPORTED)
 
 set_target_properties(ns3::mobility PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::antenna;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -246,7 +255,7 @@ add_library(ns3::netanim SHARED IMPORTED)
 
 set_target_properties(ns3::netanim PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::wifi;ns3::lte;ns3::uan;ns3::lr-wpan;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -255,7 +264,7 @@ add_library(ns3::network SHARED IMPORTED)
 
 set_target_properties(ns3::network PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::stats;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -264,7 +273,7 @@ add_library(ns3::nix-vector-routing SHARED IMPORTED)
 
 set_target_properties(ns3::nix-vector-routing PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -273,7 +282,7 @@ add_library(ns3::olsr SHARED IMPORTED)
 
 set_target_properties(ns3::olsr PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -282,7 +291,7 @@ add_library(ns3::point-to-point SHARED IMPORTED)
 
 set_target_properties(ns3::point-to-point PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -291,7 +300,7 @@ add_library(ns3::point-to-point-layout SHARED IMPORTED)
 
 set_target_properties(ns3::point-to-point-layout PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;ns3::point-to-point;ns3::mobility;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -300,7 +309,7 @@ add_library(ns3::propagation SHARED IMPORTED)
 
 set_target_properties(ns3::propagation PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::mobility;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -309,7 +318,7 @@ add_library(ns3::sixlowpan SHARED IMPORTED)
 
 set_target_properties(ns3::sixlowpan PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -318,7 +327,7 @@ add_library(ns3::spectrum SHARED IMPORTED)
 
 set_target_properties(ns3::spectrum PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::propagation;ns3::antenna;ns3::buildings;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -327,7 +336,7 @@ add_library(ns3::stats SHARED IMPORTED)
 
 set_target_properties(ns3::stats PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::core;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -336,7 +345,7 @@ add_library(ns3::tap-bridge SHARED IMPORTED)
 
 set_target_properties(ns3::tap-bridge PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE;TAP_CREATOR=\"/home/ijoldenb/ns-3.48/build/src/tap-bridge/ns3.48-tap-creator-default\""
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::internet;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -348,7 +357,7 @@ add_library(ns3::topology-read SHARED IMPORTED)
 
 set_target_properties(ns3::topology-read PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -357,7 +366,7 @@ add_library(ns3::traffic-control SHARED IMPORTED)
 
 set_target_properties(ns3::traffic-control PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -366,7 +375,7 @@ add_library(ns3::uan SHARED IMPORTED)
 
 set_target_properties(ns3::uan PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::mobility;ns3::energy;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -375,7 +384,7 @@ add_library(ns3::virtual-net-device SHARED IMPORTED)
 
 set_target_properties(ns3::virtual-net-device PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::network;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -384,7 +393,7 @@ add_library(ns3::wifi SHARED IMPORTED)
 
 set_target_properties(ns3::wifi PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::energy;ns3::spectrum;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 
@@ -393,7 +402,7 @@ add_library(ns3::zigbee SHARED IMPORTED)
 
 set_target_properties(ns3::zigbee PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PROJECT_SOURCE_PATH=\"/home/ijoldenb/ns-3.48\";__LINUX__;NS3_BUILD_PROFILE_DEBUG;STACKTRACE_LIBRARY_IS_LINKED=1;HAVE_LIBXML2;NS3_LOG_ENABLE;NS3_ASSERT_ENABLE"
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/usr/include/libxml2;/usr/include/python3.12;/usr/include"
   INTERFACE_LINK_LIBRARIES "-Wl,--no-as-needed;ns3::lr-wpan;-lstdc++_libbacktrace;-Wl,--as-needed"
 )
 

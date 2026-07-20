@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/ijoldenb/ns-3.48/cmake-cache/src/antenna/cmake_install.cmake")
 endif()
 

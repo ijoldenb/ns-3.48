@@ -53,6 +53,7 @@
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/uninstall_pkgconfig_applications.dir
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/uninstall_pkgconfig_aodv.dir
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/uninstall_pkgconfig_antenna.dir
+/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/uninstall_pkgconfig_visualizer.dir
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/edit_cache.dir
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/rebuild_cache.dir
 /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/list_install_components.dir
@@ -65,6 +66,19 @@
 /home/ijoldenb/ns-3.48/cmake-cache/src/CMakeFiles/install.dir
 /home/ijoldenb/ns-3.48/cmake-cache/src/CMakeFiles/install/local.dir
 /home/ijoldenb/ns-3.48/cmake-cache/src/CMakeFiles/install/strip.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/visualizer.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/edit_cache.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/rebuild_cache.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/list_install_components.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/install.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/install/local.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/CMakeFiles/install/strip.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/edit_cache.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/rebuild_cache.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/list_install_components.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/install.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/install/local.dir
+/home/ijoldenb/ns-3.48/cmake-cache/src/visualizer/examples/CMakeFiles/install/strip.dir
 /home/ijoldenb/ns-3.48/cmake-cache/src/antenna/CMakeFiles/antenna.dir
 /home/ijoldenb/ns-3.48/cmake-cache/src/antenna/CMakeFiles/antenna-test.dir
 /home/ijoldenb/ns-3.48/cmake-cache/src/antenna/CMakeFiles/edit_cache.dir
@@ -999,7 +1013,8 @@
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-link-emu.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-FAILED.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-channel.dir
-/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic.dir
+/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic-csma-failed.dir
+/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic-p2p-star_success.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-single-channel.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-ping.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-send.dir

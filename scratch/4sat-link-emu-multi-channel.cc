@@ -211,7 +211,7 @@ int main (int argc, char *argv[])
       g_fdDev[i]->SetPromiscReceiveCallback (MakeCallback (&Ingress_From_Vlan));
     }
 
-  Time stopTime = Seconds (6000.0); 
+  Time stopTime = Seconds (3600.0); 
   Simulator::Stop (stopTime);
   Simulator::Schedule (stopTime - Seconds(1.0), &KeepAliveDummyEvent);
 
