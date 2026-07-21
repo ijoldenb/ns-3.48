@@ -1,9 +1,9 @@
 #include "ns3/core-module.h"
 #include "ns3/network-module.h"
-#include "ns3/point-to-point-module.h" // Shifted to P2P
+#include "ns3/point-to-point-module.h"
 #include "ns3/fd-net-device-module.h"
 #include "ns3/error-model.h"
-#include "ns3/ethernet-header.h"       // Required for our custom MAC encapsulation
+#include "ns3/ethernet-header.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -26,8 +26,6 @@ Ptr<NetDevice> g_fdDev[numNodes];
 std::map<Mac48Address, uint32_t> macToNodeMap;
 
 // --- 1. Custom Encapsulation Tunnel for P2P ---
-// P2P links don't natively carry MAC addresses. This forces the original 
-// VLAN MAC addresses into a header so they survive the trip to the virtual Hub.
 void SendOverP2PTunnel (Ptr<NetDevice> dev, Ptr<const Packet> packet, uint16_t protocol, const Address &src, const Address &dst)
 {
   Ptr<Packet> pktCopy = packet->Copy();
@@ -37,9 +35,8 @@ void SendOverP2PTunnel (Ptr<NetDevice> dev, Ptr<const Packet> packet, uint16_t p
   eth.SetLengthType (protocol);
   
   pktCopy->AddHeader (eth);
-  dev->Send (pktCopy, dev->GetBroadcast (), 0x0800); // Send across the P2P wire
+  dev->Send (pktCopy, dev->GetBroadcast (), 0x0800); 
 }
-
 
 // --- 2. Star Network Core Switching Engine ---
 void SwitchPacket (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t protocol,
@@ -127,7 +124,6 @@ void SwitchPacket (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t p
 }
 
 // --- 3. Clean Callback Interfaces ---
-
 bool Ingress_From_Vlan (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t protocol,
                          const Address &src, const Address &dst, NetDevice::PacketType packetType)
 {
@@ -135,7 +131,6 @@ bool Ingress_From_Vlan (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint1
   return true;
 }
 
-// Decapsulates the MAC address before hitting the switch loop
 bool Ingress_From_Hub (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t protocol,
                         const Address &src, const Address &dst, NetDevice::PacketType packetType)
 {
@@ -147,7 +142,6 @@ bool Ingress_From_Hub (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16
   return true;
 }
 
-// Decapsulates the MAC address before hitting the switch loop
 bool Ingress_At_Hub (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t protocol,
                       const Address &src, const Address &dst, NetDevice::PacketType packetType)
 {
@@ -168,74 +162,40 @@ bool Ingress_At_Hub (Ptr<NetDevice> rxDevice, Ptr<const Packet> packet, uint16_t
   return true;
 }
 
-// --- 4. Dynamic NetworkX Trace Parser ---
-void ParseNextNetworkXSnapshot (std::shared_ptr<std::ifstream> fileStream)
+// --- 4. Scheduled Apply Function ---
+struct LinkChange {
+  uint32_t src;
+  uint32_t dst;
+  double bwMbps;
+  double dropRate;
+};
+
+// This function is perfectly mapped to the ns-3 scheduler. It will trigger at the exact time required.
+void ApplyLinkChanges (std::vector<LinkChange> changes)
 {
-  if (fileStream->eof()) return;
-
-  std::string line, token;
-  double nextTimestamp = 0.0;
-
-  while (std::getline (*fileStream, line))
+  NS_LOG_UNCOND ("\n--- Sim Time: " << Simulator::Now ().GetSeconds () << "s | Applying YAML Topology Updates ---");
+  for (const auto& change : changes)
     {
-      std::stringstream ss (line);
-      ss >> token;
-      if (token == "TIMESTAMP")
+      if (change.src < numNodes && channelToHub[change.src] != nullptr)
         {
-          ss >> nextTimestamp;
-          break;
-        }
-    }
+          double bw = change.bwMbps <= 0.0 ? 0.000001 : change.bwMbps;
+          double drop = change.bwMbps <= 0.0 ? 1.0 : change.dropRate;
 
-  while (std::getline (*fileStream, line))
-    {
-      if (line.empty() || line[0] == '#') continue; 
-      
-      std::stringstream ss (line);
-      ss >> token;
-      if (token == "END") break; 
-
-      ss.clear();
-      ss.str (line);
-      
-      uint32_t src, dst;
-      double bwMbps, dropRate;
-      ss >> src >> dst >> bwMbps >> dropRate;
-
-      if (src < numNodes && channelToHub[src] != nullptr)
-        {
-          if (bwMbps <= 0.0) 
-            {
-              bwMbps = 0.000001; 
-              dropRate = 1.0; 
-            }
-
-          // DYNAMIC P2P UPDATE: Perfectly executes runtime changes on PointToPoint devices
-          DataRate newRate(bwMbps * 1000000);
-          txDeviceToHub[src]->SetAttribute ("DataRate", DataRateValue (newRate));
-          hubRxDevice[src]->SetAttribute ("DataRate", DataRateValue (newRate));
+          DataRate newRate(bw * 1000000);
+          txDeviceToHub[change.src]->SetAttribute ("DataRate", DataRateValue (newRate));
+          hubRxDevice[change.src]->SetAttribute ("DataRate", DataRateValue (newRate));
 
           Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
-          em->SetAttribute ("ErrorRate", DoubleValue (dropRate));
+          em->SetAttribute ("ErrorRate", DoubleValue (drop));
           em->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
           
-          txDeviceToHub[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
-          hubRxDevice[src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+          txDeviceToHub[change.src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+          hubRxDevice[change.src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+
+          // ---> NEW: Log the exact changes for this link <---
+          NS_LOG_UNCOND ("  [Link Updated] Src Node " << change.src << " -> Dst Node " << change.dst 
+                         << " | BW: " << bw << " Mbps | Drop Rate: " << drop);
         }
-    }
-
-  NS_LOG_UNCOND ("Loaded NetworkX Trace Metrics for Sim Time: " << Simulator::Now ().GetSeconds () << "s");
-
-  double currentTime = Simulator::Now ().GetSeconds ();
-  double timeDelta = nextTimestamp - currentTime;
-  
-  if (timeDelta > 0)
-    {
-      Simulator::Schedule (Seconds (timeDelta), &ParseNextNetworkXSnapshot, fileStream);
-    }
-  else
-    {
-      Simulator::Schedule (MilliSeconds (1), &ParseNextNetworkXSnapshot, fileStream);
     }
 }
 
@@ -252,7 +212,6 @@ int main (int argc, char *argv[])
 
   Ptr<Node> hubNode = CreateObject<Node> ();
 
-  // Build Star Spokes with P2P
   for (uint32_t i = 0; i < numNodes; ++i)
     {
       PointToPointHelper p2p;
@@ -290,20 +249,77 @@ int main (int argc, char *argv[])
       g_fdDev[i]->SetPromiscReceiveCallback (MakeCallback (&Ingress_From_Vlan));
     }
 
-  auto traceFile = std::make_shared<std::ifstream> ("/home/ijoldenb/ns-3.48/scratch/topology_trace.txt");
-  if (!traceFile->is_open ())
+  // Front-Load YAML Parsing & Event Scheduling
+  std::ifstream traceFile ("/home/ijoldenb/ns-3.48/scratch/topology_trace.yaml");
+  if (!traceFile.is_open ())
     {
-      NS_FATAL_ERROR ("Could not open topology_trace.txt!");
+      NS_FATAL_ERROR ("Could not open topology_trace.yaml!");
     }
   
-  Simulator::Schedule (Seconds (0.0), &ParseNextNetworkXSnapshot, traceFile);
+  std::string line;
+  double scheduleTime = 0.0;
+  bool inLink = false;
+  LinkChange tempChange;
+  std::map<double, std::vector<LinkChange>> timelineMap;
+
+  while (std::getline (traceFile, line))
+      {
+        // Skip empty lines or lines without a colon (like the "links:" header)
+        if (line.empty() || line.find (":") == std::string::npos) continue;
+
+        try 
+          {
+            // Extract everything after the colon
+            std::string valStr = line.substr (line.find (":") + 1);
+
+            if (line.find ("- time:") != std::string::npos)
+              {
+                scheduleTime = std::stod (valStr);
+              }
+            else if (line.find ("- src:") != std::string::npos)
+              {
+                tempChange.src = std::stoi (valStr);
+                inLink = true;
+              }
+            else if (inLink && line.find ("dst:") != std::string::npos)
+              {
+                tempChange.dst = std::stoi (valStr);
+              }
+            else if (inLink && line.find ("bw:") != std::string::npos)
+              {
+                tempChange.bwMbps = std::stod (valStr);
+              }
+            else if (inLink && line.find ("drop:") != std::string::npos)
+              {
+                tempChange.dropRate = std::stod (valStr);
+                
+                // The block is finished; save it to the current time map
+                timelineMap[scheduleTime].push_back (tempChange);
+                inLink = false;
+              }
+          } 
+        catch (const std::exception& e) 
+          {
+            // If stod or stoi crashes, print exactly what string it choked on
+            NS_FATAL_ERROR ("\n\n[YAML PARSE ERROR] Crash on line: '" << line << "'\n"
+                            << "Attempted to parse this value as a number: '" << line.substr (line.find (":") + 1) << "'\n"
+                            << "Exception: " << e.what () << "\n"
+                            << "Please check topology_trace.yaml to ensure this value is a valid number.\n");
+          }
+      }
+
+  // Bind the mapped data to the simulator perfectly on time
+  for (auto const& entry : timelineMap)
+    {
+      Simulator::Schedule (Seconds (entry.first), &ApplyLinkChanges, entry.second);
+    }
 
   Time stopTime = Seconds (3600.0); 
   Simulator::Stop (stopTime);
   Simulator::Schedule (stopTime - Seconds(1.0), &KeepAliveDummyEvent);
 
   NS_LOG_UNCOND ("================================================================");
-  NS_LOG_UNCOND ("ns-3 Dynamic PointToPoint Star Emulation Active (Layer 2 Mode)");
+  NS_LOG_UNCOND ("ns-3 Dynamic PointToPoint Star Emulation Active (YAML Mode)");
   NS_LOG_UNCOND ("================================================================");
 
   Simulator::Run ();

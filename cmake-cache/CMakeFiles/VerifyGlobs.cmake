@@ -22,7 +22,7 @@ set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/nested-subdir"
   "/home/ijoldenb/ns-3.48/scratch/scratch-simulator.cc"
   "/home/ijoldenb/ns-3.48/scratch/subdir"
-  "/home/ijoldenb/ns-3.48/scratch/topology_trace.txt"
+  "/home/ijoldenb/ns-3.48/scratch/topology_trace.yaml"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
