@@ -2,262 +2,262 @@
   links:
     - src: 1
       dst: 2
-      bw: 5.92
-      drop: 0.0118
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 2.5
-      drop: 0.0113
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 5.93
-      drop: 0.0301
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 9.61
-      drop: 0.0125
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 2.35
-      drop: 0.0359
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 6.63
-      drop: 0.011
+      bw: 60
+      drop: 0
 - time: 30.0
   links:
     - src: 1
       dst: 2
-      bw: 4.23
-      drop: 0.044
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 4.19
-      drop: 0.0475
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 2.53
-      drop: 0.0472
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 4.53
-      drop: 0.0039
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 8.15
-      drop: 0.0415
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 8.39
-      drop: 0.0226
+      bw: 60
+      drop: 0
 - time: 60.0
   links:
     - src: 1
       dst: 2
-      bw: 8.52
-      drop: 0.0326
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 8.82
-      drop: 0.04
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 9.13
-      drop: 0.0449
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 8.95
-      drop: 0.0359
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 6.23
-      drop: 0.0391
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 6.88
-      drop: 0.0088
+      bw: 60
+      drop: 0
 - time: 90.0
   links:
     - src: 1
       dst: 2
-      bw: 9.02
-      drop: 0.0474
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 5.9
-      drop: 0.0237
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 7.12
-      drop: 0.0381
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 5.33
-      drop: 0.0061
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 6.79
-      drop: 0.0311
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 2.92
-      drop: 0.0465
+      bw: 60
+      drop: 0
 - time: 120.0
   links:
     - src: 1
       dst: 2
-      bw: 9.11
-      drop: 0.0154
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 7.06
-      drop: 0.0102
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 7.5
-      drop: 0.0222
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 5.23
-      drop: 0.0101
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 2.52
-      drop: 0.002
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 3.26
-      drop: 0.0356
+      bw: 60
+      drop: 0
 - time: 150.0
   links:
     - src: 1
       dst: 2
-      bw: 4.48
-      drop: 0.0182
+      bw: 75
+      drop: 0
     - src: 1
       dst: 3
-      bw: 8.35
-      drop: 0.0157
+      bw: 75
+      drop: 0
     - src: 1
       dst: 4
-      bw: 4.2
-      drop: 0.006
+      bw: 75
+      drop: 0
     - src: 2
       dst: 3
-      bw: 7.89
-      drop: 0.0125
+      bw: 75
+      drop: 0
     - src: 2
       dst: 4
-      bw: 5.01
-      drop: 0.0264
+      bw: 75
+      drop: 0
     - src: 3
       dst: 4
-      bw: 3.66
-      drop: 0.0065
+      bw: 75
+      drop: 0
 - time: 180.0
   links:
     - src: 1
       dst: 2
-      bw: 6.79
-      drop: 0.0018
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 2.54
-      drop: 0.0207
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 4.74
-      drop: 0.0491
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 4.97
-      drop: 0.011
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 9.98
-      drop: 0.0269
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 4.33
-      drop: 0.0187
+      bw: 60
+      drop: 0
 - time: 210.0
   links:
     - src: 1
       dst: 2
-      bw: 6.65
-      drop: 0.018
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 6.73
-      drop: 0.0105
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 8.23
-      drop: 0.0082
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 2.01
-      drop: 0.0129
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 7.51
-      drop: 0.0281
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 3.1
-      drop: 0.0254
+      bw: 60
+      drop: 0
 - time: 240.0
   links:
     - src: 1
       dst: 2
-      bw: 8.9
-      drop: 0.0432
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 6.76
-      drop: 0.0359
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 2.55
-      drop: 0.0207
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 8.99
-      drop: 0.0341
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 7.57
-      drop: 0.0027
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 8.09
-      drop: 0.0161
+      bw: 60
+      drop: 0
 - time: 270.0
   links:
     - src: 1
       dst: 2
-      bw: 9.05
-      drop: 0.0428
+      bw: 10
+      drop: 0
     - src: 1
       dst: 3
-      bw: 2.19
-      drop: 0.0368
+      bw: 20
+      drop: 0
     - src: 1
       dst: 4
-      bw: 3.5
-      drop: 0.0106
+      bw: 30
+      drop: 0
     - src: 2
       dst: 3
-      bw: 5.86
-      drop: 0.0368
+      bw: 40
+      drop: 0
     - src: 2
       dst: 4
-      bw: 3.67
-      drop: 0.0204
+      bw: 50
+      drop: 0
     - src: 3
       dst: 4
-      bw: 6.5
-      drop: 0.016
+      bw: 60
+      drop: 0
 - time: 300.0
   links:
     - src: 1

@@ -122,18 +122,28 @@ void ApplyLinkChanges (std::vector<LinkChange> changes)
           double drop = change.bwMbps <= 0.0 ? 1.0 : change.dropRate;
 
           DataRate newRate(bw * 1000000);
-          Ptr<RateErrorModel> em = CreateObject<RateErrorModel> ();
-          em->SetAttribute ("ErrorRate", DoubleValue (drop));
-          em->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
-
-          // Perfectly isolate the direction:
-          // 1. Throttle the OUTBOUND interface on the Source Node
-          meshDevices[change.src][change.dst]->SetAttribute ("DataRate", DataRateValue (newRate));
           
-          // 2. Apply Drop Rate to the INBOUND interface on the Destination Node
-          meshDevices[change.dst][change.src]->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+          // Create error model for the Destination node receiving from Source
+          Ptr<RateErrorModel> emDst = CreateObject<RateErrorModel> ();
+          emDst->SetAttribute ("ErrorRate", DoubleValue (drop));
+          emDst->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
 
-          NS_LOG_UNCOND ("  [Link Updated] " << change.src << " -> " << change.dst 
+          // Create error model for the Source node receiving from Destination
+          Ptr<RateErrorModel> emSrc = CreateObject<RateErrorModel> ();
+          emSrc->SetAttribute ("ErrorRate", DoubleValue (drop));
+          emSrc->SetUnit (RateErrorModel::ERROR_UNIT_PACKET);
+
+          // --- FIX: Apply updates symmetrically to both sides of the P2P pipe ---
+          
+          // 1. Throttle the Forward Path (Src -> Dst)
+          meshDevices[change.src][change.dst]->SetAttribute ("DataRate", DataRateValue (newRate));
+          meshDevices[change.dst][change.src]->SetAttribute ("ReceiveErrorModel", PointerValue (emDst));
+          
+          // 2. Throttle the Return Path (Dst -> Src)
+          meshDevices[change.dst][change.src]->SetAttribute ("DataRate", DataRateValue (newRate));
+          meshDevices[change.src][change.dst]->SetAttribute ("ReceiveErrorModel", PointerValue (emSrc));
+
+          NS_LOG_UNCOND ("  [Link Updated Symmetrically] " << (change.src + 1) << " <-> " << (change.dst + 1) 
                          << " | BW: " << bw << " Mbps | Drop Rate: " << drop);
         }
     }
@@ -223,12 +233,14 @@ int main (int argc, char *argv[])
             }
           else if (line.find ("- src:") != std::string::npos)
             {
-              tempChange.src = std::stoi (valStr);
+              // Subtract 1 to map YAML Node 1-4 to internal Node 0-3
+              tempChange.src = std::stoi (valStr) - 1; 
               inLink = true;
             }
           else if (inLink && line.find ("dst:") != std::string::npos)
             {
-              tempChange.dst = std::stoi (valStr);
+              // Subtract 1 to map YAML Node 1-4 to internal Node 0-3
+              tempChange.dst = std::stoi (valStr) - 1; 
             }
           else if (inLink && line.find ("bw:") != std::string::npos)
             {
