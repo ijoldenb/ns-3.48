@@ -1,158 +1,216 @@
 import sys
-import os
-from ns import ns
+from ns import ns 
 
-def parse_trace(filename):
-    """Parses topology_trace.txt file structure into a timeline dictionary"""
-    trace_data = {}
-    current_time = None
+# --- Global Configurations ---
+numNodes = 4
+
+# Tracking Matrices (Initialized to None)
+# meshDevices[SrcNode][DstNode]
+meshDevices = [[None for _ in range(numNodes)] for _ in range(numNodes)]
+g_fdDev = [None for _ in range(numNodes)]
+
+# Global MAC Table for distributed switching
+macToNodeMap = {}
+
+
+# --- 1. Custom Encapsulation Tunnel ---
+def SendOverP2PTunnel(dev, packet, protocol, src_addr, dst_addr):
+    pktCopy = packet.Copy()
+    eth = ns.EthernetHeader()
+    eth.SetSource(ns.Mac48Address.ConvertFrom(src_addr))
+    eth.SetDestination(ns.Mac48Address.ConvertFrom(dst_addr))
+    eth.SetLengthType(protocol)
     
-    with open(filename, 'r') as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#'):
-                continue
-            if line.startswith('TIMESTAMP'):
-                current_time = float(line.split()[1])
-                trace_data[current_time] = []
-            elif line == 'END':
-                current_time = None
+    pktCopy.AddHeader(eth)
+    dev.Send(pktCopy, dev.GetBroadcast(), 0x0800)
+
+
+# --- 2. Distributed Switch Ingress (From Physical Raspberry Pi) ---
+def make_vlan_ingress_callback(myNodeID):
+    def Ingress_From_Vlan(rxDevice, packet, protocol, src, dst, packetType):
+        srcMac = ns.Mac48Address.ConvertFrom(src)
+        dstMac = ns.Mac48Address.ConvertFrom(dst)
+
+        # Learn where this Pi's MAC address lives
+        if not srcMac.IsBroadcast():
+            macToNodeMap[str(srcMac)] = myNodeID
+
+        # If Broadcast/Multicast (like ARP or OSPF), flood to all OTHER nodes in the mesh
+        if dstMac.IsBroadcast() or dstMac.IsGroup():
+            for i in range(numNodes):
+                if i != myNodeID and meshDevices[myNodeID][i] is not None:
+                    SendOverP2PTunnel(meshDevices[myNodeID][i], packet, protocol, src, dst)
+        else: # Unicast
+            dst_str = str(dstMac)
+            if dst_str in macToNodeMap:
+                targetNode = macToNodeMap[dst_str]
+                # Forward directly down the dedicated mesh wire to the destination
+                if targetNode != myNodeID and meshDevices[myNodeID][targetNode] is not None:
+                    SendOverP2PTunnel(meshDevices[myNodeID][targetNode], packet, protocol, src, dst)
             else:
-                if current_time is not None:
-                    parts = line.split()
-                    src = int(parts[0])
-                    dst = int(parts[1])
-                    bw = float(parts[2])
-                    loss = float(parts[3])
-                    trace_data[current_time].append((src, dst, bw, loss))
-    return trace_data
+                # Unknown unicast: Flood to all other nodes until MAC is learned
+                for i in range(numNodes):
+                    if i != myNodeID and meshDevices[myNodeID][i] is not None:
+                        SendOverP2PTunnel(meshDevices[myNodeID][i], packet, protocol, src, dst)
+        return True
+    return Ingress_From_Vlan
 
-# Global tracking map for mesh links
-# Key: (min(src,dst), max(src,dst)) -> Value: (dev_src, dev_dst, qd_src, qd_dst)
-link_devices = {}
 
-def change_link_properties(src, dst, bw_mbps, loss_rate):
-    """Dynamically scales CSMA link attributes using Traffic Control and Error Models"""
-    key = (min(src, dst), max(src, dst))
-    if key in link_devices:
-        dev_src, dev_dst, qd_src, qd_dst = link_devices[key]
+# --- 3. Split-Horizon Ingress (From ns-3 Mesh) ---
+def make_mesh_ingress_callback(myNodeID):
+    def Ingress_From_Mesh(rxDevice, packet, protocol, src, dst, packetType):
+        pktCopy = packet.Copy()
+        eth = ns.EthernetHeader()
+        pktCopy.RemoveHeader(eth)
         
-        # 1. Update Bandwidth dynamically via the TBF Queue Disc
-        new_bw = ns.DataRate(f"{bw_mbps}Mbps")
-        qd_src.SetAttribute("Rate", ns.DataRateValue(new_bw))
-        qd_dst.SetAttribute("Rate", ns.DataRateValue(new_bw))
+        # SPLIT HORIZON RULE: Packets arriving from the mesh are NEVER forwarded back into the mesh.
+        # They are only sent UP to the physical Raspberry Pi attached to this node.
+        g_fdDev[myNodeID].Send(pktCopy, eth.GetDestination(), eth.GetLengthType())
         
-        # 2. Update Loss Rate dynamically by swapping the error model
-        error_model = ns.CreateObject("RateErrorModel")
-        error_model.SetAttribute("ErrorUnit", ns.EnumValue(ns.RateErrorModel.ERROR_UNIT_PACKET))
-        error_model.SetAttribute("ErrorRate", ns.DoubleValue(loss_rate))
-        
-        # Attach the random packet drops to the receive paths
-        dev_src.SetReceiveErrorModel(error_model)
-        dev_dst.SetReceiveErrorModel(error_model)
-        
-        print(f"[Time {ns.Simulator.Now().GetSeconds():.2f}s] Updated link ({src}<->{dst}): BW={bw_mbps}Mbps, Drop Rate={loss_rate}")
+        return True
+    return Ingress_From_Mesh
 
+
+# --- 4. Scheduled Apply Function (Strict Directional Mapping) ---
+def ApplyLinkChanges(changes):
+    print(f"\n--- Sim Time: {ns.Simulator.Now().GetSeconds()}s | Applying YAML Topology Updates ---")
+    for change in changes:
+        src = change['src']
+        dst = change['dst']
+        
+        if src < numNodes and dst < numNodes and src != dst:
+            bw = 0.000001 if change['bwMbps'] <= 0.0 else change['bwMbps']
+            drop = 1.0 if change['bwMbps'] <= 0.0 else change['dropRate']
+
+            newRate = ns.DataRate(f"{bw}Mbps")
+            
+            # Create error model for Destination node receiving from Source
+            emDst = ns.RateErrorModel()
+            emDst.SetAttribute("ErrorRate", ns.DoubleValue(drop))
+            emDst.SetUnit(ns.RateErrorModel.ERROR_UNIT_PACKET)
+
+            # Create error model for Source node receiving from Destination
+            emSrc = ns.RateErrorModel()
+            emSrc.SetAttribute("ErrorRate", ns.DoubleValue(drop))
+            emSrc.SetUnit(ns.RateErrorModel.ERROR_UNIT_PACKET)
+
+            # 1. Throttle Forward Path (Src -> Dst)
+            meshDevices[src][dst].SetAttribute("DataRate", ns.DataRateValue(newRate))
+            meshDevices[dst][src].SetAttribute("ReceiveErrorModel", ns.PointerValue(emDst))
+            
+            # 2. Throttle Return Path (Dst -> Src)
+            meshDevices[dst][src].SetAttribute("DataRate", ns.DataRateValue(newRate))
+            meshDevices[src][dst].SetAttribute("ReceiveErrorModel", ns.PointerValue(emSrc))
+
+            print(f"  [Link Updated Symmetrically] {src + 1} <-> {dst + 1} | BW: {bw} Mbps | Drop Rate: {drop}")
+
+
+def KeepAliveDummyEvent():
+    pass
+
+
+# --- 5. Main Network Setup ---
 def main():
-    # Use absolute path to ensure sudo finds it
-    trace_file = "/home/ijoldenb/ns-3.48/scratch/topology_trace.txt"
+    ns.CommandLine().Parse(sys.argv)
+    ns.GlobalValue.Bind("SimulatorImplementationType", ns.StringValue("ns3::RealtimeSimulatorImpl"))
+
+    meshNodes = ns.NodeContainer()
+    meshNodes.Create(numNodes)
+
+    p2p = ns.PointToPointHelper()
+    p2p.SetDeviceAttribute("DataRate", ns.StringValue("100Mbps"))
+    p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
+    p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
+
+    # Build the Full Mesh (Creates N*(N-1)/2 Links)
+    for i in range(numNodes):
+        for j in range(i + 1, numNodes):
+            linkNodes = ns.NodeContainer()
+            linkNodes.Add(meshNodes.Get(i))
+            linkNodes.Add(meshNodes.Get(j))
+            devs = p2p.Install(linkNodes)
+
+            devI = devs.Get(0)
+            devJ = devs.Get(1)
+
+            meshDevices[i][j] = devI # Device on 'i' transmitting to 'j'
+            meshDevices[j][i] = devJ # Device on 'j' transmitting to 'i'
+
+            # Bind the receiving callbacks using closures
+            devI.SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_mesh_ingress_callback(i)))
+            devJ.SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_mesh_ingress_callback(j)))
+
+    emuHelper = ns.fd_net_device.EmuFdNetDeviceHelper()
+    emuHelper.SetAttribute("EncapsulationMode", ns.StringValue("Dix"))
+    vlanMapping = ["vlan101", "vlan102", "vlan103", "vlan104"]
+
+    for i in range(numNodes):
+        emuHelper.SetDeviceName(vlanMapping[i])
+        
+        devSide = emuHelper.Install(meshNodes.Get(i))
+        g_fdDev[i] = devSide.Get(0)
+        
+        mac_addr = ns.Mac48Address.Allocate()
+        g_fdDev[i].SetAttribute("Address", ns.Mac48AddressValue(mac_addr))
+
+        # Bind the Pi ingest callback using closures
+        g_fdDev[i].SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_vlan_ingress_callback(i)))
+
+    # --- Parse YAML File ---
+    timelineMap = {}
+    scheduleTime = 0.0
+    inLink = False
+    tempChange = {}
+
+    trace_file_path = "/home/ijoldenb/ns-3.48/scratch/topology_trace.yaml"
+    
     try:
-        topology_schedule = parse_trace(trace_file)
+        with open(trace_file_path, "r") as traceFile:
+            for line in traceFile:
+                line = line.strip()
+                if not line or ":" not in line:
+                    continue
+                
+                key, valStr = [x.strip() for x in line.split(":", 1)]
+
+                if "- time" in key:
+                    scheduleTime = float(valStr)
+                elif "- src" in key:
+                    # Subtract 1 to map YAML Node 1-4 to internal Node 0-3
+                    tempChange['src'] = int(valStr) - 1
+                    inLink = True
+                elif inLink and "dst" in key:
+                    # Subtract 1 to map YAML Node 1-4 to internal Node 0-3
+                    tempChange['dst'] = int(valStr) - 1
+                elif inLink and "bw" in key:
+                    tempChange['bwMbps'] = float(valStr)
+                elif inLink and "drop" in key:
+                    tempChange['dropRate'] = float(valStr)
+                    
+                    if scheduleTime not in timelineMap:
+                        timelineMap[scheduleTime] = []
+                    timelineMap[scheduleTime].append(tempChange.copy())
+                    
+                    inLink = False
+                    tempChange = {}
     except FileNotFoundError:
-        print(f"Error: {trace_file} not found.")
-        return
+        print(f"FATAL ERROR: Could not open {trace_file_path}!")
+        sys.exit(1)
 
-    num_pi = 4  # Start with 4, scale to 20 later
-    
-    nodes = ns.NodeContainer()
-    nodes.Create(num_pi)
-    
-    # Disable IPv6 inside ns-3 to prevent internal broadcast storms from Pi's
-    stack = ns.InternetStackHelper()
-    stack.SetIpv6StackInstall(False)
-    stack.Install(nodes)
-    
-    # 1. Setup Static CSMA Topology with TBF Traffic Control
-    csma = ns.CsmaHelper()
-    tc = ns.TrafficControlHelper()
-    ip_helper = ns.Ipv4AddressHelper()
-    
-    # --- FIX: Move SetRootQueueDisc OUTSIDE the loop ---
-    # Configure the Token Bucket Filter (TBF) blueprint once
-    tc.SetRootQueueDisc("ns3::TbfQueueDisc",
-                        "Rate", ns.StringValue("10Mbps"), 
-                        "Burst", ns.UintegerValue(65535), 
-                        "Mtu", ns.UintegerValue(1500))
-    
-    subnet_idx = 1
-    for i in range(num_pi):
-        for j in range(i + 1, num_pi):
-            # Physical wire is super fast (1 Gbps); we will bottleneck it in software
-            csma.SetChannelAttribute("DataRate", ns.StringValue("1Gbps"))
-            csma.SetChannelAttribute("Delay", ns.StringValue("0ms"))
-            
-            # Put the two target nodes into a temporary NodeContainer
-            link_nodes = ns.NodeContainer()
-            link_nodes.Add(nodes.Get(i))
-            link_nodes.Add(nodes.Get(j))
-            
-            # Install CSMA over the 2-node container
-            link_devs = csma.Install(link_nodes)
-            
-            dev_i = link_devs.Get(0)
-            dev_j = link_devs.Get(1)
-            
-            # --- FIX: Now just call Install() inside the loop ---
-            # It will safely use the blueprint we defined above
-            tc_devs_i = tc.Install(dev_i)
-            tc_devs_j = tc.Install(dev_j)
-            
-            qd_i = tc_devs_i.Get(0)
-            qd_j = tc_devs_j.Get(0)
-            
-            # Store the devices AND the queue discs in our tracker mapping
-            link_devices[(i, j)] = (dev_i, dev_j, qd_i, qd_j)
-            
-            # Subnetting for internal routing between nodes
-            ip_helper.SetBase(ns.Ipv4Address(f"172.16.{subnet_idx}.0"), ns.Ipv4Mask("255.255.255.0"))
-            ip_helper.Assign(link_devs)
-            subnet_idx += 1
+    # Schedule the link modifications
+    for t_time, changes in timelineMap.items():
+        ns.Simulator.Schedule(ns.Seconds(t_time), ApplyLinkChanges, changes)
 
-    # 2. Attach EmuFdNetDevices to hook external physical Pi's to ns-3 nodes
-    emu_helper = ns.EmuFdNetDeviceHelper()
-    
-    for i in range(num_pi):
-        # --- FIX: Match your live Linux naming scheme ---
-        # i=0 -> vlan101, i=1 -> vlan102, i=2 -> vlan103, i=3 -> vlan104
-        vlan_interface = f"vlan{101 + i}"
-        
-        # Set the matching device name
-        emu_helper.SetDeviceName(vlan_interface)
-        
-        emu_devices = emu_helper.Install(nodes.Get(i))
-        
-        # Keep the subnets aligned with your custom VLAN IDs
-        ip_helper.SetBase(ns.Ipv4Address(f"10.0.{101 + i}.0"), ns.Ipv4Mask("255.255.255.0"))
-        ip_helper.Assign(emu_devices)
+    stopTime = ns.Seconds(3600.0)
+    ns.Simulator.Stop(stopTime)
+    ns.Simulator.Schedule(stopTime - ns.Seconds(1.0), KeepAliveDummyEvent)
 
-    # Populate global routing tables so ns-3 knows how to route across the internal links
-    ns.Ipv4GlobalRoutingHelper.PopulateRoutingTables()
+    print("================================================================")
+    print("ns-3 Dynamic PointToPoint FULL MESH Active (Python L2 Split-Horizon)")
+    print("================================================================")
 
-    # 3. Schedule Dynamic Attribute Modifications based on Timeline Map
-    for timestamp, alterations in topology_schedule.items():
-        for alteration in alterations:
-            src, dst, bw, loss = alteration
-            
-            # --- FIX: Wrap the function and its arguments in a lambda ---
-            ns.Simulator.Schedule(
-                ns.Seconds(timestamp), 
-                lambda s=src, d=dst, b=bw, l=loss: change_link_properties(s, d, b, l)
-            )
-    print("--- Booting Python ns-3 Engine (CSMA Emulation + Traffic Control) ---")
-    ns.Simulator.Stop(ns.Seconds(3500))  
     ns.Simulator.Run()
     ns.Simulator.Destroy()
-    print("Simulation stopped cleanly.")
 
 if __name__ == '__main__':
     main()
