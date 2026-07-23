@@ -7,7 +7,7 @@ events:
       - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
       - "CMakeLists.txt:9 (project)"
     message: |
-      The system is: Linux - 6.8.0-124-generic - x86_64
+      The system is: Linux - 6.17.0-1028-oem - x86_64
   -
     kind: "message-v1"
     backtrace:
@@ -39,8 +39,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-XwJorM"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-XwJorM"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-H1Go2w"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-H1Go2w"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -49,10 +49,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-XwJorM'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-H1Go2w'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_ff70e
-        [1/2] /usr/bin/c++   -v -o CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/ninja -v cmTC_f8788
+        [1/2] /usr/bin/c++   -v -o CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -62,8 +62,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ff70e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccQvElzv.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f8788.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccSjCumY.s
         GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)
         	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
         
@@ -84,13 +84,13 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: 7896445e4990772fdae9dc0659a99266
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/'
-         as -v --64 -o CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccQvElzv.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/'
+         as -v --64 -o CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccSjCumY.s
         GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.'
-        [2/2] : && /usr/bin/c++  -v CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ff70e   && :
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] : && /usr/bin/c++  -v CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_f8788   && :
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
@@ -103,9 +103,9 @@ events:
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff70e' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff70e.'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccMemB1v.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_ff70e /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff70e' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff70e.'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f8788' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f8788.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccsQLYzO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f8788 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f8788' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f8788.'
         
       exitCode: 0
   -
@@ -145,10 +145,10 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-XwJorM']
+        ignore line: [Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-H1Go2w']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_ff70e]
-        ignore line: [[1/2] /usr/bin/c++   -v -o CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_f8788]
+        ignore line: [[1/2] /usr/bin/c++   -v -o CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -158,8 +158,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ff70e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccQvElzv.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f8788.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccSjCumY.s]
         ignore line: [GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04.1) version 13.3.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -180,13 +180,13 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 7896445e4990772fdae9dc0659a99266]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccQvElzv.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccSjCumY.s]
         ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [[2/2] : && /usr/bin/c++  -v CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ff70e   && :]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] : && /usr/bin/c++  -v CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_f8788   && :]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
@@ -199,13 +199,13 @@ events:
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff70e' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff70e.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccMemB1v.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_ff70e /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f8788' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f8788.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccsQLYzO.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f8788 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccMemB1v.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccsQLYzO.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -223,7 +223,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_ff70e] ==> ignore
+          arg [cmTC_f8788] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -235,7 +235,7 @@ events:
           arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
-          arg [CMakeFiles/cmTC_ff70e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_f8788.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -273,8 +273,8 @@ events:
     checks:
       - "Performing Test GCC_WORKING_PEDANTIC_SEMICOLON"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-mx53rW"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-mx53rW"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-OpVCQi"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-OpVCQi"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -285,11 +285,11 @@ events:
       variable: "GCC_WORKING_PEDANTIC_SEMICOLON"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-mx53rW'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-OpVCQi'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_1f1a1
-        [1/2] /usr/bin/c++ -DGCC_WORKING_PEDANTIC_SEMICOLON  -Wall -Wpedantic -Werror -fPIE -o CMakeFiles/cmTC_1f1a1.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-mx53rW/src.cxx
-        [2/2] : && /usr/bin/c++ -Wall -Wpedantic -Werror  CMakeFiles/cmTC_1f1a1.dir/src.cxx.o -o cmTC_1f1a1   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_a6ad8
+        [1/2] /usr/bin/c++ -DGCC_WORKING_PEDANTIC_SEMICOLON  -Wall -Wpedantic -Werror -fPIE -o CMakeFiles/cmTC_a6ad8.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-OpVCQi/src.cxx
+        [2/2] : && /usr/bin/c++ -Wall -Wpedantic -Werror  CMakeFiles/cmTC_a6ad8.dir/src.cxx.o -o cmTC_a6ad8   && :
         
       exitCode: 0
   -
@@ -303,8 +303,8 @@ events:
     checks:
       - "Performing Test STACKTRACE_LIBRARY_ENABLED"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7wh37i"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7wh37i"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-49s6AS"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-49s6AS"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -315,11 +315,11 @@ events:
       variable: "STACKTRACE_LIBRARY_ENABLED"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7wh37i'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-49s6AS'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_0f49e
-        [1/2] /usr/bin/c++ -DSTACKTRACE_LIBRARY_ENABLED  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_0f49e.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7wh37i/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_0f49e.dir/src.cxx.o -o cmTC_0f49e   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_a63fc
+        [1/2] /usr/bin/c++ -DSTACKTRACE_LIBRARY_ENABLED  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_a63fc.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-49s6AS/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_a63fc.dir/src.cxx.o -o cmTC_a63fc   && :
         
       exitCode: 0
   -
@@ -333,8 +333,8 @@ events:
     checks:
       - "Performing Test STACKTRACE_LIBRARY_IS_LINKED"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KaYkuZ"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KaYkuZ"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-GS5TNP"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-GS5TNP"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -345,11 +345,11 @@ events:
       variable: "STACKTRACE_LIBRARY_IS_LINKED"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KaYkuZ'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-GS5TNP'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_75d83
-        [1/2] /usr/bin/c++ -DSTACKTRACE_LIBRARY_IS_LINKED  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_75d83.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KaYkuZ/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_75d83.dir/src.cxx.o -o cmTC_75d83  -lstdc++_libbacktrace && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_52964
+        [1/2] /usr/bin/c++ -DSTACKTRACE_LIBRARY_IS_LINKED  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_52964.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-GS5TNP/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_52964.dir/src.cxx.o -o cmTC_52964  -lstdc++_libbacktrace && :
         
       exitCode: 0
   -
@@ -362,8 +362,8 @@ events:
       - "build-support/macros-and-definitions.cmake:663 (find_package)"
       - "CMakeLists.txt:181 (process_options)"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-niBT0q"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-niBT0q"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nmwT7u"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nmwT7u"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -374,11 +374,11 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-niBT0q'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nmwT7u'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_6416d
-        [1/2] /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_6416d.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-niBT0q/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_6416d.dir/src.cxx.o -o cmTC_6416d   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_3f358
+        [1/2] /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_3f358.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nmwT7u/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_3f358.dir/src.cxx.o -o cmTC_3f358   && :
         
       exitCode: 0
   -
@@ -391,8 +391,8 @@ events:
     checks:
       - "Performing Test HAVE_UINT128_T"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -403,14 +403,14 @@ events:
       variable: "HAVE_UINT128_T"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_f0c72
-        [1/2] /usr/bin/c++ -DHAVE_UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_f0c72.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu/src.cxx
-        FAILED: CMakeFiles/cmTC_f0c72.dir/src.cxx.o 
-        /usr/bin/c++ -DHAVE_UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_f0c72.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu/src.cxx
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu/src.cxx: In function ‘int main()’:
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-Lldiiu/src.cxx:4:25: error: ‘uint128_t’ was not declared in this scope; did you mean ‘uint8_t’?
+        Run Build Command(s): /usr/bin/ninja -v cmTC_efd1e
+        [1/2] /usr/bin/c++ -DHAVE_UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_efd1e.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on/src.cxx
+        FAILED: CMakeFiles/cmTC_efd1e.dir/src.cxx.o 
+        /usr/bin/c++ -DHAVE_UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_efd1e.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on/src.cxx
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on/src.cxx: In function ‘int main()’:
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-9JX5on/src.cxx:4:25: error: ‘uint128_t’ was not declared in this scope; did you mean ‘uint8_t’?
             4 |             if (sizeof (uint128_t)) return 0;
               |                         ^~~~~~~~~
               |                         uint8_t
@@ -427,8 +427,8 @@ events:
     checks:
       - "Performing Test HAVE___UINT128_T"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-As76lE"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-As76lE"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-DeHD34"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-DeHD34"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -439,11 +439,11 @@ events:
       variable: "HAVE___UINT128_T"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-As76lE'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-DeHD34'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_a2433
-        [1/2] /usr/bin/c++ -DHAVE___UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_a2433.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-As76lE/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_a2433.dir/src.cxx.o -o cmTC_a2433   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_dd15d
+        [1/2] /usr/bin/c++ -DHAVE___UINT128_T  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_dd15d.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-DeHD34/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_dd15d.dir/src.cxx.o -o cmTC_dd15d   && :
         
       exitCode: 0
   -
@@ -455,8 +455,8 @@ events:
     checks:
       - "Looking for C++ include sys/types.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fOeU7O"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fOeU7O"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KcJdt5"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KcJdt5"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -467,11 +467,11 @@ events:
       variable: "HAVE_SYS_TYPES_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fOeU7O'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KcJdt5'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_4b6ad
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_4b6ad.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fOeU7O/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_4b6ad.dir/CheckIncludeFile.cxx.o -o cmTC_4b6ad   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_61e3a
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_61e3a.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KcJdt5/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_61e3a.dir/CheckIncludeFile.cxx.o -o cmTC_61e3a   && :
         
       exitCode: 0
   -
@@ -483,8 +483,8 @@ events:
     checks:
       - "Looking for C++ include sys/stat.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-ABtFcX"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-ABtFcX"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-vLLRo9"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-vLLRo9"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -495,11 +495,11 @@ events:
       variable: "HAVE_SYS_STAT_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-ABtFcX'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-vLLRo9'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_61421
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_61421.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-ABtFcX/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_61421.dir/CheckIncludeFile.cxx.o -o cmTC_61421   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_2ad1d
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_2ad1d.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-vLLRo9/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_2ad1d.dir/CheckIncludeFile.cxx.o -o cmTC_2ad1d   && :
         
       exitCode: 0
   -
@@ -511,8 +511,8 @@ events:
     checks:
       - "Looking for C++ include dirent.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-k54GO8"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-k54GO8"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3S9nWv"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3S9nWv"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -523,11 +523,11 @@ events:
       variable: "HAVE_DIRENT_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-k54GO8'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3S9nWv'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_5ac74
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_5ac74.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-k54GO8/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_5ac74.dir/CheckIncludeFile.cxx.o -o cmTC_5ac74   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_b4aa9
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_b4aa9.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3S9nWv/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_b4aa9.dir/CheckIncludeFile.cxx.o -o cmTC_b4aa9   && :
         
       exitCode: 0
   -
@@ -539,8 +539,8 @@ events:
     checks:
       - "Looking for C++ include signal.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-AJfbUD"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-AJfbUD"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-tirM4q"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-tirM4q"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -551,11 +551,11 @@ events:
       variable: "HAVE_SIGNAL_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-AJfbUD'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-tirM4q'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_35224
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_35224.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-AJfbUD/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_35224.dir/CheckIncludeFile.cxx.o -o cmTC_35224   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_f3773
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_f3773.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-tirM4q/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_f3773.dir/CheckIncludeFile.cxx.o -o cmTC_f3773   && :
         
       exitCode: 0
   -
@@ -567,8 +567,8 @@ events:
     checks:
       - "Looking for C++ include netpacket/packet.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-5QXcrs"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-5QXcrs"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-aKYJwI"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-aKYJwI"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -579,11 +579,11 @@ events:
       variable: "HAVE_PACKETH"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-5QXcrs'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-aKYJwI'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_3598e
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_3598e.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-5QXcrs/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_3598e.dir/CheckIncludeFile.cxx.o -o cmTC_3598e   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_63445
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_63445.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-aKYJwI/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_63445.dir/CheckIncludeFile.cxx.o -o cmTC_63445   && :
         
       exitCode: 0
   -
@@ -595,8 +595,8 @@ events:
     checks:
       - "Looking for getenv"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-c1flrj"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-c1flrj"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R9VPsl"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R9VPsl"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -607,11 +607,11 @@ events:
       variable: "HAVE_GETENV"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-c1flrj'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R9VPsl'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_c3a08
-        [1/2] /usr/bin/c++   -DCHECK_FUNCTION_EXISTS=getenv -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_c3a08.dir/CheckFunctionExists.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-c1flrj/CheckFunctionExists.cxx
-        [2/2] : && /usr/bin/c++ -DCHECK_FUNCTION_EXISTS=getenv -std=c++23  CMakeFiles/cmTC_c3a08.dir/CheckFunctionExists.cxx.o -o cmTC_c3a08   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_c3916
+        [1/2] /usr/bin/c++   -DCHECK_FUNCTION_EXISTS=getenv -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_c3916.dir/CheckFunctionExists.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R9VPsl/CheckFunctionExists.cxx
+        [2/2] : && /usr/bin/c++ -DCHECK_FUNCTION_EXISTS=getenv -std=c++23  CMakeFiles/cmTC_c3916.dir/CheckFunctionExists.cxx.o -o cmTC_c3916   && :
         
       exitCode: 0
   -
@@ -623,8 +623,8 @@ events:
     checks:
       - "Performing Test HAVE_STD_BESSEL_FUNC"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nw9CHo"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nw9CHo"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-dyXsB9"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-dyXsB9"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -635,11 +635,11 @@ events:
       variable: "HAVE_STD_BESSEL_FUNC"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nw9CHo'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-dyXsB9'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_3020f
-        [1/2] /usr/bin/c++ -DHAVE_STD_BESSEL_FUNC  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_3020f.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-nw9CHo/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_3020f.dir/src.cxx.o -o cmTC_3020f   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_cb760
+        [1/2] /usr/bin/c++ -DHAVE_STD_BESSEL_FUNC  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_cb760.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-dyXsB9/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_cb760.dir/src.cxx.o -o cmTC_cb760   && :
         
       exitCode: 0
   -
@@ -655,8 +655,8 @@ events:
     checks:
       - "Performing Test COMPILER_HAS_HIDDEN_VISIBILITY"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fI8z2O"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fI8z2O"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-P9dFxL"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-P9dFxL"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -667,11 +667,11 @@ events:
       variable: "COMPILER_HAS_HIDDEN_VISIBILITY"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fI8z2O'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-P9dFxL'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_64026
-        [1/2] /usr/bin/c++ -DCOMPILER_HAS_HIDDEN_VISIBILITY  -std=c++23 -std=c++23 -fPIE   -fvisibility=hidden -o CMakeFiles/cmTC_64026.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-fI8z2O/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_64026.dir/src.cxx.o -o cmTC_64026   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_08378
+        [1/2] /usr/bin/c++ -DCOMPILER_HAS_HIDDEN_VISIBILITY  -std=c++23 -std=c++23 -fPIE   -fvisibility=hidden -o CMakeFiles/cmTC_08378.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-P9dFxL/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_08378.dir/src.cxx.o -o cmTC_08378   && :
         
       exitCode: 0
   -
@@ -687,8 +687,8 @@ events:
     checks:
       - "Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-eGoPC8"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-eGoPC8"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-sMKsSH"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-sMKsSH"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -699,11 +699,11 @@ events:
       variable: "COMPILER_HAS_HIDDEN_INLINE_VISIBILITY"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-eGoPC8'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-sMKsSH'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_48985
-        [1/2] /usr/bin/c++ -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY  -std=c++23 -std=c++23 -fPIE   -fvisibility-inlines-hidden -o CMakeFiles/cmTC_48985.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-eGoPC8/src.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_48985.dir/src.cxx.o -o cmTC_48985   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_fd899
+        [1/2] /usr/bin/c++ -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY  -std=c++23 -std=c++23 -fPIE   -fvisibility-inlines-hidden -o CMakeFiles/cmTC_fd899.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-sMKsSH/src.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_fd899.dir/src.cxx.o -o cmTC_fd899   && :
         
       exitCode: 0
   -
@@ -719,8 +719,8 @@ events:
     checks:
       - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -731,18 +731,18 @@ events:
       variable: "COMPILER_HAS_DEPRECATED_ATTR"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_4d9e0
-        [1/2] /usr/bin/c++ -DCOMPILER_HAS_DEPRECATED_ATTR  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_4d9e0.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL/src.cxx
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL/src.cxx: In function ‘int main()’:
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL/src.cxx:2:33: warning: ‘int somefunc()’ is deprecated [-Wdeprecated-declarations]
+        Run Build Command(s): /usr/bin/ninja -v cmTC_cad81
+        [1/2] /usr/bin/c++ -DCOMPILER_HAS_DEPRECATED_ATTR  -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_cad81.dir/src.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE/src.cxx
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE/src.cxx: In function ‘int main()’:
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE/src.cxx:2:33: warning: ‘int somefunc()’ is deprecated [-Wdeprecated-declarations]
             2 |     int main() { return somefunc();}
               |                         ~~~~~~~~^~
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-uQWSIL/src.cxx:1:37: note: declared here
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yiWcKE/src.cxx:1:37: note: declared here
             1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
               |                                     ^~~~~~~~
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_4d9e0.dir/src.cxx.o -o cmTC_4d9e0   && :
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_cad81.dir/src.cxx.o -o cmTC_cad81   && :
         
       exitCode: 0
   -
@@ -753,8 +753,8 @@ events:
     checks:
       - "Looking for include files boost/units/quantity.hpp, boost/units/systems/si.hpp"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-hqtRlM"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-hqtRlM"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R3reD1"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R3reD1"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -765,11 +765,11 @@ events:
       variable: "HAVE_BOOST_UNITS"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-hqtRlM'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R3reD1'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_a57cd
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_a57cd.dir/HAVE_BOOST_UNITS.cpp.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-hqtRlM/HAVE_BOOST_UNITS.cpp
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_a57cd.dir/HAVE_BOOST_UNITS.cpp.o -o cmTC_a57cd   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_9ec7f
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_9ec7f.dir/HAVE_BOOST_UNITS.cpp.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-R3reD1/HAVE_BOOST_UNITS.cpp
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_9ec7f.dir/HAVE_BOOST_UNITS.cpp.o -o cmTC_9ec7f   && :
         
       exitCode: 0
   -
@@ -780,8 +780,8 @@ events:
     checks:
       - "Looking for C++ include net/ethernet.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-rExIaP"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-rExIaP"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7SeT3Y"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7SeT3Y"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -792,11 +792,11 @@ events:
       variable: "HAVE_NET_ETHERNET_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-rExIaP'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7SeT3Y'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_5c604
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_5c604.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-rExIaP/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_5c604.dir/CheckIncludeFile.cxx.o -o cmTC_5c604   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_4ff41
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_4ff41.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7SeT3Y/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_4ff41.dir/CheckIncludeFile.cxx.o -o cmTC_4ff41   && :
         
       exitCode: 0
   -
@@ -807,8 +807,8 @@ events:
     checks:
       - "Looking for C++ include netpacket/packet.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yfy12S"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yfy12S"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3rXhR6"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3rXhR6"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -819,11 +819,11 @@ events:
       variable: "HAVE_PACKET_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yfy12S'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3rXhR6'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_daf1d
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_daf1d.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-yfy12S/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_daf1d.dir/CheckIncludeFile.cxx.o -o cmTC_daf1d   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_2c465
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_2c465.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-3rXhR6/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_2c465.dir/CheckIncludeFile.cxx.o -o cmTC_2c465   && :
         
       exitCode: 0
   -
@@ -834,8 +834,8 @@ events:
     checks:
       - "Looking for C++ include net/if.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-LWIokj"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-LWIokj"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KbSONc"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KbSONc"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -846,11 +846,11 @@ events:
       variable: "HAVE_IF_NETS_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-LWIokj'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KbSONc'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_20c8f
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_20c8f.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-LWIokj/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_20c8f.dir/CheckIncludeFile.cxx.o -o cmTC_20c8f   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_628b1
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_628b1.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-KbSONc/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_628b1.dir/CheckIncludeFile.cxx.o -o cmTC_628b1   && :
         
       exitCode: 0
   -
@@ -861,8 +861,8 @@ events:
     checks:
       - "Looking for C++ include linux/if_tun.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-N60goI"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-N60goI"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7qzZPv"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7qzZPv"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -873,11 +873,11 @@ events:
       variable: "HAVE_IF_TUN_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-N60goI'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7qzZPv'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_e0485
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_e0485.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-N60goI/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_e0485.dir/CheckIncludeFile.cxx.o -o cmTC_e0485   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_8ef5b
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_8ef5b.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-7qzZPv/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_8ef5b.dir/CheckIncludeFile.cxx.o -o cmTC_8ef5b   && :
         
       exitCode: 0
   -
@@ -888,8 +888,8 @@ events:
     checks:
       - "Looking for C++ include net/netmap_user.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -900,13 +900,13 @@ events:
       variable: "HAVE_NETMAP_USER_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_ce0d5
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_ce0d5.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE/CheckIncludeFile.cxx
-        FAILED: CMakeFiles/cmTC_ce0d5.dir/CheckIncludeFile.cxx.o 
-        /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_ce0d5.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE/CheckIncludeFile.cxx
-        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-O2k1tE/CheckIncludeFile.cxx:1:10: fatal error: net/netmap_user.h: No such file or directory
+        Run Build Command(s): /usr/bin/ninja -v cmTC_db61d
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_db61d.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ/CheckIncludeFile.cxx
+        FAILED: CMakeFiles/cmTC_db61d.dir/CheckIncludeFile.cxx.o 
+        /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_db61d.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ/CheckIncludeFile.cxx
+        /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-oXC3YQ/CheckIncludeFile.cxx:1:10: fatal error: net/netmap_user.h: No such file or directory
             1 | #include <net/netmap_user.h>
               |          ^~~~~~~~~~~~~~~~~~~
         compilation terminated.
@@ -921,8 +921,8 @@ events:
     checks:
       - "Looking for C++ include sys/ioctl.h"
     directories:
-      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-La7yxv"
-      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-La7yxv"
+      source: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-G55d7l"
+      binary: "/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-G55d7l"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -933,11 +933,11 @@ events:
       variable: "HAVE_SYS_IOCTL_H"
       cached: true
       stdout: |
-        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-La7yxv'
+        Change Dir: '/home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-G55d7l'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_41245
-        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_41245.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-La7yxv/CheckIncludeFile.cxx
-        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_41245.dir/CheckIncludeFile.cxx.o -o cmTC_41245   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_e3ede
+        [1/2] /usr/bin/c++   -std=c++23 -std=c++23 -fPIE -o CMakeFiles/cmTC_e3ede.dir/CheckIncludeFile.cxx.o -c /home/ijoldenb/ns-3.48/cmake-cache/CMakeFiles/CMakeScratch/TryCompile-G55d7l/CheckIncludeFile.cxx
+        [2/2] : && /usr/bin/c++ -std=c++23  CMakeFiles/cmTC_e3ede.dir/CheckIncludeFile.cxx.o -o cmTC_e3ede   && :
         
       exitCode: 0
 ...

@@ -8,6 +8,6 @@ URL:
 Version: 3.48
 Requires:  ns3-wifi ns3-lte ns3-uan ns3-lr-wpan
 Requires.private: 
-Cflags: -I"${includedir}"  -I/usr/include/libxml2 -I/usr/include/python3.12 -I/usr/include
+Cflags: -I"${includedir}"  -I/usr/include/python3.12 -I/usr/include
 Libs: -L"${libdir}" -lns3.48-netanim-default  -lns3.48-wifi-default -lns3.48-lte-default -lns3.48-uan-default -lns3.48-lr-wpan-default -lstdc++_libbacktrace
 Libs.private: -L"${libdir}" 
