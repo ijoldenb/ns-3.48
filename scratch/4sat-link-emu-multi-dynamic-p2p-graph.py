@@ -1,16 +1,114 @@
 import sys
-from ns import ns 
+from ns import ns
+import cppyy
 
-# --- Global Configurations ---
+# ==============================================================================
+# --- 0. CRITICAL C++ TO PYTHON CALLBACK BRIDGE & CASTING ENGINE ---
+# ==============================================================================
+cppyy.cppdef("""
+#include "ns3/net-device.h"
+#include "ns3/packet.h"
+#include "ns3/callback.h"
+#include "ns3/simulator.h"
+#include "ns3/event-impl.h"
+#include "ns3/mac48-address.h"
+#include "ns3/address.h"
+#include <functional>
+#include <vector>
+#include <memory>
+
+namespace ns3 {
+
+class PromiscCallbackBridge {
+public:
+    std::function<bool(Ptr<NetDevice>, Ptr<const Packet>, uint16_t, const Address&, const Address&, NetDevice::PacketType)> m_pyFunc;
+
+    PromiscCallbackBridge(std::function<bool(Ptr<NetDevice>, Ptr<const Packet>, uint16_t, const Address&, const Address&, NetDevice::PacketType)> pyFunc)
+        : m_pyFunc(pyFunc) {}
+
+    bool Invoke(Ptr<NetDevice> dev, Ptr<const Packet> pkt, uint16_t proto, const Address& src, const Address& dst, NetDevice::PacketType type) {
+        return m_pyFunc(dev, pkt, proto, src, dst, type);
+    }
+};
+
+static std::vector<std::shared_ptr<PromiscCallbackBridge>> g_callbackBridges;
+
+Callback<bool, Ptr<NetDevice>, Ptr<const Packet>, uint16_t, const Address&, const Address&, NetDevice::PacketType>
+CreatePromiscCallback(std::function<bool(Ptr<NetDevice>, Ptr<const Packet>, uint16_t, const Address&, const Address&, NetDevice::PacketType)> pyFunc) {
+    auto bridge = std::make_shared<PromiscCallbackBridge>(pyFunc);
+    g_callbackBridges.push_back(bridge);
+    return MakeCallback(&PromiscCallbackBridge::Invoke, bridge.get());
+}
+
+class PythonEventImpl : public EventImpl {
+public:
+    std::function<void()> m_func;
+    PythonEventImpl(std::function<void()> func) : m_func(func) {}
+    virtual void Notify() override {
+        m_func();
+    }
+};
+
+void SchedulePythonEvent(Time delay, std::function<void()> func) {
+    Simulator::Schedule(delay, Create<PythonEventImpl>(func));
+}
+
+// Native C++ helper to securely map Mac48Address to a base Address object
+Address ToAddress(const Mac48Address& mac) {
+    return Address(mac);
+}
+
+}
+
+using ns3::CreatePromiscCallback;
+using ns3::SchedulePythonEvent;
+using ns3::ToAddress;
+""")
+
+# --- Global Network Infrastructure ---
 numNodes = 4
 
-# Tracking Matrices (Initialized to None)
-# meshDevices[SrcNode][DstNode]
+# Mesh Tracking Matrix: meshDevices[SrcNode][DstNode]
 meshDevices = [[None for _ in range(numNodes)] for _ in range(numNodes)]
 g_fdDev = [None for _ in range(numNodes)]
 
-# Global MAC Table for distributed switching
+# Global MAC Address Translation table for distributed L2 switching
 macToNodeMap = {}
+
+# Reference Vault to prevent Python GC cleanup
+g_keepAlive = []
+
+
+# --- LIVE TOPOLOGY REPORTING ENGINE ---
+def PrintCurrentTopology():
+    print("\n====================================================")
+    print(f" CORE TOPOLOGY REPORT | Sim Time: {ns.Simulator.Now().GetSeconds()}s")
+    print("====================================================")
+    
+    for i in range(numNodes):
+        for j in range(i + 1, numNodes):
+            if meshDevices[i][j] is None:
+                continue
+            
+            # 1. Fetch data rate attribute directly from the active PointToPoint device
+            bpsVal = ns.DataRateValue()
+            meshDevices[i][j].GetAttribute("DataRate", bpsVal)
+            bwMbps = bpsVal.Get().GetBitRate() / 1000000.0
+            
+            # 2. Extract the Receive Error Model via the dynamic pointer attribute wrapper
+            ptrVal = ns.PointerValue()
+            meshDevices[j][i].GetAttribute("ReceiveErrorModel", ptrVal)
+            em = ptrVal.GetObject()  
+            
+            dropRate = 0.0
+            if em:
+                dropVal = ns.DoubleValue()
+                em.GetAttribute("ErrorRate", dropVal)
+                dropRate = dropVal.Get()
+                
+            print(f"  Node {i + 1} <-> Node {j + 1} | Bandwidth: {bwMbps:.2f} Mbps | Packet Loss: {dropRate * 100.0:.1f}%")
+            
+    print("====================================================\n")
 
 
 # --- 1. Custom Encapsulation Tunnel ---
@@ -31,24 +129,20 @@ def make_vlan_ingress_callback(myNodeID):
         srcMac = ns.Mac48Address.ConvertFrom(src)
         dstMac = ns.Mac48Address.ConvertFrom(dst)
 
-        # Learn where this Pi's MAC address lives
         if not srcMac.IsBroadcast():
             macToNodeMap[str(srcMac)] = myNodeID
 
-        # If Broadcast/Multicast (like ARP or OSPF), flood to all OTHER nodes in the mesh
         if dstMac.IsBroadcast() or dstMac.IsGroup():
             for i in range(numNodes):
                 if i != myNodeID and meshDevices[myNodeID][i] is not None:
                     SendOverP2PTunnel(meshDevices[myNodeID][i], packet, protocol, src, dst)
-        else: # Unicast
+        else: 
             dst_str = str(dstMac)
             if dst_str in macToNodeMap:
                 targetNode = macToNodeMap[dst_str]
-                # Forward directly down the dedicated mesh wire to the destination
                 if targetNode != myNodeID and meshDevices[myNodeID][targetNode] is not None:
                     SendOverP2PTunnel(meshDevices[myNodeID][targetNode], packet, protocol, src, dst)
             else:
-                # Unknown unicast: Flood to all other nodes until MAC is learned
                 for i in range(numNodes):
                     if i != myNodeID and meshDevices[myNodeID][i] is not None:
                         SendOverP2PTunnel(meshDevices[myNodeID][i], packet, protocol, src, dst)
@@ -56,24 +150,22 @@ def make_vlan_ingress_callback(myNodeID):
     return Ingress_From_Vlan
 
 
-# --- 3. Split-Horizon Ingress (From ns-3 Mesh) ---
+# --- 3. Split-Horizon Ingress (From Inter-Satellite Mesh Links) ---
 def make_mesh_ingress_callback(myNodeID):
     def Ingress_From_Mesh(rxDevice, packet, protocol, src, dst, packetType):
         pktCopy = packet.Copy()
         eth = ns.EthernetHeader()
         pktCopy.RemoveHeader(eth)
         
-        # SPLIT HORIZON RULE: Packets arriving from the mesh are NEVER forwarded back into the mesh.
-        # They are only sent UP to the physical Raspberry Pi attached to this node.
-        g_fdDev[myNodeID].Send(pktCopy, eth.GetDestination(), eth.GetLengthType())
+        # Invokes the custom C++ bridge casting function to resolve the signature mapping crash
+        g_fdDev[myNodeID].Send(pktCopy, cppyy.gbl.ToAddress(eth.GetDestination()), eth.GetLengthType())
         
         return True
     return Ingress_From_Mesh
 
 
-# --- 4. Scheduled Apply Function (Strict Directional Mapping) ---
+# --- 4. Symmetric Dynamic Topology Engine ---
 def ApplyLinkChanges(changes):
-    print(f"\n--- Sim Time: {ns.Simulator.Now().GetSeconds()}s | Applying YAML Topology Updates ---")
     for change in changes:
         src = change['src']
         dst = change['dst']
@@ -84,32 +176,28 @@ def ApplyLinkChanges(changes):
 
             newRate = ns.DataRate(f"{bw}Mbps")
             
-            # Create error model for Destination node receiving from Source
-            emDst = ns.RateErrorModel()
+            emDst = ns.CreateObject[ns.RateErrorModel]()
             emDst.SetAttribute("ErrorRate", ns.DoubleValue(drop))
             emDst.SetUnit(ns.RateErrorModel.ERROR_UNIT_PACKET)
 
-            # Create error model for Source node receiving from Destination
-            emSrc = ns.RateErrorModel()
+            emSrc = ns.CreateObject[ns.RateErrorModel]()
             emSrc.SetAttribute("ErrorRate", ns.DoubleValue(drop))
             emSrc.SetUnit(ns.RateErrorModel.ERROR_UNIT_PACKET)
 
-            # 1. Throttle Forward Path (Src -> Dst)
             meshDevices[src][dst].SetAttribute("DataRate", ns.DataRateValue(newRate))
             meshDevices[dst][src].SetAttribute("ReceiveErrorModel", ns.PointerValue(emDst))
             
-            # 2. Throttle Return Path (Dst -> Src)
             meshDevices[dst][src].SetAttribute("DataRate", ns.DataRateValue(newRate))
             meshDevices[src][dst].SetAttribute("ReceiveErrorModel", ns.PointerValue(emSrc))
 
-            print(f"  [Link Updated Symmetrically] {src + 1} <-> {dst + 1} | BW: {bw} Mbps | Drop Rate: {drop}")
+    PrintCurrentTopology()
 
 
 def KeepAliveDummyEvent():
     pass
 
 
-# --- 5. Main Network Setup ---
+# --- 5. Real-Time Network Execution Environment ---
 def main():
     ns.CommandLine().Parse(sys.argv)
     ns.GlobalValue.Bind("SimulatorImplementationType", ns.StringValue("ns3::RealtimeSimulatorImpl"))
@@ -122,41 +210,44 @@ def main():
     p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
     p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
 
-    # Build the Full Mesh (Creates N*(N-1)/2 Links)
     for i in range(numNodes):
         for j in range(i + 1, numNodes):
             linkNodes = ns.NodeContainer()
             linkNodes.Add(meshNodes.Get(i))
             linkNodes.Add(meshNodes.Get(j))
+            
             devs = p2p.Install(linkNodes)
-
             devI = devs.Get(0)
             devJ = devs.Get(1)
 
-            meshDevices[i][j] = devI # Device on 'i' transmitting to 'j'
-            meshDevices[j][i] = devJ # Device on 'j' transmitting to 'i'
+            meshDevices[i][j] = devI
+            meshDevices[j][i] = devJ
 
-            # Bind the receiving callbacks using closures
-            devI.SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_mesh_ingress_callback(i)))
-            devJ.SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_mesh_ingress_callback(j)))
+            cbI = make_mesh_ingress_callback(i)
+            cbJ = make_mesh_ingress_callback(j)
+            g_keepAlive.append(cbI)
+            g_keepAlive.append(cbJ)
 
-    emuHelper = ns.fd_net_device.EmuFdNetDeviceHelper()
+            devI.SetPromiscReceiveCallback(cppyy.gbl.CreatePromiscCallback(cbI))
+            devJ.SetPromiscReceiveCallback(cppyy.gbl.CreatePromiscCallback(cbJ))
+
+    emuHelper = ns.EmuFdNetDeviceHelper()
     emuHelper.SetAttribute("EncapsulationMode", ns.StringValue("Dix"))
     vlanMapping = ["vlan101", "vlan102", "vlan103", "vlan104"]
 
     for i in range(numNodes):
         emuHelper.SetDeviceName(vlanMapping[i])
-        
         devSide = emuHelper.Install(meshNodes.Get(i))
         g_fdDev[i] = devSide.Get(0)
         
         mac_addr = ns.Mac48Address.Allocate()
         g_fdDev[i].SetAttribute("Address", ns.Mac48AddressValue(mac_addr))
 
-        # Bind the Pi ingest callback using closures
-        g_fdDev[i].SetPromiscReceiveCallback(ns.NetDevice.PromiscReceiveCallback(make_vlan_ingress_callback(i)))
+        cbVlan = make_vlan_ingress_callback(i)
+        g_keepAlive.append(cbVlan)
+        g_fdDev[i].SetPromiscReceiveCallback(cppyy.gbl.CreatePromiscCallback(cbVlan))
 
-    # --- Parse YAML File ---
+    # --- Linear Stream YAML Parsing Engine ---
     timelineMap = {}
     scheduleTime = 0.0
     inLink = False
@@ -176,11 +267,9 @@ def main():
                 if "- time" in key:
                     scheduleTime = float(valStr)
                 elif "- src" in key:
-                    # Subtract 1 to map YAML Node 1-4 to internal Node 0-3
                     tempChange['src'] = int(valStr) - 1
                     inLink = True
                 elif inLink and "dst" in key:
-                    # Subtract 1 to map YAML Node 1-4 to internal Node 0-3
                     tempChange['dst'] = int(valStr) - 1
                 elif inLink and "bw" in key:
                     tempChange['bwMbps'] = float(valStr)
@@ -194,16 +283,19 @@ def main():
                     inLink = False
                     tempChange = {}
     except FileNotFoundError:
-        print(f"FATAL ERROR: Could not open {trace_file_path}!")
+        print(f"FATAL ERROR: Missing trajectory map at {trace_file_path}!")
         sys.exit(1)
 
-    # Schedule the link modifications
     for t_time, changes in timelineMap.items():
-        ns.Simulator.Schedule(ns.Seconds(t_time), ApplyLinkChanges, changes)
+        evt = lambda c=changes: ApplyLinkChanges(c)
+        g_keepAlive.append(evt)
+        ns.SchedulePythonEvent(ns.Seconds(t_time), evt)
 
     stopTime = ns.Seconds(3600.0)
     ns.Simulator.Stop(stopTime)
-    ns.Simulator.Schedule(stopTime - ns.Seconds(1.0), KeepAliveDummyEvent)
+    ns.SchedulePythonEvent(stopTime - ns.Seconds(1.0), KeepAliveDummyEvent)
+
+    # FIXED: Removed the extra PrintCurrentTopology() from here completely
 
     print("================================================================")
     print("ns-3 Dynamic PointToPoint FULL MESH Active (Python L2 Split-Horizon)")
@@ -211,6 +303,7 @@ def main():
 
     ns.Simulator.Run()
     ns.Simulator.Destroy()
+
 
 if __name__ == '__main__':
     main()
