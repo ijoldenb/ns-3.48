@@ -197,7 +197,55 @@ def KeepAliveDummyEvent():
     pass
 
 
-# --- 5. Real-Time Network Execution Environment ---
+# --- 5. Dedicated YAML Parsing Engine ---
+def parse_topology_trace(file_path):
+    """
+    Reads the YAML topology trace and structures it into a dictionary mapped by simulation time.
+    """
+    timelineMap = {}
+    scheduleTime = 0.0
+    inLink = False
+    tempChange = {}
+
+    try:
+        with open(file_path, "r") as traceFile:
+            for line in traceFile:
+                line = line.strip()
+                if not line or ":" not in line:
+                    continue
+                
+                key, valStr = [x.strip() for x in line.split(":", 1)]
+
+                if "- time" in key:
+                    scheduleTime = float(valStr)
+                elif "- src" in key:
+                    # YAML is 1-indexed, Python arrays are 0-indexed
+                    tempChange['src'] = int(valStr) - 1
+                    inLink = True
+                elif inLink and "dst" in key:
+                    tempChange['dst'] = int(valStr) - 1
+                elif inLink and "bw" in key:
+                    tempChange['bwMbps'] = float(valStr)
+                elif inLink and "drop" in key:
+                    tempChange['dropRate'] = float(valStr)
+                elif inLink and "latency" in key:
+                    tempChange['latency'] = float(valStr)
+                    
+                    # Latency is the last element in the YAML block, trigger the append here
+                    if scheduleTime not in timelineMap:
+                        timelineMap[scheduleTime] = []
+                    timelineMap[scheduleTime].append(tempChange.copy())
+                    
+                    inLink = False
+                    tempChange = {}
+    except FileNotFoundError:
+        print(f"FATAL ERROR: Missing trajectory map at {file_path}!")
+        sys.exit(1)
+        
+    return timelineMap
+
+
+# --- 6. Real-Time Network Execution Environment ---
 def main():
     ns.CommandLine().Parse(sys.argv)
     ns.GlobalValue.Bind("SimulatorImplementationType", ns.StringValue("ns3::RealtimeSimulatorImpl"))
@@ -208,6 +256,7 @@ def main():
     p2p = ns.PointToPointHelper()
     p2p.SetDeviceAttribute("DataRate", ns.StringValue("100Mbps"))
     p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
+    p2p.SetDeviceAttribute("Mtu", ns.UintegerValue(1550))
     p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
 
     for i in range(numNodes):
@@ -247,45 +296,11 @@ def main():
         g_keepAlive.append(cbVlan)
         g_fdDev[i].SetPromiscReceiveCallback(cppyy.gbl.CreatePromiscCallback(cbVlan))
 
-    # --- Linear Stream YAML Parsing Engine ---
-    timelineMap = {}
-    scheduleTime = 0.0
-    inLink = False
-    tempChange = {}
-
+    # --- Call the standalone parser ---
     trace_file_path = "/home/ijoldenb/ns-3.48/scratch/topology_trace.yaml"
-    
-    try:
-        with open(trace_file_path, "r") as traceFile:
-            for line in traceFile:
-                line = line.strip()
-                if not line or ":" not in line:
-                    continue
-                
-                key, valStr = [x.strip() for x in line.split(":", 1)]
+    timelineMap = parse_topology_trace(trace_file_path)
 
-                if "- time" in key:
-                    scheduleTime = float(valStr)
-                elif "- src" in key:
-                    tempChange['src'] = int(valStr) - 1
-                    inLink = True
-                elif inLink and "dst" in key:
-                    tempChange['dst'] = int(valStr) - 1
-                elif inLink and "bw" in key:
-                    tempChange['bwMbps'] = float(valStr)
-                elif inLink and "drop" in key:
-                    tempChange['dropRate'] = float(valStr)
-                    
-                    if scheduleTime not in timelineMap:
-                        timelineMap[scheduleTime] = []
-                    timelineMap[scheduleTime].append(tempChange.copy())
-                    
-                    inLink = False
-                    tempChange = {}
-    except FileNotFoundError:
-        print(f"FATAL ERROR: Missing trajectory map at {trace_file_path}!")
-        sys.exit(1)
-
+    # Schedule the link changes
     for t_time, changes in timelineMap.items():
         evt = lambda c=changes: ApplyLinkChanges(c)
         g_keepAlive.append(evt)
@@ -294,8 +309,6 @@ def main():
     stopTime = ns.Seconds(3600.0)
     ns.Simulator.Stop(stopTime)
     ns.SchedulePythonEvent(stopTime - ns.Seconds(1.0), KeepAliveDummyEvent)
-
-    # FIXED: Removed the extra PrintCurrentTopology() from here completely
 
     print("================================================================")
     print("ns-3 Dynamic PointToPoint FULL MESH Active (Python L2 Split-Horizon)")

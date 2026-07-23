@@ -168,6 +168,7 @@ int main (int argc, char *argv[])
   PointToPointHelper p2p;
   p2p.SetDeviceAttribute ("DataRate", StringValue ("100Mbps")); 
   p2p.SetChannelAttribute ("Delay", StringValue ("0ms"));
+  p2p.SetDeviceAttribute ("Mtu", UintegerValue (1550));
   p2p.SetQueue ("ns3::DropTailQueue<Packet>", "MaxSize", QueueSizeValue (QueueSize ("5000p")));
 
   // Build the Full Mesh (Creates N*(N-1)/2 Links)

@@ -4,3143 +4,3869 @@
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 30.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 60.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 90.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 120.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 150.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 180.0
   links:
     - src: 1
       dst: 2
       bw: 10
       drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 20
+      bw: 10
       drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 30
+      bw: 10
       drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 40
+      bw: 10
       drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 50
+      bw: 10
       drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 60
+      bw: 10
       drop: 0
+      latency: 50
 - time: 210.0
   links:
     - src: 1
       dst: 2
-      bw: 2.12
-      drop: 0.0103
+      bw: 10
+      drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 9.31
-      drop: 0.0368
+      bw: 10
+      drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 9.41
-      drop: 0.0415
+      bw: 10
+      drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 2.97
-      drop: 0.0196
+      bw: 10
+      drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 3.91
-      drop: 0.0141
+      bw: 10
+      drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 3.15
-      drop: 0.0137
+      bw: 10
+      drop: 0
+      latency: 50
 - time: 240.0
   links:
     - src: 1
       dst: 2
-      bw: 2.02
-      drop: 0.006
+      bw: 10
+      drop: 0
+      latency: 0
     - src: 1
       dst: 3
-      bw: 9.21
-      drop: 0.039
+      bw: 10
+      drop: 0
+      latency: 10
     - src: 1
       dst: 4
-      bw: 9.26
-      drop: 0.0012
+      bw: 10
+      drop: 0
+      latency: 20
     - src: 2
       dst: 3
-      bw: 8.07
-      drop: 0.0439
+      bw: 10
+      drop: 0
+      latency: 30
     - src: 2
       dst: 4
-      bw: 4.14
-      drop: 0.0176
+      bw: 10
+      drop: 0
+      latency: 40
     - src: 3
       dst: 4
-      bw: 2.66
-      drop: 0.0297
+      bw: 10
+      drop: 0
+      latency: 50
 - time: 270.0
   links:
     - src: 1
       dst: 2
-      bw: 6.49
-      drop: 0.0049
+      bw: 6.0
+      drop: 0.0072
+      latency: 25.24
     - src: 1
       dst: 3
-      bw: 7.52
-      drop: 0.0455
+      bw: 6.82
+      drop: 0.0006
+      latency: 13.73
     - src: 1
       dst: 4
-      bw: 7.27
-      drop: 0.0352
+      bw: 7.91
+      drop: 0.0034
+      latency: 57.88
     - src: 2
       dst: 3
-      bw: 3.31
-      drop: 0.0327
+      bw: 7.79
+      drop: 0.0274
+      latency: 90.5
     - src: 2
       dst: 4
-      bw: 6.48
-      drop: 0.0458
+      bw: 3.8
+      drop: 0.0144
+      latency: 117.1
     - src: 3
       dst: 4
-      bw: 2.58
-      drop: 0.048
+      bw: 4.02
+      drop: 0.0438
+      latency: 108.44
 - time: 300.0
   links:
     - src: 1
       dst: 2
-      bw: 4.47
-      drop: 0.0064
+      bw: 7.81
+      drop: 0.0046
+      latency: 70.6
     - src: 1
       dst: 3
-      bw: 6.47
-      drop: 0.0238
+      bw: 2.98
+      drop: 0.0074
+      latency: 124.47
     - src: 1
       dst: 4
-      bw: 6.53
-      drop: 0.0284
+      bw: 4.1
+      drop: 0.0171
+      latency: 117.29
     - src: 2
       dst: 3
-      bw: 9.96
-      drop: 0.0499
+      bw: 2.44
+      drop: 0.0011
+      latency: 28.49
     - src: 2
       dst: 4
-      bw: 3.28
-      drop: 0.046
+      bw: 8.2
+      drop: 0.037
+      latency: 57.55
     - src: 3
       dst: 4
-      bw: 7.1
-      drop: 0.0214
+      bw: 6.73
+      drop: 0.0446
+      latency: 11.38
 - time: 330.0
   links:
     - src: 1
       dst: 2
-      bw: 5.0
-      drop: 0.0438
+      bw: 3.39
+      drop: 0.0165
+      latency: 72.97
     - src: 1
       dst: 3
-      bw: 7.84
-      drop: 0.0424
+      bw: 6.67
+      drop: 0.007
+      latency: 66.71
     - src: 1
       dst: 4
-      bw: 8.2
-      drop: 0.009
+      bw: 5.97
+      drop: 0.0079
+      latency: 125.23
     - src: 2
       dst: 3
-      bw: 8.09
-      drop: 0.0413
+      bw: 7.85
+      drop: 0.0144
+      latency: 48.39
     - src: 2
       dst: 4
-      bw: 8.4
-      drop: 0.0498
+      bw: 9.24
+      drop: 0.0058
+      latency: 38.34
     - src: 3
       dst: 4
-      bw: 2.73
-      drop: 0.0186
+      bw: 8.77
+      drop: 0.0348
+      latency: 19.59
 - time: 360.0
   links:
     - src: 1
       dst: 2
-      bw: 8.12
-      drop: 0.0383
+      bw: 7.01
+      drop: 0.0209
+      latency: 30.47
     - src: 1
       dst: 3
-      bw: 2.21
-      drop: 0.0051
+      bw: 6.73
+      drop: 0.0105
+      latency: 91.96
     - src: 1
       dst: 4
-      bw: 4.25
-      drop: 0.034
+      bw: 8.1
+      drop: 0.0255
+      latency: 89.06
     - src: 2
       dst: 3
-      bw: 2.47
-      drop: 0.0427
+      bw: 6.41
+      drop: 0.0493
+      latency: 134.09
     - src: 2
       dst: 4
-      bw: 8.94
-      drop: 0.0306
+      bw: 3.89
+      drop: 0.0038
+      latency: 82.84
     - src: 3
       dst: 4
-      bw: 9.97
-      drop: 0.0237
+      bw: 6.89
+      drop: 0.0267
+      latency: 67.78
 - time: 390.0
   links:
     - src: 1
       dst: 2
-      bw: 9.6
-      drop: 0.0389
+      bw: 2.85
+      drop: 0.0198
+      latency: 108.44
     - src: 1
       dst: 3
-      bw: 2.72
-      drop: 0.0078
+      bw: 8.35
+      drop: 0.0371
+      latency: 92.42
     - src: 1
       dst: 4
-      bw: 8.88
-      drop: 0.0129
+      bw: 5.84
+      drop: 0.0118
+      latency: 92.25
     - src: 2
       dst: 3
-      bw: 8.51
-      drop: 0.0163
+      bw: 7.56
+      drop: 0.0327
+      latency: 107.59
     - src: 2
       dst: 4
-      bw: 8.98
-      drop: 0.0331
+      bw: 6.57
+      drop: 0.0491
+      latency: 36.17
     - src: 3
       dst: 4
-      bw: 4.18
-      drop: 0.0367
+      bw: 4.57
+      drop: 0.011
+      latency: 123.08
 - time: 420.0
   links:
     - src: 1
       dst: 2
-      bw: 4.79
-      drop: 0.0344
+      bw: 8.77
+      drop: 0.0458
+      latency: 79.2
     - src: 1
       dst: 3
-      bw: 3.19
-      drop: 0.0473
+      bw: 4.38
+      drop: 0.0058
+      latency: 101.02
     - src: 1
       dst: 4
-      bw: 6.99
-      drop: 0.0379
+      bw: 7.18
+      drop: 0.038
+      latency: 109.51
     - src: 2
       dst: 3
-      bw: 2.16
-      drop: 0.0037
+      bw: 7.59
+      drop: 0.0396
+      latency: 45.86
     - src: 2
       dst: 4
-      bw: 8.4
-      drop: 0.0317
+      bw: 2.01
+      drop: 0.0149
+      latency: 59.32
     - src: 3
       dst: 4
-      bw: 5.45
-      drop: 0.0378
+      bw: 8.39
+      drop: 0.0401
+      latency: 78.03
 - time: 450.0
   links:
     - src: 1
       dst: 2
-      bw: 9.97
-      drop: 0.0122
+      bw: 3.54
+      drop: 0.019
+      latency: 102.67
     - src: 1
       dst: 3
-      bw: 4.28
-      drop: 0.0111
+      bw: 9.98
+      drop: 0.0045
+      latency: 21.54
     - src: 1
       dst: 4
-      bw: 7.88
-      drop: 0.0409
+      bw: 4.27
+      drop: 0.0025
+      latency: 43.85
     - src: 2
       dst: 3
-      bw: 2.58
-      drop: 0.0213
+      bw: 6.01
+      drop: 0.0289
+      latency: 128.26
     - src: 2
       dst: 4
-      bw: 2.86
-      drop: 0.0378
+      bw: 7.03
+      drop: 0.0395
+      latency: 39.85
     - src: 3
       dst: 4
-      bw: 7.25
-      drop: 0.0281
+      bw: 5.55
+      drop: 0.0322
+      latency: 46.46
 - time: 480.0
   links:
     - src: 1
       dst: 2
-      bw: 5.61
-      drop: 0.0292
+      bw: 8.61
+      drop: 0.0396
+      latency: 78.4
     - src: 1
       dst: 3
-      bw: 3.84
-      drop: 0.0272
+      bw: 3.07
+      drop: 0.0404
+      latency: 34.82
     - src: 1
       dst: 4
-      bw: 9.5
+      bw: 6.56
+      drop: 0.0457
+      latency: 84.01
+    - src: 2
+      dst: 3
+      bw: 8.23
+      drop: 0.0103
+      latency: 57.7
+    - src: 2
+      dst: 4
+      bw: 9.33
       drop: 0.038
-    - src: 2
-      dst: 3
-      bw: 2.28
-      drop: 0.0345
-    - src: 2
-      dst: 4
-      bw: 6.73
-      drop: 0.0178
+      latency: 104.2
     - src: 3
       dst: 4
-      bw: 3.54
-      drop: 0.0086
+      bw: 6.78
+      drop: 0.0203
+      latency: 55.7
 - time: 510.0
   links:
     - src: 1
       dst: 2
-      bw: 8.34
-      drop: 0.017
+      bw: 9.11
+      drop: 0.0164
+      latency: 16.98
     - src: 1
       dst: 3
-      bw: 2.71
-      drop: 0.0361
+      bw: 5.46
+      drop: 0.0438
+      latency: 49.8
     - src: 1
       dst: 4
-      bw: 4.2
-      drop: 0.0258
+      bw: 4.24
+      drop: 0.0222
+      latency: 92.45
     - src: 2
       dst: 3
-      bw: 7.04
-      drop: 0.0327
+      bw: 5.04
+      drop: 0.0344
+      latency: 56.42
     - src: 2
       dst: 4
-      bw: 2.62
-      drop: 0.0083
+      bw: 3.23
+      drop: 0.0149
+      latency: 144.85
     - src: 3
       dst: 4
-      bw: 3.72
-      drop: 0.008
+      bw: 8.3
+      drop: 0.01
+      latency: 108.25
 - time: 540.0
   links:
     - src: 1
       dst: 2
-      bw: 4.42
-      drop: 0.0045
+      bw: 9.29
+      drop: 0.0413
+      latency: 97.29
     - src: 1
       dst: 3
-      bw: 4.91
-      drop: 0.0038
+      bw: 7.52
+      drop: 0.0135
+      latency: 26.75
     - src: 1
       dst: 4
-      bw: 7.26
-      drop: 0.0457
+      bw: 7.96
+      drop: 0.018
+      latency: 129.35
     - src: 2
       dst: 3
-      bw: 2.95
-      drop: 0.0489
+      bw: 8.43
+      drop: 0.0031
+      latency: 66.8
     - src: 2
       dst: 4
-      bw: 4.24
-      drop: 0.0041
+      bw: 2.57
+      drop: 0.0409
+      latency: 56.26
     - src: 3
       dst: 4
-      bw: 8.05
-      drop: 0.0368
+      bw: 8.98
+      drop: 0.0326
+      latency: 24.25
 - time: 570.0
   links:
     - src: 1
       dst: 2
-      bw: 9.92
-      drop: 0.0462
+      bw: 5.46
+      drop: 0.0221
+      latency: 78.06
     - src: 1
       dst: 3
-      bw: 5.24
-      drop: 0.0098
+      bw: 4.79
+      drop: 0.0169
+      latency: 88.29
     - src: 1
       dst: 4
-      bw: 8.09
-      drop: 0.0494
+      bw: 8.76
+      drop: 0.009
+      latency: 19.4
     - src: 2
       dst: 3
-      bw: 9.49
-      drop: 0.0197
+      bw: 3.36
+      drop: 0.0333
+      latency: 77.75
     - src: 2
       dst: 4
-      bw: 5.62
-      drop: 0.0498
+      bw: 6.15
+      drop: 0.0106
+      latency: 85.86
     - src: 3
       dst: 4
-      bw: 9.68
-      drop: 0.0159
+      bw: 4.97
+      drop: 0.0419
+      latency: 102.53
 - time: 600.0
   links:
     - src: 1
       dst: 2
-      bw: 6.78
-      drop: 0.0402
+      bw: 4.41
+      drop: 0.0082
+      latency: 28.56
     - src: 1
       dst: 3
-      bw: 8.36
-      drop: 0.0141
+      bw: 6.3
+      drop: 0.0162
+      latency: 63.08
     - src: 1
       dst: 4
-      bw: 2.84
-      drop: 0.0404
+      bw: 6.23
+      drop: 0.0279
+      latency: 22.9
     - src: 2
       dst: 3
-      bw: 7.0
-      drop: 0.0087
+      bw: 8.86
+      drop: 0.0101
+      latency: 109.24
     - src: 2
       dst: 4
-      bw: 5.97
-      drop: 0.0472
+      bw: 8.28
+      drop: 0.0226
+      latency: 142.57
     - src: 3
       dst: 4
-      bw: 9.47
-      drop: 0.0214
+      bw: 8.4
+      drop: 0.0473
+      latency: 36.34
 - time: 630.0
   links:
     - src: 1
       dst: 2
-      bw: 5.26
-      drop: 0.0192
+      bw: 4.62
+      drop: 0.0012
+      latency: 42.81
     - src: 1
       dst: 3
-      bw: 8.24
-      drop: 0.0354
+      bw: 4.83
+      drop: 0.0403
+      latency: 108.6
     - src: 1
       dst: 4
-      bw: 7.55
-      drop: 0.0472
+      bw: 6.68
+      drop: 0.0115
+      latency: 87.87
     - src: 2
       dst: 3
-      bw: 4.74
-      drop: 0.0345
+      bw: 5.47
+      drop: 0.0177
+      latency: 77.46
     - src: 2
       dst: 4
-      bw: 6.12
-      drop: 0.0092
+      bw: 9.43
+      drop: 0.0237
+      latency: 137.21
     - src: 3
       dst: 4
-      bw: 8.08
-      drop: 0.0396
+      bw: 3.18
+      drop: 0.0388
+      latency: 84.68
 - time: 660.0
   links:
     - src: 1
       dst: 2
-      bw: 8.92
-      drop: 0.0267
+      bw: 3.99
+      drop: 0.042
+      latency: 147.4
     - src: 1
       dst: 3
-      bw: 8.54
-      drop: 0.0059
+      bw: 2.71
+      drop: 0.0477
+      latency: 94.45
     - src: 1
       dst: 4
-      bw: 8.84
-      drop: 0.021
+      bw: 4.3
+      drop: 0.0147
+      latency: 31.49
     - src: 2
       dst: 3
-      bw: 8.06
-      drop: 0.0224
+      bw: 2.74
+      drop: 0.0332
+      latency: 51.14
     - src: 2
       dst: 4
-      bw: 8.42
-      drop: 0.0031
+      bw: 7.56
+      drop: 0.0108
+      latency: 104.43
     - src: 3
       dst: 4
-      bw: 9.72
-      drop: 0.0381
+      bw: 9.32
+      drop: 0.0252
+      latency: 103.07
 - time: 690.0
   links:
     - src: 1
       dst: 2
-      bw: 3.76
-      drop: 0.0222
+      bw: 8.56
+      drop: 0.004
+      latency: 76.95
     - src: 1
       dst: 3
-      bw: 4.04
-      drop: 0.0353
+      bw: 3.82
+      drop: 0.0249
+      latency: 89.65
     - src: 1
       dst: 4
-      bw: 6.19
-      drop: 0.0046
+      bw: 7.83
+      drop: 0.0141
+      latency: 53.65
     - src: 2
       dst: 3
-      bw: 5.69
-      drop: 0.0319
+      bw: 4.22
+      drop: 0.0085
+      latency: 98.52
     - src: 2
       dst: 4
-      bw: 8.99
-      drop: 0.0216
+      bw: 4.15
+      drop: 0.0407
+      latency: 12.31
     - src: 3
       dst: 4
-      bw: 8.23
-      drop: 0.045
+      bw: 9.27
+      drop: 0.0418
+      latency: 137.05
 - time: 720.0
   links:
     - src: 1
       dst: 2
-      bw: 7.24
-      drop: 0.0159
+      bw: 5.35
+      drop: 0.0083
+      latency: 81.43
     - src: 1
       dst: 3
-      bw: 2.33
-      drop: 0.0416
+      bw: 9.61
+      drop: 0.0486
+      latency: 105.47
     - src: 1
       dst: 4
-      bw: 9.18
-      drop: 0.0438
+      bw: 9.38
+      drop: 0.0366
+      latency: 110.47
     - src: 2
       dst: 3
-      bw: 5.39
-      drop: 0.0304
+      bw: 2.1
+      drop: 0.0237
+      latency: 17.1
     - src: 2
       dst: 4
-      bw: 2.54
-      drop: 0.0447
+      bw: 9.48
+      drop: 0.0055
+      latency: 141.26
     - src: 3
       dst: 4
-      bw: 4.36
-      drop: 0.0265
+      bw: 8.27
+      drop: 0.009
+      latency: 38.83
 - time: 750.0
   links:
     - src: 1
       dst: 2
-      bw: 4.25
-      drop: 0.0068
+      bw: 3.67
+      drop: 0.0259
+      latency: 67.7
     - src: 1
       dst: 3
-      bw: 9.39
-      drop: 0.0406
+      bw: 5.58
+      drop: 0.0097
+      latency: 60.13
     - src: 1
       dst: 4
-      bw: 7.0
-      drop: 0.0042
+      bw: 9.98
+      drop: 0.0291
+      latency: 16.02
     - src: 2
       dst: 3
-      bw: 6.38
-      drop: 0.017
+      bw: 9.58
+      drop: 0.0128
+      latency: 39.19
     - src: 2
       dst: 4
-      bw: 6.44
-      drop: 0.0013
+      bw: 7.9
+      drop: 0.0061
+      latency: 17.81
     - src: 3
       dst: 4
-      bw: 2.33
-      drop: 0.0155
+      bw: 2.72
+      drop: 0.0021
+      latency: 18.01
 - time: 780.0
   links:
     - src: 1
       dst: 2
-      bw: 8.16
-      drop: 0.0317
+      bw: 5.79
+      drop: 0.0173
+      latency: 40.35
     - src: 1
       dst: 3
-      bw: 7.68
-      drop: 0.029
+      bw: 7.2
+      drop: 0.045
+      latency: 123.3
     - src: 1
       dst: 4
-      bw: 6.89
-      drop: 0.0146
+      bw: 4.96
+      drop: 0.0188
+      latency: 146.41
     - src: 2
       dst: 3
-      bw: 8.98
-      drop: 0.0373
+      bw: 3.23
+      drop: 0.018
+      latency: 27.06
     - src: 2
       dst: 4
-      bw: 4.56
-      drop: 0.0121
+      bw: 7.62
+      drop: 0.0384
+      latency: 121.52
     - src: 3
       dst: 4
-      bw: 3.75
-      drop: 0.0313
+      bw: 5.78
+      drop: 0.0257
+      latency: 74.26
 - time: 810.0
   links:
     - src: 1
       dst: 2
-      bw: 3.18
-      drop: 0.0176
+      bw: 5.43
+      drop: 0.0086
+      latency: 33.38
     - src: 1
       dst: 3
-      bw: 9.12
-      drop: 0.0413
+      bw: 4.27
+      drop: 0.0108
+      latency: 47.73
     - src: 1
       dst: 4
-      bw: 3.88
-      drop: 0.0164
+      bw: 3.78
+      drop: 0.0071
+      latency: 40.57
     - src: 2
       dst: 3
-      bw: 6.16
-      drop: 0.038
+      bw: 5.06
+      drop: 0.018
+      latency: 132.57
     - src: 2
       dst: 4
-      bw: 2.44
-      drop: 0.0015
+      bw: 8.45
+      drop: 0.0141
+      latency: 110.66
     - src: 3
       dst: 4
-      bw: 3.21
-      drop: 0.0179
+      bw: 5.3
+      drop: 0.0009
+      latency: 54.41
 - time: 840.0
   links:
     - src: 1
       dst: 2
-      bw: 6.4
-      drop: 0.0049
+      bw: 3.64
+      drop: 0.0356
+      latency: 83.21
     - src: 1
       dst: 3
-      bw: 8.98
-      drop: 0.0022
+      bw: 2.11
+      drop: 0.0292
+      latency: 85.97
     - src: 1
       dst: 4
-      bw: 4.28
-      drop: 0.0193
+      bw: 4.5
+      drop: 0.0096
+      latency: 98.87
     - src: 2
       dst: 3
-      bw: 9.59
-      drop: 0.0257
+      bw: 6.37
+      drop: 0.0187
+      latency: 128.52
     - src: 2
       dst: 4
-      bw: 7.97
-      drop: 0.0168
+      bw: 7.64
+      drop: 0.0283
+      latency: 111.54
     - src: 3
       dst: 4
-      bw: 4.11
-      drop: 0.0054
+      bw: 9.3
+      drop: 0.0335
+      latency: 131.22
 - time: 870.0
   links:
     - src: 1
       dst: 2
-      bw: 3.53
-      drop: 0.0155
+      bw: 5.78
+      drop: 0.0281
+      latency: 134.69
     - src: 1
       dst: 3
-      bw: 5.15
-      drop: 0.0278
+      bw: 4.83
+      drop: 0.0175
+      latency: 12.4
     - src: 1
       dst: 4
-      bw: 3.04
-      drop: 0.042
+      bw: 7.83
+      drop: 0.004
+      latency: 147.03
     - src: 2
       dst: 3
-      bw: 7.74
-      drop: 0.0122
+      bw: 9.34
+      drop: 0.0377
+      latency: 21.62
     - src: 2
       dst: 4
-      bw: 9.24
-      drop: 0.0388
+      bw: 4.08
+      drop: 0.0258
+      latency: 86.14
     - src: 3
       dst: 4
-      bw: 2.98
-      drop: 0.0416
+      bw: 8.9
+      drop: 0.0469
+      latency: 29.56
 - time: 900.0
   links:
     - src: 1
       dst: 2
-      bw: 5.85
-      drop: 0.0438
+      bw: 6.6
+      drop: 0.018
+      latency: 15.63
     - src: 1
       dst: 3
-      bw: 5.96
-      drop: 0.0176
+      bw: 5.3
+      drop: 0.0063
+      latency: 66.58
     - src: 1
       dst: 4
-      bw: 3.1
-      drop: 0.0476
+      bw: 8.11
+      drop: 0.0073
+      latency: 80.26
     - src: 2
       dst: 3
-      bw: 3.61
-      drop: 0.04
+      bw: 9.97
+      drop: 0.0032
+      latency: 147.24
     - src: 2
       dst: 4
-      bw: 2.83
-      drop: 0.0168
+      bw: 7.41
+      drop: 0.0288
+      latency: 121.31
     - src: 3
       dst: 4
-      bw: 9.52
-      drop: 0.0088
+      bw: 9.14
+      drop: 0.0065
+      latency: 12.5
 - time: 930.0
   links:
     - src: 1
       dst: 2
-      bw: 9.18
-      drop: 0.0101
+      bw: 5.42
+      drop: 0.0438
+      latency: 120.49
     - src: 1
       dst: 3
-      bw: 3.53
-      drop: 0.0198
+      bw: 7.54
+      drop: 0.001
+      latency: 22.0
     - src: 1
       dst: 4
-      bw: 9.12
-      drop: 0.0284
+      bw: 2.82
+      drop: 0.0157
+      latency: 53.56
     - src: 2
       dst: 3
-      bw: 3.99
-      drop: 0.0291
+      bw: 6.13
+      drop: 0.0105
+      latency: 124.24
     - src: 2
       dst: 4
-      bw: 4.97
-      drop: 0.0152
+      bw: 9.61
+      drop: 0.0174
+      latency: 116.36
     - src: 3
       dst: 4
-      bw: 7.09
-      drop: 0.0361
+      bw: 7.12
+      drop: 0.0212
+      latency: 77.41
 - time: 960.0
   links:
     - src: 1
       dst: 2
-      bw: 8.24
-      drop: 0.0437
+      bw: 8.5
+      drop: 0.0354
+      latency: 28.24
     - src: 1
       dst: 3
-      bw: 9.25
-      drop: 0.0471
+      bw: 3.75
+      drop: 0.0007
+      latency: 133.1
     - src: 1
       dst: 4
-      bw: 9.24
-      drop: 0.0206
+      bw: 2.36
+      drop: 0.0307
+      latency: 79.6
     - src: 2
       dst: 3
-      bw: 3.32
-      drop: 0.0296
+      bw: 7.15
+      drop: 0.0159
+      latency: 122.6
     - src: 2
       dst: 4
-      bw: 3.87
-      drop: 0.0237
+      bw: 3.02
+      drop: 0.019
+      latency: 70.59
     - src: 3
       dst: 4
-      bw: 6.36
-      drop: 0.0418
+      bw: 6.5
+      drop: 0.0264
+      latency: 90.38
 - time: 990.0
   links:
     - src: 1
       dst: 2
-      bw: 7.96
-      drop: 0.0344
+      bw: 9.31
+      drop: 0.0499
+      latency: 139.62
     - src: 1
       dst: 3
-      bw: 3.55
-      drop: 0.0353
+      bw: 4.44
+      drop: 0.0011
+      latency: 100.82
     - src: 1
       dst: 4
-      bw: 6.37
-      drop: 0.0245
+      bw: 2.49
+      drop: 0.0176
+      latency: 58.33
     - src: 2
       dst: 3
-      bw: 5.28
-      drop: 0.0107
+      bw: 9.91
+      drop: 0.0415
+      latency: 64.71
     - src: 2
       dst: 4
-      bw: 7.07
-      drop: 0.0266
+      bw: 2.49
+      drop: 0.0296
+      latency: 24.19
     - src: 3
       dst: 4
-      bw: 5.32
-      drop: 0.0444
+      bw: 2.77
+      drop: 0.0056
+      latency: 140.43
 - time: 1020.0
   links:
     - src: 1
       dst: 2
-      bw: 8.82
-      drop: 0.0418
+      bw: 8.86
+      drop: 0.0399
+      latency: 93.09
     - src: 1
       dst: 3
-      bw: 4.13
-      drop: 0.0186
+      bw: 4.44
+      drop: 0.0405
+      latency: 67.22
     - src: 1
       dst: 4
-      bw: 4.48
-      drop: 0.0142
+      bw: 8.37
+      drop: 0.0338
+      latency: 16.15
     - src: 2
       dst: 3
-      bw: 5.15
-      drop: 0.0462
+      bw: 5.79
+      drop: 0.0291
+      latency: 79.78
     - src: 2
       dst: 4
-      bw: 8.43
-      drop: 0.0417
+      bw: 9.36
+      drop: 0.0336
+      latency: 57.21
     - src: 3
       dst: 4
-      bw: 5.52
-      drop: 0.015
+      bw: 3.83
+      drop: 0.0317
+      latency: 104.81
 - time: 1050.0
   links:
     - src: 1
       dst: 2
-      bw: 8.0
-      drop: 0.0167
+      bw: 5.74
+      drop: 0.0442
+      latency: 100.41
     - src: 1
       dst: 3
-      bw: 5.58
-      drop: 0.0378
+      bw: 4.96
+      drop: 0.0011
+      latency: 83.14
     - src: 1
       dst: 4
-      bw: 9.16
-      drop: 0.0207
+      bw: 2.96
+      drop: 0.0155
+      latency: 13.98
     - src: 2
       dst: 3
-      bw: 3.71
-      drop: 0.0386
+      bw: 9.75
+      drop: 0.0247
+      latency: 23.38
     - src: 2
       dst: 4
-      bw: 4.76
-      drop: 0.005
+      bw: 5.76
+      drop: 0.0364
+      latency: 117.45
     - src: 3
       dst: 4
-      bw: 3.73
-      drop: 0.0419
+      bw: 2.36
+      drop: 0.0181
+      latency: 75.41
 - time: 1080.0
   links:
     - src: 1
       dst: 2
-      bw: 4.12
-      drop: 0.0235
+      bw: 4.47
+      drop: 0.0072
+      latency: 126.19
     - src: 1
       dst: 3
-      bw: 8.99
-      drop: 0.0385
+      bw: 5.29
+      drop: 0.0105
+      latency: 135.34
     - src: 1
       dst: 4
-      bw: 2.24
-      drop: 0.0337
+      bw: 6.25
+      drop: 0.0279
+      latency: 101.76
     - src: 2
       dst: 3
-      bw: 6.32
-      drop: 0.0135
+      bw: 2.57
+      drop: 0.0462
+      latency: 23.54
     - src: 2
       dst: 4
-      bw: 2.6
-      drop: 0.0154
+      bw: 4.77
+      drop: 0.0466
+      latency: 33.49
     - src: 3
       dst: 4
-      bw: 2.66
-      drop: 0.0241
+      bw: 8.46
+      drop: 0.0108
+      latency: 80.1
 - time: 1110.0
   links:
     - src: 1
       dst: 2
-      bw: 9.58
-      drop: 0.0011
+      bw: 6.29
+      drop: 0.028
+      latency: 124.32
     - src: 1
       dst: 3
-      bw: 9.09
-      drop: 0.015
+      bw: 4.13
+      drop: 0.0469
+      latency: 57.94
     - src: 1
       dst: 4
-      bw: 9.93
-      drop: 0.0012
+      bw: 8.52
+      drop: 0.012
+      latency: 143.99
     - src: 2
       dst: 3
-      bw: 9.49
-      drop: 0.0378
+      bw: 6.6
+      drop: 0.0117
+      latency: 133.9
     - src: 2
       dst: 4
-      bw: 4.26
-      drop: 0.0147
+      bw: 4.56
+      drop: 0.0312
+      latency: 74.75
     - src: 3
       dst: 4
-      bw: 4.08
-      drop: 0.0435
+      bw: 9.8
+      drop: 0.0159
+      latency: 53.94
 - time: 1140.0
   links:
     - src: 1
       dst: 2
-      bw: 5.12
-      drop: 0.0321
+      bw: 5.91
+      drop: 0.0275
+      latency: 141.39
     - src: 1
       dst: 3
-      bw: 8.69
-      drop: 0.0188
+      bw: 3.11
+      drop: 0.0219
+      latency: 48.68
     - src: 1
       dst: 4
-      bw: 2.37
-      drop: 0.0108
+      bw: 6.06
+      drop: 0.0068
+      latency: 110.61
     - src: 2
       dst: 3
-      bw: 8.79
-      drop: 0.0182
+      bw: 4.88
+      drop: 0.0324
+      latency: 85.5
     - src: 2
       dst: 4
-      bw: 8.63
-      drop: 0.026
+      bw: 6.34
+      drop: 0.0116
+      latency: 138.17
     - src: 3
       dst: 4
-      bw: 9.2
-      drop: 0.0452
+      bw: 8.29
+      drop: 0.0172
+      latency: 37.18
 - time: 1170.0
   links:
     - src: 1
       dst: 2
-      bw: 9.04
-      drop: 0.0323
+      bw: 3.05
+      drop: 0.0352
+      latency: 24.97
     - src: 1
       dst: 3
-      bw: 7.41
-      drop: 0.0175
+      bw: 6.75
+      drop: 0.0473
+      latency: 48.23
     - src: 1
       dst: 4
-      bw: 9.76
-      drop: 0.0158
+      bw: 7.64
+      drop: 0.0445
+      latency: 66.48
     - src: 2
       dst: 3
-      bw: 2.65
-      drop: 0.0165
+      bw: 2.47
+      drop: 0.0105
+      latency: 45.77
     - src: 2
       dst: 4
-      bw: 9.73
-      drop: 0.0364
+      bw: 4.73
+      drop: 0.0035
+      latency: 82.73
     - src: 3
       dst: 4
-      bw: 4.69
-      drop: 0.0363
+      bw: 5.94
+      drop: 0.0198
+      latency: 17.56
 - time: 1200.0
   links:
     - src: 1
       dst: 2
-      bw: 8.25
-      drop: 0.0076
+      bw: 4.24
+      drop: 0.0165
+      latency: 47.67
     - src: 1
       dst: 3
-      bw: 9.19
-      drop: 0.0418
+      bw: 5.71
+      drop: 0.0405
+      latency: 47.12
     - src: 1
       dst: 4
-      bw: 9.96
-      drop: 0.0112
+      bw: 8.62
+      drop: 0.0156
+      latency: 27.9
     - src: 2
       dst: 3
-      bw: 9.32
-      drop: 0.0484
+      bw: 4.21
+      drop: 0.039
+      latency: 35.5
     - src: 2
       dst: 4
-      bw: 9.95
-      drop: 0.0224
+      bw: 7.88
+      drop: 0.0435
+      latency: 132.48
     - src: 3
       dst: 4
-      bw: 8.58
-      drop: 0.0371
+      bw: 8.51
+      drop: 0.0089
+      latency: 74.04
 - time: 1230.0
   links:
     - src: 1
       dst: 2
-      bw: 5.15
-      drop: 0.0161
+      bw: 2.63
+      drop: 0.0072
+      latency: 38.35
     - src: 1
       dst: 3
-      bw: 8.24
-      drop: 0.0004
+      bw: 7.56
+      drop: 0.0345
+      latency: 83.09
     - src: 1
       dst: 4
-      bw: 9.73
-      drop: 0.0083
+      bw: 6.04
+      drop: 0.0123
+      latency: 64.32
     - src: 2
       dst: 3
-      bw: 3.54
-      drop: 0.026
+      bw: 2.29
+      drop: 0.0328
+      latency: 116.41
     - src: 2
       dst: 4
-      bw: 7.62
-      drop: 0.0133
+      bw: 4.55
+      drop: 0.0284
+      latency: 135.32
     - src: 3
       dst: 4
-      bw: 9.16
-      drop: 0.0108
+      bw: 4.32
+      drop: 0.0367
+      latency: 41.48
 - time: 1260.0
   links:
     - src: 1
       dst: 2
-      bw: 4.57
-      drop: 0.0171
+      bw: 8.31
+      drop: 0.009
+      latency: 90.79
     - src: 1
       dst: 3
-      bw: 3.56
-      drop: 0.0426
+      bw: 8.95
+      drop: 0.009
+      latency: 103.57
     - src: 1
       dst: 4
-      bw: 6.49
-      drop: 0.0273
+      bw: 4.14
+      drop: 0.0404
+      latency: 120.89
     - src: 2
       dst: 3
-      bw: 5.42
-      drop: 0.0397
+      bw: 7.59
+      drop: 0.0061
+      latency: 20.36
     - src: 2
       dst: 4
-      bw: 7.26
-      drop: 0.0455
+      bw: 8.45
+      drop: 0.0377
+      latency: 110.2
     - src: 3
       dst: 4
-      bw: 9.05
-      drop: 0.0277
+      bw: 6.42
+      drop: 0.0459
+      latency: 131.98
 - time: 1290.0
   links:
     - src: 1
       dst: 2
-      bw: 3.9
-      drop: 0.041
+      bw: 6.56
+      drop: 0.0498
+      latency: 62.26
     - src: 1
       dst: 3
-      bw: 5.63
-      drop: 0.0472
+      bw: 3.8
+      drop: 0.0073
+      latency: 29.49
     - src: 1
       dst: 4
-      bw: 5.35
-      drop: 0.0006
+      bw: 2.6
+      drop: 0.0074
+      latency: 11.95
     - src: 2
       dst: 3
+      bw: 2.42
+      drop: 0.0476
+      latency: 147.45
+    - src: 2
+      dst: 4
       bw: 5.21
-      drop: 0.0027
-    - src: 2
-      dst: 4
-      bw: 6.82
-      drop: 0.0432
+      drop: 0.0139
+      latency: 119.5
     - src: 3
       dst: 4
-      bw: 9.26
-      drop: 0.0307
+      bw: 3.0
+      drop: 0.0106
+      latency: 116.79
 - time: 1320.0
   links:
     - src: 1
       dst: 2
-      bw: 7.61
-      drop: 0.0178
+      bw: 2.62
+      drop: 0.0495
+      latency: 140.42
     - src: 1
       dst: 3
-      bw: 6.24
-      drop: 0.0054
+      bw: 7.74
+      drop: 0.0395
+      latency: 53.76
     - src: 1
       dst: 4
-      bw: 8.56
-      drop: 0.0163
+      bw: 6.53
+      drop: 0.0417
+      latency: 146.13
     - src: 2
       dst: 3
-      bw: 4.94
-      drop: 0.0493
+      bw: 7.02
+      drop: 0.0073
+      latency: 21.32
     - src: 2
       dst: 4
-      bw: 5.14
-      drop: 0.0404
+      bw: 5.56
+      drop: 0.0335
+      latency: 77.36
     - src: 3
       dst: 4
-      bw: 5.85
-      drop: 0.0454
+      bw: 4.58
+      drop: 0.0149
+      latency: 16.93
 - time: 1350.0
   links:
     - src: 1
       dst: 2
-      bw: 7.7
-      drop: 0.0337
+      bw: 5.84
+      drop: 0.044
+      latency: 84.04
     - src: 1
       dst: 3
-      bw: 2.16
-      drop: 0.0145
+      bw: 2.85
+      drop: 0.0135
+      latency: 78.89
     - src: 1
       dst: 4
-      bw: 6.78
-      drop: 0.0486
+      bw: 7.17
+      drop: 0.0296
+      latency: 78.6
     - src: 2
       dst: 3
-      bw: 6.8
-      drop: 0.0054
+      bw: 7.2
+      drop: 0.0297
+      latency: 76.14
     - src: 2
       dst: 4
-      bw: 6.14
-      drop: 0.0075
+      bw: 3.86
+      drop: 0.0157
+      latency: 85.94
     - src: 3
       dst: 4
-      bw: 8.51
-      drop: 0.0444
+      bw: 6.42
+      drop: 0.025
+      latency: 29.03
 - time: 1380.0
   links:
     - src: 1
       dst: 2
-      bw: 5.84
-      drop: 0.0437
+      bw: 2.66
+      drop: 0.0325
+      latency: 36.94
     - src: 1
       dst: 3
-      bw: 2.27
-      drop: 0.0171
+      bw: 7.0
+      drop: 0.0474
+      latency: 89.69
     - src: 1
       dst: 4
-      bw: 4.61
-      drop: 0.0173
+      bw: 4.64
+      drop: 0.0489
+      latency: 79.65
     - src: 2
       dst: 3
-      bw: 7.36
-      drop: 0.0273
+      bw: 5.0
+      drop: 0.0224
+      latency: 19.04
     - src: 2
       dst: 4
-      bw: 7.01
-      drop: 0.0148
+      bw: 2.65
+      drop: 0.0108
+      latency: 148.26
     - src: 3
       dst: 4
-      bw: 5.85
-      drop: 0.0221
+      bw: 8.05
+      drop: 0.0377
+      latency: 103.85
 - time: 1410.0
   links:
     - src: 1
       dst: 2
-      bw: 9.66
-      drop: 0.0467
+      bw: 6.09
+      drop: 0.0197
+      latency: 100.56
     - src: 1
       dst: 3
-      bw: 8.33
-      drop: 0.0237
+      bw: 9.56
+      drop: 0.0031
+      latency: 46.37
     - src: 1
       dst: 4
-      bw: 9.87
-      drop: 0.0382
+      bw: 6.05
+      drop: 0.0053
+      latency: 89.39
     - src: 2
       dst: 3
-      bw: 9.59
-      drop: 0.0018
+      bw: 7.13
+      drop: 0.031
+      latency: 104.37
     - src: 2
       dst: 4
-      bw: 8.82
-      drop: 0.0002
+      bw: 4.68
+      drop: 0.047
+      latency: 86.86
     - src: 3
       dst: 4
-      bw: 7.86
-      drop: 0.0249
+      bw: 6.23
+      drop: 0.0296
+      latency: 97.35
 - time: 1440.0
   links:
     - src: 1
       dst: 2
-      bw: 4.05
-      drop: 0.0432
+      bw: 7.32
+      drop: 0.0334
+      latency: 27.12
     - src: 1
       dst: 3
-      bw: 8.35
-      drop: 0.0171
+      bw: 3.79
+      drop: 0.044
+      latency: 147.74
     - src: 1
       dst: 4
-      bw: 8.92
-      drop: 0.0109
+      bw: 6.15
+      drop: 0.0333
+      latency: 142.81
     - src: 2
       dst: 3
-      bw: 7.47
-      drop: 0.0424
+      bw: 8.66
+      drop: 0.0214
+      latency: 37.4
     - src: 2
       dst: 4
-      bw: 2.51
-      drop: 0.0371
+      bw: 5.68
+      drop: 0.0108
+      latency: 103.19
     - src: 3
       dst: 4
-      bw: 8.86
-      drop: 0.0477
+      bw: 3.99
+      drop: 0.029
+      latency: 12.28
 - time: 1470.0
   links:
     - src: 1
       dst: 2
-      bw: 8.91
-      drop: 0.0375
+      bw: 5.91
+      drop: 0.001
+      latency: 128.84
     - src: 1
       dst: 3
-      bw: 6.15
-      drop: 0.0422
+      bw: 4.29
+      drop: 0.0491
+      latency: 119.43
     - src: 1
       dst: 4
-      bw: 5.51
-      drop: 0.0475
+      bw: 9.74
+      drop: 0.0016
+      latency: 64.96
     - src: 2
       dst: 3
-      bw: 4.69
-      drop: 0.0231
+      bw: 7.62
+      drop: 0.0207
+      latency: 106.26
     - src: 2
       dst: 4
-      bw: 8.31
-      drop: 0.0286
+      bw: 7.32
+      drop: 0.0308
+      latency: 13.96
     - src: 3
       dst: 4
-      bw: 9.64
-      drop: 0.0051
+      bw: 8.34
+      drop: 0.0404
+      latency: 135.16
 - time: 1500.0
   links:
     - src: 1
       dst: 2
-      bw: 9.78
-      drop: 0.0225
+      bw: 4.9
+      drop: 0.0166
+      latency: 22.95
     - src: 1
       dst: 3
-      bw: 7.75
-      drop: 0.0128
+      bw: 7.81
+      drop: 0.0461
+      latency: 47.66
     - src: 1
       dst: 4
-      bw: 7.05
-      drop: 0.0112
+      bw: 3.53
+      drop: 0.0312
+      latency: 138.37
     - src: 2
       dst: 3
-      bw: 9.0
-      drop: 0.0094
+      bw: 4.66
+      drop: 0.0358
+      latency: 145.87
     - src: 2
       dst: 4
-      bw: 4.23
-      drop: 0.025
+      bw: 4.25
+      drop: 0.0286
+      latency: 92.84
     - src: 3
       dst: 4
-      bw: 7.08
-      drop: 0.0028
+      bw: 5.44
+      drop: 0.006
+      latency: 92.79
 - time: 1530.0
   links:
     - src: 1
       dst: 2
-      bw: 2.25
-      drop: 0.0146
+      bw: 8.95
+      drop: 0.0312
+      latency: 86.11
     - src: 1
       dst: 3
-      bw: 9.8
-      drop: 0.0244
+      bw: 5.99
+      drop: 0.02
+      latency: 50.21
     - src: 1
       dst: 4
-      bw: 9.28
-      drop: 0.0237
+      bw: 2.0
+      drop: 0.0307
+      latency: 49.02
     - src: 2
       dst: 3
-      bw: 2.56
-      drop: 0.0151
+      bw: 3.88
+      drop: 0.0422
+      latency: 116.76
     - src: 2
       dst: 4
-      bw: 8.22
-      drop: 0.0454
+      bw: 7.8
+      drop: 0.004
+      latency: 69.89
     - src: 3
       dst: 4
-      bw: 2.26
-      drop: 0.0341
+      bw: 3.95
+      drop: 0.0411
+      latency: 70.93
 - time: 1560.0
   links:
     - src: 1
       dst: 2
-      bw: 4.76
-      drop: 0.0245
+      bw: 4.64
+      drop: 0.0015
+      latency: 75.43
     - src: 1
       dst: 3
-      bw: 2.88
-      drop: 0.0029
+      bw: 8.74
+      drop: 0.0375
+      latency: 147.4
     - src: 1
       dst: 4
-      bw: 7.09
-      drop: 0.0197
+      bw: 3.3
+      drop: 0.0022
+      latency: 144.18
     - src: 2
       dst: 3
-      bw: 2.05
-      drop: 0.0449
+      bw: 5.9
+      drop: 0.0079
+      latency: 38.21
     - src: 2
       dst: 4
-      bw: 9.68
-      drop: 0.0369
+      bw: 8.32
+      drop: 0.0106
+      latency: 126.76
     - src: 3
       dst: 4
-      bw: 5.91
-      drop: 0.0105
+      bw: 9.66
+      drop: 0.037
+      latency: 65.05
 - time: 1590.0
   links:
     - src: 1
       dst: 2
-      bw: 4.19
-      drop: 0.0147
+      bw: 5.13
+      drop: 0.03
+      latency: 47.91
     - src: 1
       dst: 3
-      bw: 2.38
-      drop: 0.0163
+      bw: 9.36
+      drop: 0.0038
+      latency: 59.09
     - src: 1
       dst: 4
-      bw: 8.44
-      drop: 0.0197
+      bw: 5.87
+      drop: 0.023
+      latency: 107.05
     - src: 2
       dst: 3
-      bw: 4.47
-      drop: 0.008
+      bw: 6.68
+      drop: 0.0097
+      latency: 83.68
     - src: 2
       dst: 4
-      bw: 5.68
-      drop: 0.0024
+      bw: 2.4
+      drop: 0.0365
+      latency: 119.18
     - src: 3
       dst: 4
-      bw: 7.76
-      drop: 0.0471
+      bw: 3.18
+      drop: 0.0236
+      latency: 39.35
 - time: 1620.0
   links:
     - src: 1
       dst: 2
-      bw: 6.93
-      drop: 0.0424
+      bw: 5.19
+      drop: 0.0448
+      latency: 24.45
     - src: 1
       dst: 3
-      bw: 5.05
-      drop: 0.0339
+      bw: 3.89
+      drop: 0.0236
+      latency: 97.97
     - src: 1
       dst: 4
-      bw: 8.76
-      drop: 0.0276
+      bw: 7.89
+      drop: 0.0385
+      latency: 82.72
     - src: 2
       dst: 3
-      bw: 9.62
-      drop: 0.0256
+      bw: 4.48
+      drop: 0.0187
+      latency: 94.53
     - src: 2
       dst: 4
-      bw: 4.96
-      drop: 0.0482
+      bw: 5.59
+      drop: 0.0308
+      latency: 31.44
     - src: 3
       dst: 4
-      bw: 2.03
-      drop: 0.0426
+      bw: 4.48
+      drop: 0.0324
+      latency: 92.22
 - time: 1650.0
   links:
     - src: 1
       dst: 2
-      bw: 5.34
-      drop: 0.0429
+      bw: 6.67
+      drop: 0.0365
+      latency: 64.07
     - src: 1
       dst: 3
-      bw: 3.32
-      drop: 0.0067
+      bw: 5.03
+      drop: 0.018
+      latency: 69.83
     - src: 1
       dst: 4
-      bw: 6.38
-      drop: 0.0458
+      bw: 6.95
+      drop: 0.0199
+      latency: 141.66
     - src: 2
       dst: 3
-      bw: 5.85
-      drop: 0.0203
+      bw: 7.73
+      drop: 0.0133
+      latency: 32.42
     - src: 2
       dst: 4
-      bw: 4.46
-      drop: 0.0295
+      bw: 8.39
+      drop: 0.0456
+      latency: 149.23
     - src: 3
       dst: 4
-      bw: 8.6
-      drop: 0.021
+      bw: 3.35
+      drop: 0.0425
+      latency: 78.05
 - time: 1680.0
   links:
     - src: 1
       dst: 2
-      bw: 3.19
-      drop: 0.0162
+      bw: 7.18
+      drop: 0.0237
+      latency: 26.17
     - src: 1
       dst: 3
-      bw: 6.34
-      drop: 0.027
+      bw: 4.99
+      drop: 0.0293
+      latency: 37.67
     - src: 1
       dst: 4
-      bw: 6.71
-      drop: 0.0072
+      bw: 3.7
+      drop: 0.045
+      latency: 27.85
     - src: 2
       dst: 3
-      bw: 3.89
-      drop: 0.0322
+      bw: 6.51
+      drop: 0.0081
+      latency: 73.6
     - src: 2
       dst: 4
-      bw: 4.0
-      drop: 0.0167
+      bw: 7.64
+      drop: 0.0471
+      latency: 124.02
     - src: 3
       dst: 4
-      bw: 6.36
-      drop: 0.0198
+      bw: 3.51
+      drop: 0.0193
+      latency: 19.08
 - time: 1710.0
   links:
     - src: 1
       dst: 2
-      bw: 7.05
-      drop: 0.0151
+      bw: 9.48
+      drop: 0.0223
+      latency: 120.47
     - src: 1
       dst: 3
-      bw: 6.93
-      drop: 0.0159
+      bw: 5.23
+      drop: 0.0349
+      latency: 146.55
     - src: 1
       dst: 4
-      bw: 2.16
-      drop: 0.0117
+      bw: 3.92
+      drop: 0.0424
+      latency: 16.19
     - src: 2
       dst: 3
-      bw: 6.97
-      drop: 0.0355
+      bw: 5.53
+      drop: 0.0041
+      latency: 109.86
     - src: 2
       dst: 4
-      bw: 2.3
-      drop: 0.0297
+      bw: 7.7
+      drop: 0.0175
+      latency: 99.37
     - src: 3
       dst: 4
-      bw: 5.73
-      drop: 0.0342
+      bw: 6.07
+      drop: 0.0292
+      latency: 70.6
 - time: 1740.0
   links:
     - src: 1
       dst: 2
-      bw: 4.53
-      drop: 0.0141
+      bw: 5.94
+      drop: 0.0193
+      latency: 63.8
     - src: 1
       dst: 3
-      bw: 9.03
-      drop: 0.0471
+      bw: 4.7
+      drop: 0.0334
+      latency: 87.45
     - src: 1
       dst: 4
-      bw: 5.27
-      drop: 0.0371
+      bw: 4.6
+      drop: 0.0057
+      latency: 144.18
     - src: 2
       dst: 3
-      bw: 5.69
-      drop: 0.0397
+      bw: 5.89
+      drop: 0.0498
+      latency: 105.53
     - src: 2
       dst: 4
-      bw: 5.51
-      drop: 0.0048
+      bw: 9.71
+      drop: 0.0164
+      latency: 93.9
     - src: 3
       dst: 4
-      bw: 9.21
-      drop: 0.0252
+      bw: 9.02
+      drop: 0.0054
+      latency: 135.35
 - time: 1770.0
   links:
     - src: 1
       dst: 2
-      bw: 2.88
-      drop: 0.0175
+      bw: 9.7
+      drop: 0.034
+      latency: 32.21
     - src: 1
       dst: 3
-      bw: 4.56
-      drop: 0.0495
+      bw: 9.95
+      drop: 0.0364
+      latency: 78.11
     - src: 1
       dst: 4
-      bw: 8.63
-      drop: 0.044
+      bw: 8.9
+      drop: 0.0014
+      latency: 32.46
     - src: 2
       dst: 3
-      bw: 4.35
-      drop: 0.0272
+      bw: 6.36
+      drop: 0.0261
+      latency: 133.04
     - src: 2
       dst: 4
-      bw: 7.2
-      drop: 0.0445
+      bw: 5.28
+      drop: 0.0341
+      latency: 22.33
     - src: 3
       dst: 4
-      bw: 9.89
-      drop: 0.0432
+      bw: 6.18
+      drop: 0.0464
+      latency: 70.54
 - time: 1800.0
   links:
     - src: 1
       dst: 2
-      bw: 4.0
-      drop: 0.0093
+      bw: 6.47
+      drop: 0.004
+      latency: 99.8
     - src: 1
       dst: 3
-      bw: 4.4
-      drop: 0.0215
+      bw: 9.08
+      drop: 0.0033
+      latency: 91.8
     - src: 1
       dst: 4
-      bw: 6.26
-      drop: 0.0075
+      bw: 7.0
+      drop: 0.0066
+      latency: 37.1
     - src: 2
       dst: 3
-      bw: 9.41
-      drop: 0.0432
+      bw: 6.29
+      drop: 0.0382
+      latency: 138.41
     - src: 2
       dst: 4
-      bw: 9.47
-      drop: 0.0128
+      bw: 7.16
+      drop: 0.005
+      latency: 43.96
     - src: 3
       dst: 4
-      bw: 5.91
-      drop: 0.0025
+      bw: 8.23
+      drop: 0.0182
+      latency: 82.51
 - time: 1830.0
   links:
     - src: 1
       dst: 2
-      bw: 3.52
-      drop: 0.0475
+      bw: 2.23
+      drop: 0.0481
+      latency: 67.76
     - src: 1
       dst: 3
-      bw: 3.34
-      drop: 0.0477
+      bw: 7.97
+      drop: 0.0038
+      latency: 42.44
     - src: 1
       dst: 4
-      bw: 7.29
-      drop: 0.0344
+      bw: 3.44
+      drop: 0.0012
+      latency: 28.53
     - src: 2
       dst: 3
-      bw: 7.38
-      drop: 0.0319
+      bw: 9.38
+      drop: 0.0026
+      latency: 85.31
     - src: 2
       dst: 4
-      bw: 2.88
-      drop: 0.0165
+      bw: 7.49
+      drop: 0.0425
+      latency: 54.3
     - src: 3
       dst: 4
-      bw: 4.62
-      drop: 0.0313
+      bw: 7.72
+      drop: 0.0017
+      latency: 100.68
 - time: 1860.0
   links:
     - src: 1
       dst: 2
-      bw: 2.66
-      drop: 0.0127
+      bw: 4.79
+      drop: 0.0211
+      latency: 74.07
     - src: 1
       dst: 3
-      bw: 7.88
+      bw: 4.27
       drop: 0.0002
+      latency: 73.74
     - src: 1
       dst: 4
-      bw: 2.2
-      drop: 0.0286
+      bw: 4.06
+      drop: 0.0293
+      latency: 83.18
     - src: 2
       dst: 3
-      bw: 8.57
-      drop: 0.0111
+      bw: 8.84
+      drop: 0.029
+      latency: 88.29
     - src: 2
       dst: 4
-      bw: 5.34
-      drop: 0.0154
+      bw: 4.42
+      drop: 0.0487
+      latency: 111.94
     - src: 3
       dst: 4
-      bw: 7.41
-      drop: 0.0389
+      bw: 5.98
+      drop: 0.0116
+      latency: 27.46
 - time: 1890.0
   links:
     - src: 1
       dst: 2
-      bw: 6.82
-      drop: 0.0453
+      bw: 4.99
+      drop: 0.0491
+      latency: 12.43
     - src: 1
       dst: 3
-      bw: 9.68
-      drop: 0.0403
+      bw: 9.74
+      drop: 0.0105
+      latency: 31.62
     - src: 1
       dst: 4
-      bw: 2.14
-      drop: 0.0444
+      bw: 6.39
+      drop: 0.0294
+      latency: 55.39
     - src: 2
       dst: 3
-      bw: 5.61
-      drop: 0.023
+      bw: 4.61
+      drop: 0.0309
+      latency: 105.27
     - src: 2
       dst: 4
-      bw: 9.62
-      drop: 0.0322
+      bw: 2.07
+      drop: 0.0099
+      latency: 47.06
     - src: 3
       dst: 4
-      bw: 3.73
-      drop: 0.0137
+      bw: 4.97
+      drop: 0.0201
+      latency: 98.85
 - time: 1920.0
   links:
     - src: 1
       dst: 2
-      bw: 4.89
-      drop: 0.0478
+      bw: 7.0
+      drop: 0.0487
+      latency: 84.6
     - src: 1
       dst: 3
-      bw: 5.9
-      drop: 0.0357
+      bw: 8.37
+      drop: 0.0223
+      latency: 13.99
     - src: 1
       dst: 4
-      bw: 3.84
-      drop: 0.0219
+      bw: 2.83
+      drop: 0.0116
+      latency: 85.76
     - src: 2
       dst: 3
-      bw: 7.17
-      drop: 0.0229
+      bw: 9.63
+      drop: 0.0426
+      latency: 61.25
     - src: 2
       dst: 4
-      bw: 6.49
-      drop: 0.0052
+      bw: 2.39
+      drop: 0.0031
+      latency: 35.6
     - src: 3
       dst: 4
-      bw: 3.23
-      drop: 0.0424
+      bw: 9.17
+      drop: 0.0001
+      latency: 11.86
 - time: 1950.0
   links:
     - src: 1
       dst: 2
       bw: 4.31
-      drop: 0.0367
+      drop: 0.0336
+      latency: 13.99
     - src: 1
       dst: 3
-      bw: 5.1
-      drop: 0.049
+      bw: 6.39
+      drop: 0.0433
+      latency: 40.21
     - src: 1
       dst: 4
-      bw: 9.5
-      drop: 0.0349
+      bw: 6.05
+      drop: 0.0155
+      latency: 23.31
     - src: 2
       dst: 3
-      bw: 6.73
-      drop: 0.0236
+      bw: 4.79
+      drop: 0.0416
+      latency: 34.93
     - src: 2
       dst: 4
-      bw: 9.58
-      drop: 0.0146
+      bw: 4.96
+      drop: 0.0324
+      latency: 148.66
     - src: 3
       dst: 4
-      bw: 8.56
-      drop: 0.0244
+      bw: 7.04
+      drop: 0.0044
+      latency: 44.17
 - time: 1980.0
   links:
     - src: 1
       dst: 2
-      bw: 5.49
-      drop: 0.0413
+      bw: 2.31
+      drop: 0.0282
+      latency: 108.11
     - src: 1
       dst: 3
-      bw: 2.74
-      drop: 0.0438
+      bw: 9.68
+      drop: 0.0045
+      latency: 29.83
     - src: 1
       dst: 4
-      bw: 3.28
-      drop: 0.0289
+      bw: 4.89
+      drop: 0.038
+      latency: 131.14
     - src: 2
       dst: 3
-      bw: 5.56
-      drop: 0.0205
+      bw: 9.1
+      drop: 0.0233
+      latency: 14.08
     - src: 2
       dst: 4
-      bw: 4.73
-      drop: 0.014
+      bw: 4.2
+      drop: 0.0407
+      latency: 47.28
     - src: 3
       dst: 4
-      bw: 7.35
-      drop: 0.0317
+      bw: 8.06
+      drop: 0.0287
+      latency: 62.94
 - time: 2010.0
   links:
     - src: 1
       dst: 2
-      bw: 4.43
-      drop: 0.0023
+      bw: 9.77
+      drop: 0.0407
+      latency: 79.76
     - src: 1
       dst: 3
-      bw: 5.14
-      drop: 0.0303
-    - src: 1
-      dst: 4
-      bw: 3.0
+      bw: 8.12
       drop: 0.0265
+      latency: 22.09
+    - src: 1
+      dst: 4
+      bw: 8.85
+      drop: 0.0452
+      latency: 80.33
     - src: 2
       dst: 3
-      bw: 4.85
-      drop: 0.0474
+      bw: 7.73
+      drop: 0.0252
+      latency: 37.72
     - src: 2
       dst: 4
-      bw: 9.68
-      drop: 0.0023
+      bw: 4.26
+      drop: 0.0301
+      latency: 120.03
     - src: 3
       dst: 4
-      bw: 3.06
-      drop: 0.0219
+      bw: 6.27
+      drop: 0.0006
+      latency: 16.19
 - time: 2040.0
   links:
     - src: 1
       dst: 2
-      bw: 8.63
-      drop: 0.0121
+      bw: 5.19
+      drop: 0.0165
+      latency: 14.65
     - src: 1
       dst: 3
-      bw: 7.41
-      drop: 0.032
+      bw: 3.71
+      drop: 0.0338
+      latency: 127.3
     - src: 1
       dst: 4
-      bw: 4.21
-      drop: 0.038
+      bw: 9.39
+      drop: 0.0268
+      latency: 30.44
     - src: 2
       dst: 3
-      bw: 5.28
-      drop: 0.0011
+      bw: 8.88
+      drop: 0.0102
+      latency: 138.87
     - src: 2
       dst: 4
-      bw: 2.95
-      drop: 0.0237
+      bw: 7.05
+      drop: 0.0049
+      latency: 44.54
     - src: 3
       dst: 4
-      bw: 9.45
-      drop: 0.0057
+      bw: 4.08
+      drop: 0.047
+      latency: 93.37
 - time: 2070.0
   links:
     - src: 1
       dst: 2
-      bw: 2.87
-      drop: 0.0084
+      bw: 7.76
+      drop: 0.0367
+      latency: 71.35
     - src: 1
       dst: 3
-      bw: 5.0
-      drop: 0.0354
+      bw: 5.08
+      drop: 0.0493
+      latency: 142.5
     - src: 1
       dst: 4
-      bw: 8.12
-      drop: 0.0335
+      bw: 5.56
+      drop: 0.0222
+      latency: 39.76
     - src: 2
       dst: 3
-      bw: 4.29
-      drop: 0.0465
+      bw: 4.18
+      drop: 0.0193
+      latency: 129.14
     - src: 2
       dst: 4
-      bw: 3.19
-      drop: 0.0357
+      bw: 9.08
+      drop: 0.021
+      latency: 105.18
     - src: 3
       dst: 4
-      bw: 6.55
-      drop: 0.0465
+      bw: 9.33
+      drop: 0.0231
+      latency: 60.74
 - time: 2100.0
   links:
     - src: 1
       dst: 2
-      bw: 4.64
-      drop: 0.0193
+      bw: 6.96
+      drop: 0.022
+      latency: 13.37
     - src: 1
       dst: 3
-      bw: 4.84
-      drop: 0.0387
+      bw: 9.5
+      drop: 0.0068
+      latency: 117.61
     - src: 1
       dst: 4
-      bw: 6.65
-      drop: 0.0191
+      bw: 7.98
+      drop: 0.042
+      latency: 121.02
     - src: 2
       dst: 3
-      bw: 3.6
-      drop: 0.0094
+      bw: 6.11
+      drop: 0.0175
+      latency: 132.62
     - src: 2
       dst: 4
-      bw: 8.49
-      drop: 0.0448
+      bw: 2.24
+      drop: 0.0256
+      latency: 100.83
     - src: 3
       dst: 4
-      bw: 2.95
-      drop: 0.005
+      bw: 3.42
+      drop: 0.0326
+      latency: 50.23
 - time: 2130.0
   links:
     - src: 1
       dst: 2
-      bw: 7.96
-      drop: 0.0097
+      bw: 3.99
+      drop: 0.0421
+      latency: 136.94
     - src: 1
       dst: 3
-      bw: 5.99
-      drop: 0.0032
+      bw: 5.82
+      drop: 0.0306
+      latency: 94.71
     - src: 1
       dst: 4
-      bw: 6.63
-      drop: 0.0394
+      bw: 5.09
+      drop: 0.0354
+      latency: 23.4
     - src: 2
       dst: 3
-      bw: 4.09
-      drop: 0.0389
+      bw: 5.26
+      drop: 0.0028
+      latency: 53.66
     - src: 2
       dst: 4
-      bw: 4.45
-      drop: 0.0146
+      bw: 8.43
+      drop: 0.0272
+      latency: 94.41
     - src: 3
       dst: 4
-      bw: 6.0
-      drop: 0.036
+      bw: 3.17
+      drop: 0.0156
+      latency: 95.94
 - time: 2160.0
   links:
     - src: 1
       dst: 2
-      bw: 8.95
-      drop: 0.0118
+      bw: 4.88
+      drop: 0.0419
+      latency: 40.49
     - src: 1
       dst: 3
-      bw: 2.08
-      drop: 0.0227
+      bw: 7.4
+      drop: 0.0111
+      latency: 85.12
     - src: 1
       dst: 4
-      bw: 2.01
-      drop: 0.0058
+      bw: 7.58
+      drop: 0.0273
+      latency: 31.74
     - src: 2
       dst: 3
-      bw: 7.01
-      drop: 0.0431
+      bw: 8.54
+      drop: 0.0077
+      latency: 26.88
     - src: 2
       dst: 4
-      bw: 9.48
-      drop: 0.0348
+      bw: 9.63
+      drop: 0.0357
+      latency: 52.79
     - src: 3
       dst: 4
-      bw: 2.55
-      drop: 0.018
+      bw: 7.37
+      drop: 0.0405
+      latency: 47.14
 - time: 2190.0
   links:
     - src: 1
       dst: 2
-      bw: 4.95
-      drop: 0.0012
+      bw: 9.42
+      drop: 0.0403
+      latency: 59.99
     - src: 1
       dst: 3
-      bw: 9.29
-      drop: 0.0341
+      bw: 2.53
+      drop: 0.0489
+      latency: 100.19
     - src: 1
       dst: 4
-      bw: 3.22
-      drop: 0.0116
+      bw: 3.53
+      drop: 0.0083
+      latency: 100.05
     - src: 2
       dst: 3
-      bw: 6.62
-      drop: 0.0424
+      bw: 3.54
+      drop: 0.015
+      latency: 53.67
     - src: 2
       dst: 4
-      bw: 5.5
-      drop: 0.0289
+      bw: 4.55
+      drop: 0.027
+      latency: 59.65
     - src: 3
       dst: 4
-      bw: 6.18
-      drop: 0.0142
+      bw: 9.0
+      drop: 0.0267
+      latency: 143.75
 - time: 2220.0
   links:
     - src: 1
       dst: 2
-      bw: 7.85
-      drop: 0.0449
+      bw: 4.06
+      drop: 0.0443
+      latency: 38.12
     - src: 1
       dst: 3
-      bw: 2.19
-      drop: 0.0237
+      bw: 6.22
+      drop: 0.041
+      latency: 24.26
     - src: 1
       dst: 4
-      bw: 2.56
-      drop: 0.0288
+      bw: 8.04
+      drop: 0.021
+      latency: 82.99
     - src: 2
       dst: 3
-      bw: 5.75
-      drop: 0.0223
+      bw: 9.68
+      drop: 0.0355
+      latency: 80.81
     - src: 2
       dst: 4
-      bw: 9.04
-      drop: 0.0193
+      bw: 2.47
+      drop: 0.0424
+      latency: 11.36
     - src: 3
       dst: 4
-      bw: 5.91
-      drop: 0.0276
+      bw: 4.51
+      drop: 0.0041
+      latency: 108.63
 - time: 2250.0
   links:
     - src: 1
       dst: 2
-      bw: 2.98
-      drop: 0.0097
+      bw: 9.86
+      drop: 0.0388
+      latency: 20.76
     - src: 1
       dst: 3
-      bw: 7.78
-      drop: 0.0284
+      bw: 8.11
+      drop: 0.0073
+      latency: 67.59
     - src: 1
       dst: 4
-      bw: 6.02
-      drop: 0.015
+      bw: 8.77
+      drop: 0.0027
+      latency: 37.04
     - src: 2
       dst: 3
-      bw: 9.61
-      drop: 0.0351
+      bw: 6.49
+      drop: 0.0063
+      latency: 138.76
     - src: 2
       dst: 4
-      bw: 3.36
-      drop: 0.0366
+      bw: 5.96
+      drop: 0.0064
+      latency: 58.39
     - src: 3
       dst: 4
-      bw: 9.37
-      drop: 0.0167
+      bw: 3.54
+      drop: 0.0457
+      latency: 34.96
 - time: 2280.0
   links:
     - src: 1
       dst: 2
-      bw: 9.69
-      drop: 0.0186
+      bw: 5.3
+      drop: 0.0399
+      latency: 26.7
     - src: 1
       dst: 3
-      bw: 8.44
-      drop: 0.0076
+      bw: 2.12
+      drop: 0.0394
+      latency: 83.61
     - src: 1
       dst: 4
-      bw: 9.51
-      drop: 0.045
+      bw: 9.6
+      drop: 0.0473
+      latency: 74.22
     - src: 2
       dst: 3
-      bw: 3.32
-      drop: 0.044
+      bw: 6.87
+      drop: 0.0306
+      latency: 129.24
     - src: 2
       dst: 4
-      bw: 8.54
-      drop: 0.0383
+      bw: 8.92
+      drop: 0.0002
+      latency: 11.68
     - src: 3
       dst: 4
-      bw: 2.28
-      drop: 0.0467
+      bw: 4.46
+      drop: 0.0453
+      latency: 125.86
 - time: 2310.0
   links:
     - src: 1
       dst: 2
-      bw: 4.28
-      drop: 0.0116
+      bw: 9.95
+      drop: 0.0239
+      latency: 65.75
     - src: 1
       dst: 3
-      bw: 5.98
-      drop: 0.0463
+      bw: 9.39
+      drop: 0.0211
+      latency: 65.39
     - src: 1
       dst: 4
-      bw: 3.87
-      drop: 0.0237
+      bw: 7.62
+      drop: 0.0371
+      latency: 99.21
     - src: 2
       dst: 3
-      bw: 5.26
-      drop: 0.0105
+      bw: 5.23
+      drop: 0.0304
+      latency: 66.23
     - src: 2
       dst: 4
-      bw: 4.53
-      drop: 0.0108
+      bw: 9.37
+      drop: 0.0362
+      latency: 77.05
     - src: 3
       dst: 4
-      bw: 3.86
-      drop: 0.0254
+      bw: 4.08
+      drop: 0.0231
+      latency: 98.96
 - time: 2340.0
   links:
     - src: 1
       dst: 2
-      bw: 3.42
-      drop: 0.0455
+      bw: 2.39
+      drop: 0.009
+      latency: 131.61
     - src: 1
       dst: 3
-      bw: 9.88
-      drop: 0.0136
+      bw: 8.27
+      drop: 0.0305
+      latency: 148.64
     - src: 1
       dst: 4
-      bw: 3.73
-      drop: 0.0189
+      bw: 9.04
+      drop: 0.0075
+      latency: 56.88
     - src: 2
       dst: 3
-      bw: 7.04
-      drop: 0.0161
+      bw: 2.94
+      drop: 0.0058
+      latency: 126.22
     - src: 2
       dst: 4
-      bw: 8.07
-      drop: 0.006
+      bw: 4.37
+      drop: 0.0332
+      latency: 91.14
     - src: 3
       dst: 4
-      bw: 8.44
-      drop: 0.0053
+      bw: 5.09
+      drop: 0.0434
+      latency: 131.73
 - time: 2370.0
   links:
     - src: 1
       dst: 2
-      bw: 2.24
-      drop: 0.0257
+      bw: 6.68
+      drop: 0.0102
+      latency: 43.27
     - src: 1
       dst: 3
-      bw: 2.85
-      drop: 0.0365
+      bw: 9.35
+      drop: 0.0453
+      latency: 131.09
     - src: 1
       dst: 4
-      bw: 9.86
-      drop: 0.0293
+      bw: 4.4
+      drop: 0.0274
+      latency: 42.66
     - src: 2
       dst: 3
-      bw: 7.06
-      drop: 0.0156
+      bw: 7.32
+      drop: 0.0422
+      latency: 146.93
     - src: 2
       dst: 4
-      bw: 2.65
-      drop: 0.0119
+      bw: 8.86
+      drop: 0.0203
+      latency: 105.0
     - src: 3
       dst: 4
-      bw: 2.28
-      drop: 0.0292
+      bw: 5.08
+      drop: 0.0174
+      latency: 81.71
 - time: 2400.0
   links:
     - src: 1
       dst: 2
-      bw: 2.49
-      drop: 0.0398
+      bw: 3.92
+      drop: 0.0198
+      latency: 139.74
     - src: 1
       dst: 3
-      bw: 6.35
-      drop: 0.0278
+      bw: 7.27
+      drop: 0.045
+      latency: 52.26
     - src: 1
       dst: 4
-      bw: 2.47
-      drop: 0.0049
+      bw: 8.48
+      drop: 0.0079
+      latency: 90.67
     - src: 2
       dst: 3
-      bw: 6.09
-      drop: 0.0305
+      bw: 4.13
+      drop: 0.0351
+      latency: 53.53
     - src: 2
       dst: 4
-      bw: 9.77
-      drop: 0.0152
+      bw: 3.35
+      drop: 0.0213
+      latency: 71.35
     - src: 3
       dst: 4
-      bw: 8.33
-      drop: 0.0045
+      bw: 6.92
+      drop: 0.0123
+      latency: 76.16
 - time: 2430.0
   links:
     - src: 1
       dst: 2
-      bw: 4.24
-      drop: 0.0278
+      bw: 9.55
+      drop: 0.0499
+      latency: 136.22
     - src: 1
       dst: 3
-      bw: 9.15
-      drop: 0.0012
+      bw: 6.14
+      drop: 0.024
+      latency: 49.29
     - src: 1
       dst: 4
-      bw: 3.51
-      drop: 0.0002
+      bw: 6.45
+      drop: 0.045
+      latency: 64.06
     - src: 2
       dst: 3
-      bw: 4.1
-      drop: 0.047
+      bw: 8.94
+      drop: 0.0095
+      latency: 55.82
     - src: 2
       dst: 4
-      bw: 8.79
-      drop: 0.0433
+      bw: 4.99
+      drop: 0.0168
+      latency: 39.71
     - src: 3
       dst: 4
-      bw: 2.86
-      drop: 0.0266
+      bw: 8.61
+      drop: 0.0046
+      latency: 39.36
 - time: 2460.0
   links:
     - src: 1
       dst: 2
-      bw: 6.63
-      drop: 0.008
+      bw: 3.39
+      drop: 0.0146
+      latency: 91.15
     - src: 1
       dst: 3
-      bw: 9.66
+      bw: 9.49
+      drop: 0.0352
+      latency: 88.95
+    - src: 1
+      dst: 4
+      bw: 8.51
+      drop: 0.0408
+      latency: 121.12
+    - src: 2
+      dst: 3
+      bw: 7.2
       drop: 0.0358
-    - src: 1
-      dst: 4
-      bw: 2.73
-      drop: 0.0457
-    - src: 2
-      dst: 3
-      bw: 5.82
-      drop: 0.0471
+      latency: 125.7
     - src: 2
       dst: 4
-      bw: 3.07
-      drop: 0.0494
+      bw: 5.59
+      drop: 0.0455
+      latency: 34.92
     - src: 3
       dst: 4
-      bw: 3.09
-      drop: 0.0297
+      bw: 2.76
+      drop: 0.0416
+      latency: 74.47
 - time: 2490.0
   links:
     - src: 1
       dst: 2
-      bw: 7.78
-      drop: 0.0089
+      bw: 3.91
+      drop: 0.0459
+      latency: 89.31
     - src: 1
       dst: 3
-      bw: 3.85
-      drop: 0.0038
+      bw: 9.15
+      drop: 0.0244
+      latency: 67.09
     - src: 1
       dst: 4
-      bw: 4.21
-      drop: 0.0176
+      bw: 4.56
+      drop: 0.0497
+      latency: 112.05
     - src: 2
       dst: 3
-      bw: 9.72
-      drop: 0.0386
-    - src: 2
-      dst: 4
-      bw: 7.99
+      bw: 3.96
       drop: 0.0126
+      latency: 142.46
+    - src: 2
+      dst: 4
+      bw: 7.87
+      drop: 0.0448
+      latency: 19.98
     - src: 3
       dst: 4
-      bw: 3.94
-      drop: 0.022
+      bw: 8.97
+      drop: 0.0172
+      latency: 26.66
 - time: 2520.0
   links:
     - src: 1
       dst: 2
-      bw: 8.08
-      drop: 0.0052
+      bw: 3.94
+      drop: 0.0317
+      latency: 104.86
     - src: 1
       dst: 3
-      bw: 6.04
-      drop: 0.0262
+      bw: 8.34
+      drop: 0.0448
+      latency: 131.03
     - src: 1
       dst: 4
-      bw: 2.53
-      drop: 0.0075
+      bw: 6.9
+      drop: 0.0491
+      latency: 130.27
     - src: 2
       dst: 3
-      bw: 7.28
-      drop: 0.0021
+      bw: 5.66
+      drop: 0.0217
+      latency: 85.4
     - src: 2
       dst: 4
-      bw: 2.69
-      drop: 0.0496
+      bw: 8.21
+      drop: 0.0183
+      latency: 40.47
     - src: 3
       dst: 4
-      bw: 4.37
-      drop: 0.0111
+      bw: 2.93
+      drop: 0.0095
+      latency: 68.32
 - time: 2550.0
   links:
     - src: 1
       dst: 2
-      bw: 4.94
-      drop: 0.0245
+      bw: 3.71
+      drop: 0.0079
+      latency: 130.83
     - src: 1
       dst: 3
-      bw: 9.58
-      drop: 0.0376
+      bw: 5.6
+      drop: 0.0141
+      latency: 129.81
     - src: 1
       dst: 4
-      bw: 4.05
-      drop: 0.0475
+      bw: 7.91
+      drop: 0.0478
+      latency: 43.01
     - src: 2
       dst: 3
-      bw: 7.19
-      drop: 0.0124
+      bw: 6.14
+      drop: 0.0199
+      latency: 31.74
     - src: 2
       dst: 4
-      bw: 7.99
-      drop: 0.0395
+      bw: 4.33
+      drop: 0.0122
+      latency: 109.76
     - src: 3
       dst: 4
-      bw: 5.95
-      drop: 0.0481
+      bw: 7.5
+      drop: 0.0214
+      latency: 116.63
 - time: 2580.0
   links:
     - src: 1
       dst: 2
-      bw: 4.36
-      drop: 0.0455
+      bw: 6.42
+      drop: 0.0462
+      latency: 66.86
     - src: 1
       dst: 3
-      bw: 8.21
-      drop: 0.0124
+      bw: 3.73
+      drop: 0.0345
+      latency: 108.04
     - src: 1
       dst: 4
-      bw: 6.52
-      drop: 0.0308
+      bw: 6.66
+      drop: 0.0154
+      latency: 47.45
     - src: 2
       dst: 3
-      bw: 7.27
-      drop: 0.0317
+      bw: 2.89
+      drop: 0.0284
+      latency: 110.43
     - src: 2
       dst: 4
       bw: 4.37
-      drop: 0.0153
+      drop: 0.0252
+      latency: 64.55
     - src: 3
       dst: 4
-      bw: 8.85
-      drop: 0.0421
+      bw: 9.53
+      drop: 0.0312
+      latency: 108.3
 - time: 2610.0
   links:
     - src: 1
       dst: 2
-      bw: 9.06
-      drop: 0.0354
+      bw: 8.63
+      drop: 0.0172
+      latency: 13.65
     - src: 1
       dst: 3
-      bw: 5.24
-      drop: 0.0109
+      bw: 4.38
+      drop: 0.025
+      latency: 11.07
     - src: 1
       dst: 4
-      bw: 8.96
-      drop: 0.0394
+      bw: 8.05
+      drop: 0.0075
+      latency: 31.49
     - src: 2
       dst: 3
-      bw: 6.96
-      drop: 0.0471
+      bw: 3.05
+      drop: 0.0202
+      latency: 62.63
     - src: 2
       dst: 4
-      bw: 6.56
-      drop: 0.029
+      bw: 9.48
+      drop: 0.0112
+      latency: 99.08
     - src: 3
       dst: 4
-      bw: 5.88
-      drop: 0.0269
+      bw: 4.85
+      drop: 0.0088
+      latency: 130.93
 - time: 2640.0
   links:
     - src: 1
       dst: 2
-      bw: 4.26
-      drop: 0.0261
+      bw: 4.74
+      drop: 0.0288
+      latency: 71.81
     - src: 1
       dst: 3
-      bw: 6.68
-      drop: 0.0398
+      bw: 5.3
+      drop: 0.0075
+      latency: 107.43
     - src: 1
       dst: 4
-      bw: 2.93
-      drop: 0.0235
+      bw: 3.82
+      drop: 0.0341
+      latency: 74.95
     - src: 2
       dst: 3
-      bw: 3.17
-      drop: 0.0409
+      bw: 3.62
+      drop: 0.0202
+      latency: 123.74
     - src: 2
       dst: 4
-      bw: 5.53
-      drop: 0.0041
+      bw: 9.18
+      drop: 0.0252
+      latency: 55.25
     - src: 3
       dst: 4
-      bw: 4.38
-      drop: 0.012
+      bw: 4.99
+      drop: 0.0467
+      latency: 93.82
 - time: 2670.0
   links:
     - src: 1
       dst: 2
-      bw: 3.21
-      drop: 0.0028
+      bw: 9.69
+      drop: 0.0447
+      latency: 141.48
     - src: 1
       dst: 3
-      bw: 6.78
-      drop: 0.0208
+      bw: 8.4
+      drop: 0.0462
+      latency: 54.79
     - src: 1
       dst: 4
-      bw: 7.57
-      drop: 0.0303
+      bw: 8.47
+      drop: 0.0012
+      latency: 10.99
     - src: 2
       dst: 3
-      bw: 6.61
-      drop: 0.0193
+      bw: 8.67
+      drop: 0.0122
+      latency: 12.72
     - src: 2
       dst: 4
-      bw: 6.81
-      drop: 0.0333
+      bw: 4.52
+      drop: 0.01
+      latency: 30.01
     - src: 3
       dst: 4
-      bw: 6.84
-      drop: 0.0499
+      bw: 7.34
+      drop: 0.0281
+      latency: 19.72
 - time: 2700.0
   links:
     - src: 1
       dst: 2
-      bw: 9.93
-      drop: 0.0379
+      bw: 3.42
+      drop: 0.006
+      latency: 139.97
     - src: 1
       dst: 3
-      bw: 9.73
-      drop: 0.0202
+      bw: 2.55
+      drop: 0.0222
+      latency: 86.81
     - src: 1
       dst: 4
-      bw: 8.02
-      drop: 0.0477
+      bw: 9.33
+      drop: 0.0397
+      latency: 13.57
     - src: 2
       dst: 3
-      bw: 6.41
-      drop: 0.003
+      bw: 5.9
+      drop: 0.0412
+      latency: 128.96
     - src: 2
       dst: 4
-      bw: 2.39
-      drop: 0.0048
+      bw: 2.42
+      drop: 0.0146
+      latency: 100.89
     - src: 3
       dst: 4
-      bw: 6.07
-      drop: 0.0349
+      bw: 9.47
+      drop: 0.0307
+      latency: 19.93
 - time: 2730.0
   links:
     - src: 1
       dst: 2
-      bw: 6.56
-      drop: 0.0241
+      bw: 4.5
+      drop: 0.0281
+      latency: 43.42
     - src: 1
       dst: 3
-      bw: 9.79
-      drop: 0.0311
+      bw: 9.29
+      drop: 0.0006
+      latency: 94.25
     - src: 1
       dst: 4
-      bw: 5.03
-      drop: 0.0094
+      bw: 4.03
+      drop: 0.0454
+      latency: 75.74
     - src: 2
       dst: 3
-      bw: 3.79
-      drop: 0.0019
+      bw: 7.7
+      drop: 0.0126
+      latency: 104.07
     - src: 2
       dst: 4
-      bw: 7.43
-      drop: 0.0439
+      bw: 5.46
+      drop: 0.0066
+      latency: 44.26
     - src: 3
       dst: 4
-      bw: 3.53
-      drop: 0.0215
+      bw: 3.3
+      drop: 0.0206
+      latency: 14.64
 - time: 2760.0
   links:
     - src: 1
       dst: 2
-      bw: 3.0
-      drop: 0.0249
+      bw: 9.17
+      drop: 0.0065
+      latency: 139.63
     - src: 1
       dst: 3
-      bw: 9.36
-      drop: 0.0162
+      bw: 3.85
+      drop: 0.0322
+      latency: 10.37
     - src: 1
       dst: 4
-      bw: 2.35
-      drop: 0.0213
+      bw: 5.41
+      drop: 0.013
+      latency: 74.02
     - src: 2
       dst: 3
-      bw: 6.41
-      drop: 0.0343
+      bw: 7.0
+      drop: 0.019
+      latency: 24.03
     - src: 2
       dst: 4
-      bw: 3.25
-      drop: 0.0102
+      bw: 5.26
+      drop: 0.0255
+      latency: 135.36
     - src: 3
       dst: 4
-      bw: 9.81
-      drop: 0.0295
+      bw: 2.79
+      drop: 0.0288
+      latency: 121.91
 - time: 2790.0
   links:
     - src: 1
       dst: 2
-      bw: 8.04
-      drop: 0.0095
+      bw: 3.3
+      drop: 0.0172
+      latency: 72.93
     - src: 1
       dst: 3
-      bw: 3.4
-      drop: 0.017
+      bw: 8.12
+      drop: 0.0257
+      latency: 31.99
     - src: 1
       dst: 4
-      bw: 7.67
-      drop: 0.0302
+      bw: 8.29
+      drop: 0.0119
+      latency: 130.76
     - src: 2
       dst: 3
-      bw: 4.18
-      drop: 0.0023
+      bw: 7.79
+      drop: 0.0386
+      latency: 93.85
     - src: 2
       dst: 4
-      bw: 4.28
-      drop: 0.0264
+      bw: 3.83
+      drop: 0.0076
+      latency: 16.88
     - src: 3
       dst: 4
-      bw: 5.05
-      drop: 0.0395
+      bw: 6.15
+      drop: 0.0376
+      latency: 15.12
 - time: 2820.0
   links:
     - src: 1
       dst: 2
-      bw: 5.14
-      drop: 0.0284
+      bw: 2.32
+      drop: 0.0255
+      latency: 60.08
     - src: 1
       dst: 3
-      bw: 2.23
-      drop: 0.0084
+      bw: 3.47
+      drop: 0.0014
+      latency: 34.04
     - src: 1
       dst: 4
-      bw: 5.83
-      drop: 0.0429
+      bw: 4.63
+      drop: 0.0322
+      latency: 52.73
     - src: 2
       dst: 3
-      bw: 7.1
-      drop: 0.0333
+      bw: 2.85
+      drop: 0.048
+      latency: 60.62
     - src: 2
       dst: 4
-      bw: 4.6
-      drop: 0.0083
+      bw: 3.28
+      drop: 0.0387
+      latency: 127.91
     - src: 3
       dst: 4
-      bw: 8.45
-      drop: 0.0021
+      bw: 6.22
+      drop: 0.0225
+      latency: 104.95
 - time: 2850.0
   links:
     - src: 1
       dst: 2
-      bw: 3.08
-      drop: 0.0119
+      bw: 3.02
+      drop: 0.0303
+      latency: 29.26
     - src: 1
       dst: 3
-      bw: 7.85
-      drop: 0.0006
+      bw: 5.95
+      drop: 0.0198
+      latency: 141.82
     - src: 1
       dst: 4
-      bw: 8.07
-      drop: 0.0166
+      bw: 6.56
+      drop: 0.0188
+      latency: 113.2
     - src: 2
       dst: 3
-      bw: 9.52
-      drop: 0.0193
+      bw: 6.28
+      drop: 0.0346
+      latency: 53.99
     - src: 2
       dst: 4
-      bw: 9.5
-      drop: 0.0278
+      bw: 6.73
+      drop: 0.0127
+      latency: 44.58
     - src: 3
       dst: 4
-      bw: 5.07
-      drop: 0.0431
+      bw: 4.12
+      drop: 0.0055
+      latency: 49.66
 - time: 2880.0
   links:
     - src: 1
       dst: 2
-      bw: 5.59
-      drop: 0.0284
+      bw: 5.73
+      drop: 0.0422
+      latency: 71.41
     - src: 1
       dst: 3
-      bw: 6.58
-      drop: 0.0128
+      bw: 9.68
+      drop: 0.0477
+      latency: 124.69
     - src: 1
       dst: 4
-      bw: 6.42
-      drop: 0.0123
+      bw: 8.93
+      drop: 0.0275
+      latency: 48.24
     - src: 2
       dst: 3
-      bw: 5.17
-      drop: 0.0167
+      bw: 3.48
+      drop: 0.0409
+      latency: 12.26
     - src: 2
       dst: 4
-      bw: 3.23
-      drop: 0.0102
+      bw: 4.47
+      drop: 0.013
+      latency: 39.05
     - src: 3
       dst: 4
-      bw: 6.12
-      drop: 0.0426
+      bw: 7.3
+      drop: 0.0169
+      latency: 47.54
 - time: 2910.0
   links:
     - src: 1
       dst: 2
-      bw: 5.48
-      drop: 0.0484
+      bw: 7.99
+      drop: 0.0058
+      latency: 126.35
     - src: 1
       dst: 3
-      bw: 6.91
-      drop: 0.0054
+      bw: 2.13
+      drop: 0.0203
+      latency: 140.52
     - src: 1
       dst: 4
-      bw: 9.03
-      drop: 0.0216
+      bw: 6.49
+      drop: 0.0499
+      latency: 82.88
     - src: 2
       dst: 3
-      bw: 3.98
-      drop: 0.0322
+      bw: 4.15
+      drop: 0.0103
+      latency: 113.23
     - src: 2
       dst: 4
-      bw: 9.33
-      drop: 0.0022
+      bw: 6.02
+      drop: 0.0488
+      latency: 18.2
     - src: 3
       dst: 4
-      bw: 7.18
-      drop: 0.0378
+      bw: 5.45
+      drop: 0.0197
+      latency: 84.98
 - time: 2940.0
   links:
     - src: 1
       dst: 2
-      bw: 7.88
-      drop: 0.0294
+      bw: 7.09
+      drop: 0.0283
+      latency: 34.28
     - src: 1
       dst: 3
-      bw: 9.86
-      drop: 0.0307
-    - src: 1
-      dst: 4
-      bw: 7.43
-      drop: 0.0245
-    - src: 2
-      dst: 3
-      bw: 3.93
-      drop: 0.0107
-    - src: 2
-      dst: 4
-      bw: 3.7
+      bw: 3.49
       drop: 0.022
+      latency: 110.06
+    - src: 1
+      dst: 4
+      bw: 8.36
+      drop: 0.0278
+      latency: 122.42
+    - src: 2
+      dst: 3
+      bw: 9.09
+      drop: 0.0004
+      latency: 136.62
+    - src: 2
+      dst: 4
+      bw: 5.15
+      drop: 0.0065
+      latency: 30.59
     - src: 3
       dst: 4
-      bw: 3.04
-      drop: 0.0034
+      bw: 2.8
+      drop: 0.0293
+      latency: 65.29
 - time: 2970.0
   links:
     - src: 1
       dst: 2
-      bw: 9.48
-      drop: 0.0257
+      bw: 8.34
+      drop: 0.0172
+      latency: 29.34
     - src: 1
       dst: 3
-      bw: 3.03
-      drop: 0.0229
+      bw: 8.2
+      drop: 0.0161
+      latency: 49.23
     - src: 1
       dst: 4
-      bw: 4.52
-      drop: 0.0393
+      bw: 8.97
+      drop: 0.0039
+      latency: 94.83
     - src: 2
       dst: 3
-      bw: 7.26
-      drop: 0.0072
+      bw: 6.35
+      drop: 0.0188
+      latency: 142.44
     - src: 2
       dst: 4
-      bw: 4.3
-      drop: 0.0481
+      bw: 4.54
+      drop: 0.013
+      latency: 66.95
     - src: 3
       dst: 4
-      bw: 5.63
-      drop: 0.0027
+      bw: 8.25
+      drop: 0.047
+      latency: 50.82
 - time: 3000.0
   links:
     - src: 1
       dst: 2
-      bw: 7.55
-      drop: 0.0256
+      bw: 8.69
+      drop: 0.0392
+      latency: 78.45
     - src: 1
       dst: 3
-      bw: 3.8
-      drop: 0.0135
+      bw: 7.4
+      drop: 0.0309
+      latency: 36.94
     - src: 1
       dst: 4
-      bw: 8.82
-      drop: 0.0424
+      bw: 6.43
+      drop: 0.0439
+      latency: 27.89
     - src: 2
       dst: 3
-      bw: 5.19
-      drop: 0.0239
+      bw: 9.47
+      drop: 0.0282
+      latency: 106.4
     - src: 2
       dst: 4
-      bw: 5.99
-      drop: 0.0006
+      bw: 6.2
+      drop: 0.013
+      latency: 115.97
     - src: 3
       dst: 4
-      bw: 8.19
-      drop: 0.0098
+      bw: 4.93
+      drop: 0.0084
+      latency: 135.07
 - time: 3030.0
   links:
     - src: 1
       dst: 2
-      bw: 6.53
-      drop: 0.0465
+      bw: 6.17
+      drop: 0.0023
+      latency: 136.56
     - src: 1
       dst: 3
-      bw: 9.95
-      drop: 0.0064
+      bw: 8.82
+      drop: 0.0212
+      latency: 47.59
     - src: 1
       dst: 4
-      bw: 6.62
-      drop: 0.0407
+      bw: 4.31
+      drop: 0.0207
+      latency: 134.59
     - src: 2
       dst: 3
-      bw: 7.67
-      drop: 0.0141
+      bw: 7.56
+      drop: 0.0203
+      latency: 109.42
     - src: 2
       dst: 4
-      bw: 3.4
-      drop: 0.0314
+      bw: 6.69
+      drop: 0.0046
+      latency: 15.39
     - src: 3
       dst: 4
-      bw: 4.85
-      drop: 0.0057
+      bw: 5.61
+      drop: 0.0226
+      latency: 144.39
 - time: 3060.0
   links:
     - src: 1
       dst: 2
-      bw: 8.93
-      drop: 0.0357
+      bw: 6.48
+      drop: 0.0288
+      latency: 121.23
     - src: 1
       dst: 3
-      bw: 7.45
-      drop: 0.0445
+      bw: 3.01
+      drop: 0.0356
+      latency: 121.28
     - src: 1
       dst: 4
-      bw: 7.08
-      drop: 0.0195
+      bw: 3.09
+      drop: 0.0137
+      latency: 72.22
     - src: 2
       dst: 3
-      bw: 9.34
-      drop: 0.0119
+      bw: 7.82
+      drop: 0.0135
+      latency: 51.15
     - src: 2
       dst: 4
-      bw: 8.0
-      drop: 0.0487
+      bw: 9.81
+      drop: 0.0162
+      latency: 30.21
     - src: 3
       dst: 4
-      bw: 9.47
-      drop: 0.0409
+      bw: 8.41
+      drop: 0.0295
+      latency: 69.39
 - time: 3090.0
   links:
     - src: 1
       dst: 2
-      bw: 4.42
-      drop: 0.0034
+      bw: 3.96
+      drop: 0.0442
+      latency: 32.68
     - src: 1
       dst: 3
-      bw: 2.19
-      drop: 0.0025
+      bw: 9.79
+      drop: 0.0246
+      latency: 63.88
     - src: 1
       dst: 4
-      bw: 3.0
-      drop: 0.0226
+      bw: 5.31
+      drop: 0.0007
+      latency: 135.85
     - src: 2
       dst: 3
-      bw: 9.86
-      drop: 0.0066
+      bw: 2.86
+      drop: 0.0315
+      latency: 136.51
     - src: 2
       dst: 4
-      bw: 3.81
-      drop: 0.0403
+      bw: 2.64
+      drop: 0.0405
+      latency: 74.9
     - src: 3
       dst: 4
-      bw: 3.23
-      drop: 0.0347
+      bw: 8.8
+      drop: 0.0115
+      latency: 22.63
 - time: 3120.0
   links:
     - src: 1
       dst: 2
-      bw: 8.45
-      drop: 0.0446
+      bw: 9.17
+      drop: 0.0407
+      latency: 50.83
     - src: 1
       dst: 3
-      bw: 9.16
-      drop: 0.0474
+      bw: 9.07
+      drop: 0.0192
+      latency: 121.46
     - src: 1
       dst: 4
-      bw: 6.21
-      drop: 0.0438
+      bw: 8.12
+      drop: 0.0159
+      latency: 87.13
     - src: 2
       dst: 3
-      bw: 2.48
-      drop: 0.0446
+      bw: 4.79
+      drop: 0.0388
+      latency: 117.25
     - src: 2
       dst: 4
-      bw: 4.13
-      drop: 0.0353
+      bw: 9.4
+      drop: 0.0004
+      latency: 51.85
     - src: 3
       dst: 4
-      bw: 4.44
-      drop: 0.0115
+      bw: 2.99
+      drop: 0.0322
+      latency: 18.34
 - time: 3150.0
   links:
     - src: 1
       dst: 2
-      bw: 4.28
-      drop: 0.0493
+      bw: 8.15
+      drop: 0.0145
+      latency: 13.91
     - src: 1
       dst: 3
-      bw: 5.48
-      drop: 0.0248
+      bw: 4.01
+      drop: 0.0386
+      latency: 34.89
     - src: 1
       dst: 4
-      bw: 4.6
-      drop: 0.0226
+      bw: 3.03
+      drop: 0.0071
+      latency: 102.42
     - src: 2
       dst: 3
-      bw: 4.99
-      drop: 0.033
+      bw: 4.41
+      drop: 0.0281
+      latency: 19.09
     - src: 2
       dst: 4
-      bw: 5.13
-      drop: 0.0103
+      bw: 4.03
+      drop: 0.014
+      latency: 120.84
     - src: 3
       dst: 4
-      bw: 6.93
-      drop: 0.0249
+      bw: 8.53
+      drop: 0.0357
+      latency: 54.64
 - time: 3180.0
   links:
     - src: 1
       dst: 2
-      bw: 7.94
-      drop: 0.0498
+      bw: 5.51
+      drop: 0.0002
+      latency: 32.2
     - src: 1
       dst: 3
-      bw: 5.75
-      drop: 0.0239
+      bw: 5.9
+      drop: 0.0357
+      latency: 70.27
     - src: 1
       dst: 4
-      bw: 7.23
-      drop: 0.0387
+      bw: 3.4
+      drop: 0.0457
+      latency: 118.59
     - src: 2
       dst: 3
-      bw: 4.19
-      drop: 0.0153
+      bw: 2.24
+      drop: 0.017
+      latency: 45.91
     - src: 2
       dst: 4
-      bw: 8.79
-      drop: 0.0199
+      bw: 2.89
+      drop: 0.0476
+      latency: 14.19
     - src: 3
       dst: 4
-      bw: 6.13
-      drop: 0.0325
+      bw: 7.75
+      drop: 0.0487
+      latency: 17.53
 - time: 3210.0
   links:
     - src: 1
       dst: 2
-      bw: 3.9
-      drop: 0.0197
+      bw: 6.81
+      drop: 0.0066
+      latency: 10.74
     - src: 1
       dst: 3
-      bw: 7.23
-      drop: 0.006
+      bw: 2.27
+      drop: 0.0192
+      latency: 111.52
     - src: 1
       dst: 4
-      bw: 7.31
-      drop: 0.0081
+      bw: 5.33
+      drop: 0.0139
+      latency: 103.35
     - src: 2
       dst: 3
-      bw: 4.12
-      drop: 0.008
+      bw: 4.51
+      drop: 0.0277
+      latency: 39.16
     - src: 2
       dst: 4
-      bw: 3.24
-      drop: 0.047
+      bw: 5.63
+      drop: 0.0475
+      latency: 36.51
     - src: 3
       dst: 4
-      bw: 9.54
-      drop: 0.0346
+      bw: 9.67
+      drop: 0.0218
+      latency: 25.67
 - time: 3240.0
   links:
     - src: 1
       dst: 2
-      bw: 9.41
-      drop: 0.0135
+      bw: 8.85
+      drop: 0.005
+      latency: 56.59
     - src: 1
       dst: 3
-      bw: 6.29
-      drop: 0.008
+      bw: 9.87
+      drop: 0.0174
+      latency: 79.12
     - src: 1
       dst: 4
-      bw: 6.05
-      drop: 0.0437
+      bw: 3.48
+      drop: 0.0444
+      latency: 67.28
     - src: 2
       dst: 3
-      bw: 6.43
-      drop: 0.0391
+      bw: 3.4
+      drop: 0.0152
+      latency: 17.1
     - src: 2
       dst: 4
-      bw: 6.37
-      drop: 0.001
+      bw: 4.38
+      drop: 0.0174
+      latency: 71.02
     - src: 3
       dst: 4
-      bw: 2.59
-      drop: 0.0012
+      bw: 6.24
+      drop: 0.0316
+      latency: 36.82
 - time: 3270.0
   links:
     - src: 1
       dst: 2
-      bw: 9.67
-      drop: 0.0012
+      bw: 2.05
+      drop: 0.0146
+      latency: 81.19
     - src: 1
       dst: 3
-      bw: 3.1
-      drop: 0.0275
+      bw: 4.52
+      drop: 0.0494
+      latency: 125.78
     - src: 1
       dst: 4
+      bw: 8.62
+      drop: 0.0242
+      latency: 72.53
+    - src: 2
+      dst: 3
       bw: 2.62
-      drop: 0.0489
-    - src: 2
-      dst: 3
-      bw: 6.6
-      drop: 0.0158
+      drop: 0.0499
+      latency: 94.93
     - src: 2
       dst: 4
-      bw: 2.12
-      drop: 0.0417
+      bw: 9.45
+      drop: 0.0042
+      latency: 64.82
     - src: 3
       dst: 4
-      bw: 7.7
-      drop: 0.0128
+      bw: 4.27
+      drop: 0.0365
+      latency: 91.44
 - time: 3300.0
   links:
     - src: 1
       dst: 2
-      bw: 8.09
-      drop: 0.0098
+      bw: 6.19
+      drop: 0.0298
+      latency: 135.36
     - src: 1
       dst: 3
-      bw: 8.84
-      drop: 0.0429
+      bw: 6.97
+      drop: 0.0235
+      latency: 85.65
     - src: 1
       dst: 4
-      bw: 3.0
-      drop: 0.0368
+      bw: 4.73
+      drop: 0.0436
+      latency: 139.21
     - src: 2
       dst: 3
-      bw: 6.66
-      drop: 0.0308
+      bw: 3.55
+      drop: 0.0324
+      latency: 53.3
     - src: 2
       dst: 4
-      bw: 7.45
-      drop: 0.0051
+      bw: 4.13
+      drop: 0.0261
+      latency: 55.83
     - src: 3
       dst: 4
-      bw: 5.64
-      drop: 0.0364
+      bw: 8.29
+      drop: 0.0493
+      latency: 114.27
 - time: 3330.0
   links:
     - src: 1
       dst: 2
-      bw: 6.05
-      drop: 0.0417
+      bw: 3.14
+      drop: 0.0419
+      latency: 79.62
     - src: 1
       dst: 3
-      bw: 6.39
-      drop: 0.0478
+      bw: 8.19
+      drop: 0.0021
+      latency: 71.36
     - src: 1
       dst: 4
-      bw: 4.04
-      drop: 0.0301
+      bw: 7.58
+      drop: 0.0019
+      latency: 22.02
     - src: 2
       dst: 3
-      bw: 8.39
-      drop: 0.0325
+      bw: 6.37
+      drop: 0.0054
+      latency: 18.98
     - src: 2
       dst: 4
-      bw: 7.48
-      drop: 0.017
+      bw: 5.23
+      drop: 0.0267
+      latency: 72.89
     - src: 3
       dst: 4
-      bw: 4.84
-      drop: 0.0436
+      bw: 9.4
+      drop: 0.031
+      latency: 98.48
 - time: 3360.0
   links:
     - src: 1
       dst: 2
-      bw: 2.79
-      drop: 0.0185
+      bw: 9.36
+      drop: 0.0139
+      latency: 20.28
     - src: 1
       dst: 3
-      bw: 4.71
-      drop: 0.0358
+      bw: 3.99
+      drop: 0.0109
+      latency: 99.48
     - src: 1
       dst: 4
-      bw: 4.37
-      drop: 0.0364
+      bw: 9.66
+      drop: 0.0426
+      latency: 114.08
     - src: 2
       dst: 3
-      bw: 6.97
-      drop: 0.0195
+      bw: 5.81
+      drop: 0.0165
+      latency: 70.12
     - src: 2
       dst: 4
-      bw: 7.39
-      drop: 0.0283
+      bw: 6.69
+      drop: 0.0494
+      latency: 137.25
     - src: 3
       dst: 4
-      bw: 9.28
-      drop: 0.0148
+      bw: 5.71
+      drop: 0.0031
+      latency: 61.86
 - time: 3390.0
   links:
     - src: 1
       dst: 2
-      bw: 7.14
-      drop: 0.0353
+      bw: 3.45
+      drop: 0.01
+      latency: 51.11
     - src: 1
       dst: 3
-      bw: 2.28
-      drop: 0.0226
+      bw: 6.41
+      drop: 0.0367
+      latency: 68.29
     - src: 1
       dst: 4
-      bw: 7.18
-      drop: 0.0231
-    - src: 2
-      dst: 3
       bw: 9.89
-      drop: 0.0265
+      drop: 0.0323
+      latency: 129.11
+    - src: 2
+      dst: 3
+      bw: 9.88
+      drop: 0.0236
+      latency: 122.31
     - src: 2
       dst: 4
-      bw: 6.11
-      drop: 0.0454
+      bw: 2.72
+      drop: 0.0227
+      latency: 72.63
     - src: 3
       dst: 4
-      bw: 5.04
-      drop: 0.0126
+      bw: 2.55
+      drop: 0.0442
+      latency: 100.57
 - time: 3420.0
   links:
     - src: 1
       dst: 2
-      bw: 6.64
-      drop: 0.0153
+      bw: 8.75
+      drop: 0.0321
+      latency: 36.51
     - src: 1
       dst: 3
-      bw: 3.26
-      drop: 0.0069
+      bw: 4.9
+      drop: 0.0266
+      latency: 54.56
     - src: 1
       dst: 4
-      bw: 3.73
-      drop: 0.0078
+      bw: 2.09
+      drop: 0.0045
+      latency: 111.58
     - src: 2
       dst: 3
-      bw: 3.26
-      drop: 0.0302
+      bw: 7.85
+      drop: 0.0092
+      latency: 20.75
     - src: 2
       dst: 4
-      bw: 2.02
-      drop: 0.0047
+      bw: 3.66
+      drop: 0.0256
+      latency: 101.76
     - src: 3
       dst: 4
-      bw: 3.28
-      drop: 0.0241
+      bw: 4.18
+      drop: 0.0149
+      latency: 103.87
 - time: 3450.0
   links:
     - src: 1
       dst: 2
-      bw: 2.24
-      drop: 0.0456
+      bw: 7.47
+      drop: 0.0121
+      latency: 58.29
     - src: 1
       dst: 3
-      bw: 6.53
-      drop: 0.0472
+      bw: 3.56
+      drop: 0.0001
+      latency: 57.16
     - src: 1
       dst: 4
-      bw: 2.58
-      drop: 0.0492
+      bw: 4.6
+      drop: 0.0405
+      latency: 131.75
     - src: 2
       dst: 3
-      bw: 3.65
-      drop: 0.0278
+      bw: 2.41
+      drop: 0.049
+      latency: 119.65
     - src: 2
       dst: 4
-      bw: 2.76
-      drop: 0.0019
+      bw: 6.14
+      drop: 0.0218
+      latency: 96.33
     - src: 3
       dst: 4
-      bw: 8.64
-      drop: 0.0466
+      bw: 7.07
+      drop: 0.0349
+      latency: 138.53
 - time: 3480.0
   links:
     - src: 1
       dst: 2
-      bw: 4.6
-      drop: 0.0106
+      bw: 8.22
+      drop: 0.0145
+      latency: 122.68
     - src: 1
       dst: 3
-      bw: 6.87
-      drop: 0.0266
+      bw: 8.57
+      drop: 0.0392
+      latency: 20.85
     - src: 1
       dst: 4
-      bw: 7.87
-      drop: 0.0308
+      bw: 5.68
+      drop: 0.0488
+      latency: 32.73
     - src: 2
       dst: 3
-      bw: 2.7
-      drop: 0.0073
+      bw: 2.85
+      drop: 0.0053
+      latency: 27.77
     - src: 2
       dst: 4
-      bw: 3.39
-      drop: 0.0326
+      bw: 5.77
+      drop: 0.0133
+      latency: 115.02
     - src: 3
       dst: 4
-      bw: 7.18
-      drop: 0.0497
+      bw: 6.04
+      drop: 0.0324
+      latency: 99.8
 - time: 3510.0
   links:
     - src: 1
       dst: 2
-      bw: 2.89
-      drop: 0.0108
+      bw: 8.75
+      drop: 0.0033
+      latency: 31.93
     - src: 1
       dst: 3
-      bw: 4.96
-      drop: 0.0389
+      bw: 6.46
+      drop: 0.0136
+      latency: 124.19
     - src: 1
       dst: 4
-      bw: 7.57
-      drop: 0.0416
+      bw: 8.19
+      drop: 0.0481
+      latency: 45.75
     - src: 2
       dst: 3
-      bw: 5.41
-      drop: 0.0087
+      bw: 6.07
+      drop: 0.0186
+      latency: 77.23
     - src: 2
       dst: 4
-      bw: 4.4
-      drop: 0.0469
+      bw: 9.38
+      drop: 0.0342
+      latency: 77.79
     - src: 3
       dst: 4
-      bw: 7.6
-      drop: 0.0241
+      bw: 4.21
+      drop: 0.0092
+      latency: 137.65
 - time: 3540.0
   links:
     - src: 1
       dst: 2
-      bw: 6.63
-      drop: 0.0188
+      bw: 3.38
+      drop: 0.0485
+      latency: 100.5
     - src: 1
       dst: 3
-      bw: 2.59
-      drop: 0.0458
+      bw: 5.77
+      drop: 0.0255
+      latency: 71.11
     - src: 1
       dst: 4
-      bw: 5.87
-      drop: 0.0177
+      bw: 9.95
+      drop: 0.0192
+      latency: 81.22
     - src: 2
       dst: 3
-      bw: 2.99
-      drop: 0.0142
+      bw: 4.83
+      drop: 0.037
+      latency: 29.17
     - src: 2
       dst: 4
-      bw: 5.98
-      drop: 0.0385
+      bw: 9.58
+      drop: 0.0346
+      latency: 30.14
     - src: 3
       dst: 4
-      bw: 5.82
-      drop: 0.0085
+      bw: 8.0
+      drop: 0.0042
+      latency: 42.16
 - time: 3570.0
   links:
     - src: 1
       dst: 2
-      bw: 8.96
-      drop: 0.0356
+      bw: 2.17
+      drop: 0.0308
+      latency: 96.2
     - src: 1
       dst: 3
-      bw: 8.44
-      drop: 0.0432
+      bw: 7.77
+      drop: 0.0218
+      latency: 25.7
     - src: 1
       dst: 4
-      bw: 5.04
-      drop: 0.0378
+      bw: 7.31
+      drop: 0.0232
+      latency: 106.89
     - src: 2
       dst: 3
-      bw: 3.42
-      drop: 0.0037
+      bw: 5.85
+      drop: 0.0465
+      latency: 16.95
     - src: 2
       dst: 4
-      bw: 8.35
-      drop: 0.0017
+      bw: 2.46
+      drop: 0.0319
+      latency: 118.69
     - src: 3
       dst: 4
-      bw: 3.84
-      drop: 0.0476
+      bw: 8.74
+      drop: 0.0404
+      latency: 63.71
 - time: 3600.0
   links:
     - src: 1
       dst: 2
-      bw: 9.94
-      drop: 0.0086
+      bw: 6.06
+      drop: 0.0331
+      latency: 33.61
     - src: 1
       dst: 3
-      bw: 3.48
-      drop: 0.0353
+      bw: 2.4
+      drop: 0.0155
+      latency: 28.94
     - src: 1
       dst: 4
-      bw: 9.1
-      drop: 0.0491
+      bw: 3.87
+      drop: 0.0247
+      latency: 20.83
     - src: 2
       dst: 3
-      bw: 8.25
-      drop: 0.0431
+      bw: 5.67
+      drop: 0.0408
+      latency: 131.85
     - src: 2
       dst: 4
-      bw: 5.32
-      drop: 0.043
+      bw: 2.47
+      drop: 0.0483
+      latency: 52.76
     - src: 3
       dst: 4
-      bw: 9.89
-      drop: 0.0191
+      bw: 8.07
+      drop: 0.0353
+      latency: 92.64
