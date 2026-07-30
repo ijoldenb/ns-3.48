@@ -17,6 +17,7 @@ set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-dynamic-star.py"
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-single-channel.cc"
   "/home/ijoldenb/ns-3.48/scratch/CMakeLists.txt"
+  "/home/ijoldenb/ns-3.48/scratch/MasterSim.py"
   "/home/ijoldenb/ns-3.48/scratch/first.py"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-send.cc"

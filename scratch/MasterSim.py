@@ -1,4 +1,6 @@
 import sys
+import socket
+import json
 from ns import ns
 import cppyy
 
@@ -65,11 +67,41 @@ using ns3::SchedulePythonEvent;
 using ns3::ToAddress;
 """)
 
+# ==============================================================================
+# --- EXTERNAL HARDWARE MAPPINGS (UDP LATENCY CONTROLLER) ---
+# ==============================================================================
+# The external SSH IP addresses to reach each Pi
+PI_CLUSTER = {
+    1: "192.168.0.244",
+    2: "192.168.0.198",
+    3: "192.168.0.129",
+    4: "192.168.0.237",
+}
+
+# The internal VPN/VLAN IPs that `tc` runs against. 
+TARGET_IPS = {
+    1: "192.168.101.10",
+    2: "192.168.102.10",
+    3: "192.168.103.10",
+    4: "192.168.104.10",
+}
+
+UDP_PORT = 65000
+PHYSICAL_BASELINE_OVERHEAD = 4
+
+# Global socket for blasting latency configs to the physical hardware
+g_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+
 # --- Global Network Infrastructure ---
 numNodes = 4
 
-# Mesh Tracking Matrix: meshDevices[SrcNode][DstNode]
+# Mesh Tracking Matrices (Used for instant O(1) reads during topology reporting)
 meshDevices = [[None for _ in range(numNodes)] for _ in range(numNodes)]
+linkBw = [[100.0 for _ in range(numNodes)] for _ in range(numNodes)]
+linkDrop = [[0.0 for _ in range(numNodes)] for _ in range(numNodes)]
+linkLatencies = [[0.0 for _ in range(numNodes)] for _ in range(numNodes)]
+
 g_fdDev = [None for _ in range(numNodes)]
 
 # Global MAC Address Translation table for distributed L2 switching
@@ -81,34 +113,23 @@ g_keepAlive = []
 
 # --- LIVE TOPOLOGY REPORTING ENGINE ---
 def PrintCurrentTopology():
-    print("\n====================================================")
-    print(f" CORE TOPOLOGY REPORT | Sim Time: {ns.Simulator.Now().GetSeconds()}s")
-    print("====================================================")
+    print("\n=========================================================================")
+    print(f" CORE TOPOLOGY REPORT | Sim Time: {ns.Simulator.Now().GetSeconds():.2f}s")
+    print("=========================================================================")
     
     for i in range(numNodes):
         for j in range(i + 1, numNodes):
             if meshDevices[i][j] is None:
                 continue
             
-            # 1. Fetch data rate attribute directly from the active PointToPoint device
-            bpsVal = ns.DataRateValue()
-            meshDevices[i][j].GetAttribute("DataRate", bpsVal)
-            bwMbps = bpsVal.Get().GetBitRate() / 1000000.0
-            
-            # 2. Extract the Receive Error Model via the dynamic pointer attribute wrapper
-            ptrVal = ns.PointerValue()
-            meshDevices[j][i].GetAttribute("ReceiveErrorModel", ptrVal)
-            em = ptrVal.GetObject()  
-            
-            dropRate = 0.0
-            if em:
-                dropVal = ns.DoubleValue()
-                em.GetAttribute("ErrorRate", dropVal)
-                dropRate = dropVal.Get()
+            # Read directly from the tracked YAML state matrices instead of ns-3 memory pointers
+            bwMbps = linkBw[i][j]
+            dropRate = linkDrop[i][j]
+            latencyMs = linkLatencies[i][j]
                 
-            print(f"  Node {i + 1} <-> Node {j + 1} | Bandwidth: {bwMbps:.2f} Mbps | Packet Loss: {dropRate * 100.0:.1f}%")
+            print(f"  Node {i + 1} <-> Node {j + 1} | Bandwidth: {bwMbps:>6.2f} Mbps | Packet Loss: {dropRate * 100.0:>4.1f}% | Latency: {latencyMs:>5.1f} ms")
             
-    print("====================================================\n")
+    print("=========================================================================\n")
 
 
 # --- 1. Custom Encapsulation Tunnel ---
@@ -166,6 +187,9 @@ def make_mesh_ingress_callback(myNodeID):
 
 # --- 4. Symmetric Dynamic Topology Engine ---
 def ApplyLinkChanges(changes):
+    # Pre-build the UDP JSON payloads to send to the Pis
+    current_latency_config = {i: {} for i in PI_CLUSTER.keys()}
+
     for change in changes:
         src = change['src']
         dst = change['dst']
@@ -173,7 +197,14 @@ def ApplyLinkChanges(changes):
         if src < numNodes and dst < numNodes and src != dst:
             bw = 0.000001 if change['bwMbps'] <= 0.0 else change['bwMbps']
             drop = 1.0 if change['bwMbps'] <= 0.0 else change['dropRate']
+            latency = change['latency']
 
+            # --- A. Update the Global Tracking Matrices for the Printout ---
+            linkBw[src][dst] = linkBw[dst][src] = bw
+            linkDrop[src][dst] = linkDrop[dst][src] = drop
+            linkLatencies[src][dst] = linkLatencies[dst][src] = latency
+
+            # --- B. Enforce Bandwidth and Loss inside ns-3 ---
             newRate = ns.DataRate(f"{bw}Mbps")
             
             emDst = ns.CreateObject[ns.RateErrorModel]()
@@ -189,6 +220,31 @@ def ApplyLinkChanges(changes):
             
             meshDevices[dst][src].SetAttribute("DataRate", ns.DataRateValue(newRate))
             meshDevices[src][dst].SetAttribute("ReceiveErrorModel", ns.PointerValue(emSrc))
+
+            # --- C. Process Out-Of-Band Latency for the Pis ---
+            # Translate 0-indexed ns-3 nodes back to 1-indexed Pi nodes (1, 2, 3, 4)
+            pi_src = src + 1
+            pi_dst = dst + 1
+            
+            adjusted_latency = max(0.0, latency - PHYSICAL_BASELINE_OVERHEAD)
+            
+            if pi_src in PI_CLUSTER and pi_dst in TARGET_IPS:
+                current_latency_config[pi_src][TARGET_IPS[pi_dst]] = round(adjusted_latency, 2)
+            if pi_dst in PI_CLUSTER and pi_src in TARGET_IPS:
+                current_latency_config[pi_dst][TARGET_IPS[pi_src]] = round(adjusted_latency, 2)
+
+    # --- D. Dispatch Latency Config via UDP Socket ---
+    print("\n>> Out-Of-Band Latency Controller: Dispatching JSON payloads to Raspberry Pis...")
+    for pi_id, target_map in current_latency_config.items():
+        if not target_map:
+            continue
+            
+        pi_ip = PI_CLUSTER[pi_id]
+        try:
+            json_payload = json.dumps(target_map).encode('utf-8')
+            g_sock.sendto(json_payload, (pi_ip, UDP_PORT))
+        except Exception as e:
+            print(f"  -> Failed to send UDP latency config to Pi {pi_id} ({pi_ip}): {e}")
 
     PrintCurrentTopology()
 
@@ -255,7 +311,9 @@ def main():
 
     p2p = ns.PointToPointHelper()
     p2p.SetDeviceAttribute("DataRate", ns.StringValue("100Mbps"))
+    # Native delay remains 0ms as latency is applied out-of-band on physical devices via 'tc'
     p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
+    p2p.SetDeviceAttribute("Mtu", ns.UintegerValue(1550))
     p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
 
     for i in range(numNodes):
@@ -299,7 +357,7 @@ def main():
     trace_file_path = "/home/ijoldenb/ns-3.48/scratch/topology_trace.yaml"
     timelineMap = parse_topology_trace(trace_file_path)
 
-    # Schedule the link changes
+    # Schedule the link changes on the ns-3 timeline
     for t_time, changes in timelineMap.items():
         evt = lambda c=changes: ApplyLinkChanges(c)
         g_keepAlive.append(evt)
@@ -309,9 +367,9 @@ def main():
     ns.Simulator.Stop(stopTime)
     ns.SchedulePythonEvent(stopTime - ns.Seconds(1.0), KeepAliveDummyEvent)
 
-    print("================================================================")
-    print("ns-3 Dynamic PointToPoint FULL MESH Active (Python L2 Split-Horizon)")
-    print("================================================================")
+    print("=========================================================================")
+    print(" ns-3 PointToPoint Mesh ACTIVE (BW/Loss) + Out-Of-Band UDP Latency Sync  ")
+    print("=========================================================================")
 
     ns.Simulator.Run()
     ns.Simulator.Destroy()
