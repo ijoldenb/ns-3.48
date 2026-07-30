@@ -7,6 +7,7 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/ijoldenb/ns-3.48/scratch/**")
 set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/2sat-emu-router.cc"
   "/home/ijoldenb/ns-3.48/scratch/2sat-link-emu.cc"
+  "/home/ijoldenb/ns-3.48/scratch/4sat-lat-bw-drop-master-sim.py"
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-FAILED.cc"
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-channel.cc"
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-dynamic-csma-failed.cc"
@@ -17,7 +18,6 @@ set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-multi-dynamic-star.py"
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-single-channel.cc"
   "/home/ijoldenb/ns-3.48/scratch/CMakeLists.txt"
-  "/home/ijoldenb/ns-3.48/scratch/MasterSim.py"
   "/home/ijoldenb/ns-3.48/scratch/first.py"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-ping.cc"
   "/home/ijoldenb/ns-3.48/scratch/my-fd-emu-send.cc"
