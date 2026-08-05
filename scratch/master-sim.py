@@ -353,7 +353,7 @@ def main():
 
     emuHelper = ns.EmuFdNetDeviceHelper()
     emuHelper.SetAttribute("EncapsulationMode", ns.StringValue("Dix"))
-    vlanMapping = ["vlan101", "vlan102", "vlan103", "vlan104"]
+    vlanMapping = ["vlan101", "vlan102", "vlan103", "vlan104","vlan105", "vlan106", "vlan107", "vlan108", "vlan109", "vlan110", "vlan111"]
 
     for i in range(numNodes):
         emuHelper.SetDeviceName(vlanMapping[i])
