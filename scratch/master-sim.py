@@ -3,6 +3,8 @@ import socket
 import json
 from ns import ns
 import cppyy
+import yaml
+import re
 
 # ==============================================================================
 # --- 0. CRITICAL C++ TO PYTHON CALLBACK BRIDGE & CASTING ENGINE ---
@@ -70,35 +72,27 @@ using ns3::ToAddress;
 # ==============================================================================
 # --- EXTERNAL HARDWARE MAPPINGS (UDP LATENCY CONTROLLER) ---
 # ==============================================================================
-# The external SSH IP addresses to reach each Pi
-PI_CLUSTER = {
-    1: "192.168.0.244",
-    2: "192.168.0.198",
-    3: "192.168.0.129",
-    4: "192.168.0.237",
-    5: "192.168.0.210",
-    6: "192.168.0.201",
-    7: "192.168.0.156",
-    8: "192.168.0.222",
-    9: "192.168.0.234",
-    10: "192.168.0.165",
-    11: "192.168.0.180",
-}
 
-# The internal VPN/VLAN IPs that `tc` runs against. 
-TARGET_IPS = {
-    1: "192.168.101.10",
-    2: "192.168.102.10",
-    3: "192.168.103.10",
-    4: "192.168.104.10",
-    5: "192.168.105.10",
-    6: "192.168.106.10",
-    7: "192.168.107.10",
-    8: "192.168.108.10",
-    9: "192.168.109.10",
-    10: "192.168.110.10",
-    11: "192.168.111.10"
-}
+# The external SSH IP addresses to reach each Pi
+def load_ip_config(file_path):
+    with open(file_path) as f:
+        data = yaml.safe_load(f)
+    # Unwrap inner dict if wrapped under a header (e.g. 'control_ip')
+    if isinstance(next(iter(data.values())), dict):
+        data = next(iter(data.values()))
+    return {int(''.join(filter(str.isdigit, str(k)))): str(v).strip() for k, v in data.items()}
+
+# 1. Load Control Network IPs
+PI_CLUSTER = load_ip_config("/home/ijoldenb/RoutingScripts/control_IP.yaml")
+print(">> Loaded Control IPs:")
+for pi_id, ip in sorted(PI_CLUSTER.items()):
+    print(f"   Pi #{pi_id} -> {ip}")
+
+# 2. Load Simulation Network IPs
+TARGET_IPS = load_ip_config("/home/ijoldenb/RoutingScripts/sim_IP.yaml")
+print(">> Loaded Sim IPs:")
+for pi_id, ip in sorted(TARGET_IPS.items()):
+    print(f"   Pi #{pi_id} -> {ip}")
 
 UDP_PORT = 65000
 PHYSICAL_BASELINE_OVERHEAD = 4
@@ -353,7 +347,8 @@ def main():
 
     emuHelper = ns.EmuFdNetDeviceHelper()
     emuHelper.SetAttribute("EncapsulationMode", ns.StringValue("Dix"))
-    vlanMapping = ["vlan101", "vlan102", "vlan103", "vlan104","vlan105", "vlan106", "vlan107", "vlan108", "vlan109", "vlan110", "vlan111"]
+    # Dynamically generate vlan101 through vlan111 to match all 11 nodes
+    vlanMapping = [f"vlan{101 + i}" for i in range(numNodes)]
 
     for i in range(numNodes):
         emuHelper.SetDeviceName(vlanMapping[i])
