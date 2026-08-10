@@ -1013,14 +1013,11 @@
 /home/ijoldenb/ns-3.48/cmake-cache/examples/wireless/CMakeFiles/install/strip.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-emu-router.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_2sat-link-emu.dir
-/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-FAILED.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-channel.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic-csma-failed.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic-p2p-graph.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-multi-dynamic-p2p-star_success.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_4sat-link-emu-single-channel.dir
-/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-ping.dir
-/home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_my-fd-emu-send.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_scratch-simulator.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/scratch_subdir_scratch-subdir.dir
 /home/ijoldenb/ns-3.48/cmake-cache/scratch/CMakeFiles/edit_cache.dir
