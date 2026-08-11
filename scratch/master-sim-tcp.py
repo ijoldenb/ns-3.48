@@ -9,7 +9,8 @@ import re
 import csv
 import time
 from collections import defaultdict
-
+import subprocess
+    
 # ==============================================================================
 # --- 0. CRITICAL C++ TO PYTHON CALLBACK BRIDGE & CASTING ENGINE ---
 # ==============================================================================
@@ -87,6 +88,19 @@ def load_ip_config(file_path):
         data = next(iter(data.values()))
     return {int(''.join(filter(str.isdigit, str(k)))): str(v).strip() for k, v in data.items()}
 
+
+numNodes = len(load_ip_config(f"{laptopPath}control_IP.yaml"))
+# Disable Linux TCP offloading AND lower MTU on host interfaces
+for i in range(101, numNodes + 101):
+    
+    # 1. Disable offloading 
+    subprocess.run(
+        ["sudo", "ethtool", "-K", f"vlan{i}", "tx", "off", "rx", "off", "tso", "off", "gso", "off", "gro", "off", "ufo", "off"],
+        stdout=subprocess.DEVNULL, 
+        stderr=subprocess.DEVNULL
+    )
+    
+
 # 1. Load Control Network IPs
 PI_CLUSTER = load_ip_config(f"{laptopPath}control_IP.yaml")
 print(">> Loaded Control IPs:")
@@ -106,7 +120,7 @@ PHYSICAL_BASELINE_OVERHEAD = 4
 g_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # --- Global Network Infrastructure ---
-numNodes = 11
+numNodes = len(load_ip_config(f"{laptopPath}control_IP.yaml"))
 
 meshDevices = [[None for _ in range(numNodes)] for _ in range(numNodes)]
 linkBw = [[100.0 for _ in range(numNodes)] for _ in range(numNodes)]
@@ -182,14 +196,20 @@ def make_vlan_ingress_callback(myNodeID):
 
 
 # --- 3. Split-Horizon Ingress (From Inter-Satellite Mesh Links) ---
+# --- 3. Split-Horizon Ingress (From Inter-Satellite Mesh Links) ---
 def make_mesh_ingress_callback(myNodeID):
     def Ingress_From_Mesh(rxDevice, packet, protocol, src, dst, packetType):
         pktCopy = packet.Copy()
         eth = ns.EthernetHeader()
         pktCopy.RemoveHeader(eth)
         
-        # eth.GetLengthType() recovers the original protocol (0x0806, 0x0800, etc.)
-        g_fdDev[myNodeID].Send(pktCopy, cppyy.gbl.ToAddress(eth.GetDestination()), eth.GetLengthType())
+        # FIX: Use SendFrom() to preserve the original sender's MAC address!
+        g_fdDev[myNodeID].SendFrom(
+            pktCopy, 
+            cppyy.gbl.ToAddress(eth.GetSource()),       # True Original Source MAC
+            cppyy.gbl.ToAddress(eth.GetDestination()),  # True Original Dest MAC
+            eth.GetLengthType()                         # True Protocol
+        )
         
         return True
     return Ingress_From_Mesh
@@ -314,7 +334,7 @@ def main():
     p2p = ns.PointToPointHelper()
     p2p.SetDeviceAttribute("DataRate", ns.StringValue("100Mbps"))
     p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
-    p2p.SetDeviceAttribute("Mtu", ns.UintegerValue(1550))
+    p2p.SetDeviceAttribute("Mtu", ns.UintegerValue(1500))
     p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
 
     for i in range(numNodes):
@@ -346,6 +366,8 @@ def main():
         emuHelper.SetDeviceName(vlanMapping[i])
         devSide = emuHelper.Install(meshNodes.Get(i))
         g_fdDev[i] = devSide.Get(0)
+        
+        g_fdDev[i].SetMtu(1500)
         
         mac_addr = ns.Mac48Address.Allocate()
         g_fdDev[i].SetAttribute("Address", ns.Mac48AddressValue(mac_addr))
