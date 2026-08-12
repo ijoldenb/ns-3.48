@@ -18,7 +18,6 @@ set(OLD_GLOB
   "/home/ijoldenb/ns-3.48/scratch/4sat-link-emu-single-channel.cc"
   "/home/ijoldenb/ns-3.48/scratch/CMakeLists.txt"
   "/home/ijoldenb/ns-3.48/scratch/master-sim-packet-tracing.py"
-  "/home/ijoldenb/ns-3.48/scratch/master-sim-tcp.py"
   "/home/ijoldenb/ns-3.48/scratch/master-sim.py"
   "/home/ijoldenb/ns-3.48/scratch/nested-subdir"
   "/home/ijoldenb/ns-3.48/scratch/scratch-simulator.cc"

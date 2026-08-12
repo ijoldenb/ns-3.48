@@ -102,7 +102,7 @@ for pi_id, ip in sorted(TARGET_IPS.items()):
     print(f"   Pi #{pi_id} -> {ip}")
 
 UDP_PORT = 65000
-PHYSICAL_BASELINE_OVERHEAD = 4
+PHYSICAL_BASELINE_LATENCY = 6
 
 # Global socket for blasting latency configs to the physical hardware
 g_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -241,7 +241,7 @@ def ApplyLinkChanges(changes):
             pi_src = src + 1
             pi_dst = dst + 1
             
-            adjusted_latency = max(0.0, latency - PHYSICAL_BASELINE_OVERHEAD)
+            adjusted_latency = max(0.0, latency - PHYSICAL_BASELINE_LATENCY)
             
             if pi_src in PI_CLUSTER and pi_dst in TARGET_IPS:
                 current_latency_config[pi_src][TARGET_IPS[pi_dst]] = round(adjusted_latency, 2)
