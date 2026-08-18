@@ -102,14 +102,18 @@ for pi_id, ip in sorted(TARGET_IPS.items()):
     print(f"   Pi #{pi_id} -> {ip}")
 
 UDP_PORT = 65000
-PHYSICAL_BASELINE_LATENCY = 6
+PHYSICAL_BASELINE_LATENCY = 2.3
 
 # Global socket for blasting latency configs to the physical hardware
 g_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 # --- Global Network Infrastructure ---
-numNodes = 11
+laptopPath = os.path.expanduser("~/RoutingScripts/")
+with open(f"{laptopPath}sim_IP.yaml", "r") as f:
+    config = yaml.safe_load(f)
+sim_data = config.get("sim_IP", config) if isinstance(config, dict) else config
+numNodes = len(sim_data)
 
 # Mesh Tracking Matrices (Used for instant O(1) reads during topology reporting)
 meshDevices = [[None for _ in range(numNodes)] for _ in range(numNodes)]
@@ -329,7 +333,7 @@ def main():
     # Native delay remains 0ms as latency is applied out-of-band on physical devices via 'tc'
     p2p.SetChannelAttribute("Delay", ns.StringValue("0ms"))
     p2p.SetDeviceAttribute("Mtu", ns.UintegerValue(1550))
-    p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("5000p")))
+    p2p.SetQueue("ns3::DropTailQueue<Packet>", "MaxSize", ns.QueueSizeValue(ns.QueueSize("50p")))
 
     for i in range(numNodes):
         for j in range(i + 1, numNodes):
